@@ -26,14 +26,39 @@ function Hero() {
           </span>
         </div>
       </div>
-      <div className="mt-16 lg:mt-20" data-reveal>
-        <img
-          alt="A collage of Oglas brand and packaging work"
-          className="w-full"
-          src="/assets/home/hero-collage.webp"
-        />
+      <div className="mt-16 flex flex-col gap-2 lg:mt-20 lg:gap-3" data-reveal>
+        <HeroBandRow band={1} duration="40s" />
+        <HeroBandRow band={2} duration="34s" reverse />
+        <HeroBandRow band={3} duration="46s" />
       </div>
     </section>
+  );
+}
+
+/**
+ * One scrolling band of the hero collage. The band image is repeated across a
+ * double-width track and translated -50%, so the loop reset is invisible.
+ * `reverse` flips the scroll direction (right instead of left).
+ */
+function HeroBandRow({ band, duration, reverse }: { band: 1 | 2 | 3; duration: string; reverse?: boolean }) {
+  return (
+    <div className="marquee relative overflow-hidden">
+      <div
+        className="marquee__track flex w-max"
+        style={{ animationDirection: reverse ? "reverse" : "normal", animationDuration: duration }}
+      >
+        {[0, 1, 2, 3].map((i) => (
+          <img
+            key={i}
+            aria-hidden={i > 0 ? true : undefined}
+            alt={i === 0 ? "A collage of Oglas brand and packaging work" : ""}
+            className="block h-[clamp(88px,13vw,220px)] w-auto max-w-none shrink-0"
+            decoding="async"
+            src={`/assets/home/hero/band-${band}.webp`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
