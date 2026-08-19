@@ -138,6 +138,7 @@ html {
   min-width: 320px;
   background: var(--bg-dark);
   scroll-behavior: auto;
+  overflow-x: clip;
 }
 
 body {
