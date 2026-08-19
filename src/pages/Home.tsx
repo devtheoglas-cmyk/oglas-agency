@@ -26,10 +26,15 @@ function Hero() {
           </span>
         </div>
       </div>
-      <div className="mt-16 flex flex-col gap-2 lg:mt-20 lg:gap-3" data-reveal>
-        <HeroBandRow band={1} duration="40s" />
-        <HeroBandRow band={2} duration="34s" reverse />
-        <HeroBandRow band={3} duration="46s" />
+      {/* Tilted so the marquee flows along the collage's diagonal. The inner
+         block is oversized + rotated; the section's overflow-hidden clips the
+         excess corners left by the rotation. */}
+      <div className="mt-16 lg:mt-20" data-reveal>
+        <div className="w-[118%] -ml-[9%] rotate-[-5deg] flex flex-col gap-2 lg:gap-3">
+          <HeroBandRow band={1} duration="40s" />
+          <HeroBandRow band={2} duration="34s" reverse />
+          <HeroBandRow band={3} duration="46s" />
+        </div>
       </div>
     </section>
   );
