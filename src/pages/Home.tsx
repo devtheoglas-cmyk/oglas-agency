@@ -30,7 +30,7 @@ function Hero() {
          block is oversized + rotated; the section's overflow-hidden clips the
          excess corners left by the rotation. */}
       <div className="mt-16 lg:mt-20" data-reveal>
-        <div className="w-[118%] -ml-[9%] rotate-[-5deg] flex flex-col gap-2 lg:gap-3">
+        <div className="w-[128%] -ml-[14%] rotate-[-11deg] flex flex-col gap-3 lg:gap-4">
           <HeroBandRow band={1} duration="40s" />
           <HeroBandRow band={2} duration="34s" reverse />
           <HeroBandRow band={3} duration="46s" />
