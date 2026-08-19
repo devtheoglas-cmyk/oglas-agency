@@ -6,3 +6,5 @@ dist
 # Raw Figma extraction cache (79MB+) — reference-only, not shippable.
 # Optimized production assets live under public/assets/.
 .design
+
+.vercel

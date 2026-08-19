@@ -219,21 +219,11 @@ html.lenis body {
   }
 }
 
-/* Scroll reveal (progressive enhancement) — visible by default; only hidden
-   once JS confirms motion is allowed via html.js-motion, then revealed by the
-   IntersectionObserver adding .is-revealed. See src/lib/useReveal.ts. */
+/* Content is always visible. (A scroll-reveal fade-in was removed because it
+   could leave elements stuck invisible until a hover forced a repaint.) */
 [data-reveal] {
   opacity: 1;
   transform: none;
-  transition:
-    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-html.js-motion [data-reveal]:not(.is-revealed) {
-  opacity: 0;
-  transform: translateY(32px);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -17,7 +17,7 @@ function CardInner({ work, subtitle, showTags = true }: WorkCardProps) {
       <div className="relative aspect-[920/582] overflow-hidden bg-dark">
         <img
           alt={`${work.name} — ${work.type}`}
-          className="block h-full w-full object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
+          className="block h-full w-full object-contain"
           decoding="async"
           loading="lazy"
           src={work.image}
@@ -27,7 +27,7 @@ function CardInner({ work, subtitle, showTags = true }: WorkCardProps) {
         <div className="flex items-baseline gap-3">
           <span className="font-body text-base font-semibold text-white">{work.year}</span>
           <span className="text-white">•</span>
-          <h3 className="font-body text-base font-semibold tracking-[-0.005em] text-white uppercase transition-colors group-hover:text-lime group-focus-visible:text-lime">
+          <h3 className="font-body text-base font-semibold tracking-[-0.005em] text-white uppercase">
             {work.name}
           </h3>
         </div>
