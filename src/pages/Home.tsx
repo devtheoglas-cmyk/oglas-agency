@@ -26,45 +26,14 @@ function Hero() {
           </span>
         </div>
       </div>
-      {/* Diagonal marquee: a fixed-height window CLIPS an oversized, rotated
-         block of three scrolling rows. The block is bigger than the window in
-         every direction, so after the -11deg rotation the rows still cover it
-         edge-to-edge — no black wedges at the corners. */}
-      <div className="relative mt-16 h-[clamp(300px,38vw,600px)] overflow-hidden lg:mt-20" data-reveal>
-        <div className="absolute top-1/2 left-1/2 flex w-[150%] -translate-x-1/2 -translate-y-1/2 rotate-[-11deg] flex-col gap-3 lg:gap-4">
-          <HeroBandRow band={1} duration="40s" />
-          <HeroBandRow band={2} duration="34s" reverse />
-          <HeroBandRow band={3} duration="46s" />
-        </div>
+      <div className="mt-16 lg:mt-20" data-reveal>
+        <img
+          alt="A collage of Oglas brand and packaging work"
+          className="w-full"
+          src="/assets/home/hero-collage.webp"
+        />
       </div>
     </section>
-  );
-}
-
-/**
- * One scrolling row of the collage. The band image is repeated across the
- * track and translated -50%, so the loop reset is invisible. `reverse` flips
- * the scroll direction (right instead of left).
- */
-function HeroBandRow({ band, duration, reverse }: { band: 1 | 2 | 3; duration: string; reverse?: boolean }) {
-  return (
-    <div className="marquee relative overflow-hidden">
-      <div
-        className="marquee__track flex w-max"
-        style={{ animationDirection: reverse ? "reverse" : "normal", animationDuration: duration }}
-      >
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <img
-            key={i}
-            aria-hidden={i > 0 ? true : undefined}
-            alt={i === 0 ? "A collage of Oglas brand and packaging work" : ""}
-            className="block h-[clamp(96px,12vw,190px)] w-auto max-w-none shrink-0"
-            decoding="async"
-            src={`/assets/home/hero/band-${band}.webp`}
-          />
-        ))}
-      </div>
-    </div>
   );
 }
 
