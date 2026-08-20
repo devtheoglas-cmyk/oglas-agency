@@ -15,7 +15,7 @@ function Hero() {
     <section className="relative overflow-hidden bg-dark pt-32 pb-14 text-white lg:pt-40">
       <div className={`${SHELL} text-center`}>
         <h1
-          className="mx-auto max-w-[1500px] font-display text-[clamp(2rem,4.8vw,5.6rem)] leading-[0.98] font-bold tracking-[-0.02em] uppercase"
+          className="mx-auto max-w-[1500px] break-words font-display text-[clamp(1.35rem,5.6vw,5.6rem)] leading-[1.02] font-bold tracking-[-0.02em] uppercase [text-wrap:balance]"
           data-reveal
         >
           {heroManifesto}
@@ -56,7 +56,7 @@ function VisualsFelt() {
           <div className="flex flex-col gap-4">
             <SectionLabel>our works</SectionLabel>
             <h2
-              className="font-display text-[clamp(2.2rem,4.4vw,4.1rem)] leading-[1] font-extrabold tracking-[-0.055em] uppercase"
+              className="font-display text-[clamp(1.8rem,4.4vw,4.1rem)] leading-[1.02] font-extrabold tracking-[-0.055em] uppercase break-words"
               data-reveal
             >
               Visuals created to be felt
@@ -119,7 +119,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
       <div className={SHELL}>
         <div className="mb-16 lg:mb-64">
           <h2
-            className="text-center font-display text-[clamp(3rem,14.5vw,13.5rem)] leading-[0.9] font-extrabold tracking-[-0.045em] uppercase"
+            className="text-center font-display text-[clamp(2.4rem,13.5vw,13.5rem)] leading-[0.9] font-extrabold tracking-[-0.045em] uppercase break-words [text-wrap:balance]"
             data-reveal
           >
             {lineOne}
@@ -140,7 +140,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             </span>
           </div>
           <h2
-            className="text-center font-display text-[clamp(3rem,14.5vw,13.5rem)] leading-[0.9] font-extrabold tracking-[-0.045em] uppercase"
+            className="text-center font-display text-[clamp(2.4rem,13.5vw,13.5rem)] leading-[0.9] font-extrabold tracking-[-0.045em] uppercase break-words [text-wrap:balance]"
             data-reveal
           >
             {lineTwo}
