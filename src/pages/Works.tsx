@@ -90,8 +90,6 @@ export default function Works() {
                 work={work}
                 subtitle={work.tagline}
                 className="works-card-light"
-                frameClassName="bg-[#f4f4f4]"
-                imageFit="contain"
               />
             ))}
           </div>
