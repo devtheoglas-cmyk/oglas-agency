@@ -83,7 +83,7 @@ export default function Works() {
             Featured Work
           </h2>
 
-          <div className="grid gap-x-0 gap-y-16 md:grid-cols-2" aria-live="polite">
+          <div className="grid gap-x-8 gap-y-16 md:grid-cols-2 lg:gap-x-12" aria-live="polite">
             {visible.map((work) => (
               <WorkCard key={work.slug} work={work} subtitle={work.tagline} className="works-card-light" />
             ))}
