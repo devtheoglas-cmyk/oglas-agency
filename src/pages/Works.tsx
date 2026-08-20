@@ -16,14 +16,14 @@ const DEFAULT_TAGS = ["Branding", "Brand strategy", "Graphics", "Visual Identity
 const WEB_TAGS = ["Branding", "Web design", "Graphics", "Visual Identity"];
 
 const worksIndex: IndexWork[] = [
-  { slug: "fishwala", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/works/48f316807915.webp", hasCaseStudy: true, categories: ["Branding", "Social media"] },
-  { slug: "velvet-properties", name: "Velevt Properties", type: "Real Estate Broker", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/works/1de8677ec52e.webp", categories: ["Web", "Branding"] },
-  { slug: "hopinz", name: "Hopinz", type: "Supermarket", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/works/66327bbdef79.webp", categories: ["Branding"] },
-  { slug: "offbean", name: "Offbean", type: "Coffee Cafe", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/works/1b8ea071019c.webp", categories: ["Branding", "Social media"] },
-  { slug: "snaxx", name: "Snaxx", type: "Vending Machine", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/works/f8ab067cd971.webp", categories: ["Apps", "Branding"] },
-  { slug: "fishwala-2", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/works/2c66a434ab9c.webp", hasCaseStudy: true, categories: ["Branding", "Social media"] },
-  { slug: "offbean-2", name: "Offbean", type: "Coffee Cafe", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/works/306a40c7b4d4.webp", categories: ["Branding"] },
-  { slug: "yellow-and", name: "Yellow And", type: "Stay Marketplace", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/works/90fe42c75249.webp", categories: ["Web", "Apps"] },
+  { slug: "fishwala", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/fishwala-stickers.webp", hasCaseStudy: true, categories: ["Branding", "Social media"] },
+  { slug: "velvet-properties", name: "Velvet Properties", type: "Real Estate Broker", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/home/cards/velvet-properties.webp", categories: ["Web", "Branding"] },
+  { slug: "hopinz", name: "Hopinz", type: "Supermarket", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/hopinz.webp", categories: ["Branding"] },
+  { slug: "offbean", name: "Offbean", type: "Coffee Cafe", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/offbean-drippers.webp", categories: ["Branding", "Social media"] },
+  { slug: "snaxx", name: "Snaxx", type: "Vending Machine", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/snaxx.webp", categories: ["Apps", "Branding"] },
+  { slug: "fishwala-2", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/fishwala-apparel.webp", hasCaseStudy: true, categories: ["Branding", "Social media"] },
+  { slug: "velvet-leather", name: "Velvet Leather", type: "Leather Goods", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/velvet-leather.webp", categories: ["Branding"] },
+  { slug: "yellow-and", name: "Yellow And", type: "Stay Marketplace", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/home/cards/yellowand-summer.webp", categories: ["Web", "Apps"] },
 ];
 
 const INITIAL_COUNT = 8;
@@ -83,7 +83,7 @@ export default function Works() {
             Featured Work
           </h2>
 
-          <div className="grid gap-x-8 gap-y-16 md:grid-cols-2" aria-live="polite">
+          <div className="grid gap-x-0 gap-y-16 md:grid-cols-2" aria-live="polite">
             {visible.map((work) => (
               <WorkCard key={work.slug} work={work} subtitle={work.tagline} className="works-card-light" />
             ))}

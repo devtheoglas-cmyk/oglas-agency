@@ -17,7 +17,7 @@ function CardInner({ work, subtitle, showTags = true }: WorkCardProps) {
       <div className="relative aspect-[920/582] overflow-hidden bg-dark">
         <img
           alt={`${work.name} — ${work.type}`}
-          className="block h-full w-full object-contain"
+          className="block h-full w-full object-cover"
           decoding="async"
           loading="lazy"
           src={work.image}
