@@ -13,6 +13,8 @@ interface WorkCardProps {
   frameClassName?: string;
   /** object-fit strategy for the image. Defaults to "cover". */
   imageFit?: "cover" | "contain";
+  /** Tailwind aspect utility for the image frame. Defaults to the shared 920/582. */
+  aspectClassName?: string;
 }
 
 function CardInner({
@@ -21,10 +23,11 @@ function CardInner({
   showTags = true,
   frameClassName = "bg-dark",
   imageFit = "cover",
+  aspectClassName = "aspect-[920/582]",
 }: WorkCardProps) {
   return (
     <>
-      <div className={cn("relative aspect-[920/582] overflow-hidden", frameClassName)}>
+      <div className={cn("relative overflow-hidden", aspectClassName, frameClassName)}>
         <img
           alt={`${work.name} — ${work.type}`}
           className={cn("block h-full w-full", imageFit === "contain" ? "object-contain" : "object-cover")}
@@ -61,9 +64,18 @@ function CardInner({
   );
 }
 
-export function WorkCard({ work, className, subtitle, showTags, frameClassName, imageFit }: WorkCardProps) {
+export function WorkCard({
+  work,
+  className,
+  subtitle,
+  showTags,
+  frameClassName,
+  imageFit,
+  aspectClassName,
+}: WorkCardProps) {
   const inner = (
     <CardInner
+      aspectClassName={aspectClassName}
       frameClassName={frameClassName}
       imageFit={imageFit}
       showTags={showTags}
