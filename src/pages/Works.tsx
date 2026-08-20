@@ -77,7 +77,7 @@ export default function Works() {
         </div>
       </section>
 
-      <section className="bg-white px-5 py-20 text-black sm:px-8 lg:px-[4.15vw] lg:py-28">
+      <section className="bg-dark px-5 py-20 text-white sm:px-8 lg:px-[4.15vw] lg:py-28">
         <div className="mx-auto max-w-[1760px]">
           <h2 className="mb-14 font-body text-sm font-medium tracking-[0.05em] uppercase" data-reveal>
             Featured Work
@@ -97,7 +97,7 @@ export default function Works() {
           {filtered.length > INITIAL_COUNT && (
             <div className="mt-16 flex justify-center border-t border-hairline pt-10">
               <button
-                className="flex items-center gap-3 font-body text-base text-black/70 transition-colors hover:text-black"
+                className="flex items-center gap-3 font-body text-base text-white/70 transition-colors hover:text-white"
                 onClick={() => setShowAll((prev) => !prev)}
                 type="button"
               >
