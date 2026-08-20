@@ -9,15 +9,25 @@ interface WorkCardProps {
   subtitle?: string;
   /** Show the tag chip row below the subtitle. Defaults to true. */
   showTags?: boolean;
+  /** Tailwind classes for the image frame. Controls background and fit. */
+  frameClassName?: string;
+  /** object-fit strategy for the image. Defaults to "cover". */
+  imageFit?: "cover" | "contain";
 }
 
-function CardInner({ work, subtitle, showTags = true }: WorkCardProps) {
+function CardInner({
+  work,
+  subtitle,
+  showTags = true,
+  frameClassName = "bg-dark",
+  imageFit = "cover",
+}: WorkCardProps) {
   return (
     <>
-      <div className="relative aspect-[920/582] overflow-hidden bg-dark">
+      <div className={cn("relative aspect-[920/582] overflow-hidden", frameClassName)}>
         <img
           alt={`${work.name} — ${work.type}`}
-          className="block h-full w-full object-cover"
+          className={cn("block h-full w-full", imageFit === "contain" ? "object-contain" : "object-cover")}
           decoding="async"
           loading="lazy"
           src={work.image}
@@ -51,7 +61,16 @@ function CardInner({ work, subtitle, showTags = true }: WorkCardProps) {
   );
 }
 
-export function WorkCard({ work, className, subtitle, showTags }: WorkCardProps) {
+export function WorkCard({ work, className, subtitle, showTags, frameClassName, imageFit }: WorkCardProps) {
+  const inner = (
+    <CardInner
+      frameClassName={frameClassName}
+      imageFit={imageFit}
+      showTags={showTags}
+      subtitle={subtitle}
+      work={work}
+    />
+  );
   if (work.hasCaseStudy) {
     return (
       <Link
@@ -59,15 +78,9 @@ export function WorkCard({ work, className, subtitle, showTags }: WorkCardProps)
         to="/works/fishwala"
         aria-label={`View the ${work.name} case study`}
       >
-        <div className={cn("", className)}>
-          <CardInner showTags={showTags} subtitle={subtitle} work={work} />
-        </div>
+        <div className={cn("", className)}>{inner}</div>
       </Link>
     );
   }
-  return (
-    <article className={cn("group block", className)}>
-      <CardInner showTags={showTags} subtitle={subtitle} work={work} />
-    </article>
-  );
+  return <article className={cn("group block", className)}>{inner}</article>;
 }
