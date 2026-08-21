@@ -5,7 +5,7 @@ const founderStatementLines = [
   "Founded in 2019",
   "by Abi Roshan and Faheem Razi,",
   "THE Oglas is a borderless creative agency shaping culture through iconic, value-driven",
-  "brand PLATEFORMS.",
+  "brand PLATFORMS.",
 ];
 
 export default function People() {
