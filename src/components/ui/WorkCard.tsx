@@ -31,7 +31,7 @@ function CardInner({
       <div className={cn("relative overflow-hidden", aspectClassName, frameClassName)}>
         <BgImage
           alt={`${work.name} — ${work.type}`}
-          className="block h-full w-full"
+          fill
           fit={imageFit}
           src={work.image}
         />

@@ -48,8 +48,8 @@ const moreWork: Work[] = [
 
 function Full({ src, alt, ratio }: { src: string; alt: string; ratio: string }) {
   return (
-    <div className="overflow-hidden bg-fishwala-navy" data-reveal style={{ aspectRatio: ratio }}>
-      <BgImage alt={alt} className="block h-full w-full" src={src} />
+    <div className="relative overflow-hidden bg-fishwala-navy" data-reveal style={{ aspectRatio: ratio }}>
+      <BgImage alt={alt} fill src={src} />
     </div>
   );
 }

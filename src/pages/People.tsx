@@ -15,13 +15,12 @@ export default function People() {
     <div className="bg-dark text-white" ref={pageRef}>
       <section className="px-5 pt-28 sm:px-8 sm:pt-32 lg:px-[2.45vw] lg:pt-36">
         <div
-          className="mx-auto aspect-[1826/1199] max-w-[1826px] overflow-hidden bg-black"
+          className="relative mx-auto aspect-[1826/1199] max-w-[1826px] overflow-hidden bg-black"
           data-reveal
         >
           <BgImage
             alt="Portrait grid of The Oglas Agency team members"
-            aspectRatio="1826 / 1199"
-            className="block h-full w-full"
+            fill
             src="/assets/people/portraits.jpg"
           />
         </div>

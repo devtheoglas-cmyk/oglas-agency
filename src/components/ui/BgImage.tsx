@@ -6,6 +6,7 @@ type BgImageProps = {
   className?: string;
   fit?: "cover" | "contain";
   aspectRatio?: string | number;
+  fill?: boolean;
   style?: CSSProperties;
 };
 
@@ -17,12 +18,13 @@ export function BgImage({
   className,
   fit = "cover",
   aspectRatio,
+  fill,
   style,
 }: BgImageProps) {
   const [ratio, setRatio] = useState<string | number | undefined>(aspectRatio);
 
   useEffect(() => {
-    if (aspectRatio) {
+    if (aspectRatio || fill) {
       setRatio(aspectRatio);
       return;
     }
@@ -38,7 +40,7 @@ export function BgImage({
     return () => {
       cancelled = true;
     };
-  }, [src, aspectRatio]);
+  }, [src, aspectRatio, fill]);
 
   return (
     <div
@@ -52,7 +54,7 @@ export function BgImage({
         backgroundRepeat: "no-repeat",
         userSelect: "none",
         WebkitUserSelect: "none",
-        aspectRatio: ratio,
+        ...(fill ? { position: "absolute", inset: 0 } : { aspectRatio: ratio }),
         ...style,
       }}
       onContextMenu={preventDefault}
