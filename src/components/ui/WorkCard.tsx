@@ -39,7 +39,7 @@ function CardInner({
       {/* Colors inherit the section's currentColor so cards work on both dark
          and light sections (white text on dark, black text on light). */}
       <div className="mt-5 flex flex-col gap-3">
-        <div className="weight-morph flex items-baseline gap-3 font-display text-[clamp(1.125rem,1.77vw,34px)] leading-[1.02] font-semibold tracking-[-0.02em] uppercase">
+        <div className="flex items-baseline gap-3 font-display text-[clamp(1.125rem,1.77vw,34px)] leading-[1.02] font-semibold tracking-[-0.02em] uppercase">
           <span className="opacity-60">{work.year}</span>
           <span className="opacity-60">•</span>
           <h3>{work.name}</h3>
@@ -88,9 +88,9 @@ export function WorkCard({
         to="/works/fishwala"
         aria-label={`View the ${work.name} case study`}
       >
-        <div className={cn("", className)}>{inner}</div>
+        <div className={cn("card-flip", className)}>{inner}</div>
       </Link>
     );
   }
-  return <article className={cn("group block", className)}>{inner}</article>;
+  return <article className={cn("card-flip group block", className)}>{inner}</article>;
 }

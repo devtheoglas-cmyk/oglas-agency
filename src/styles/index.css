@@ -192,33 +192,56 @@ button:focus-visible {
   background: var(--accent);
 }
 
-/* Scroll-driven weight morph for WorkCard meta titles.
-   Each card starts at Vend Sans 200 and animates up to 800 as it
-   travels through the viewport, giving the "Our Works → Branding
-   Approach" run a visible type-weight shift as you scroll. Uses
-   CSS scroll-driven animations (Chrome 115+, Firefox 133+, Safari 26+);
-   browsers without support just render at the static font-weight. */
+/* Scroll-driven 3D flip-in for WorkCards.
+   Each card enters the viewport rotated ~65° on its Y axis and
+   flips upright as it scrolls to center. Cards on the right column
+   flip in from the opposite side for a symmetrical "opening deck"
+   effect between the Our Works and Branding Approach sections.
+   Uses CSS animation-timeline: view() — no JS. Browsers without
+   support show the card statically upright; reduced-motion is
+   respected. */
+.card-flip {
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
 @supports (animation-timeline: view()) {
-  .weight-morph {
-    animation: weight-morph linear both;
+  .card-flip {
+    animation: card-flip cubic-bezier(0.2, 0.7, 0.2, 1) both;
     animation-timeline: view();
-    animation-range: entry 10% cover 60%;
+    animation-range: entry 0% cover 45%;
   }
-  @keyframes weight-morph {
+  .card-flip:nth-child(even) {
+    animation-name: card-flip-alt;
+  }
+  @keyframes card-flip {
     from {
-      font-variation-settings: "wght" 200;
-      letter-spacing: 0.02em;
+      transform: perspective(1600px) rotateY(-65deg) rotateX(8deg) translateZ(-120px);
+      opacity: 0;
     }
     to {
-      font-variation-settings: "wght" 800;
-      letter-spacing: -0.03em;
+      transform: perspective(1600px) rotateY(0deg) rotateX(0deg) translateZ(0);
+      opacity: 1;
+    }
+  }
+  @keyframes card-flip-alt {
+    from {
+      transform: perspective(1600px) rotateY(65deg) rotateX(8deg) translateZ(-120px);
+      opacity: 0;
+    }
+    to {
+      transform: perspective(1600px) rotateY(0deg) rotateX(0deg) translateZ(0);
+      opacity: 1;
     }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .weight-morph {
+  .card-flip {
     animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
 
