@@ -390,66 +390,6 @@ button:focus-visible {
   }
 }
 
-/* Featured card swap: as the Our Works pair scrolls past on its way
-   to the Branding Approach section, the two cards trade positions
-   with a slight vertical stagger so they read as passing over/under
-   each other, then return to their original positions before leaving
-   the viewport. A card-shuffle effect. */
-.featured-swap > * {
-  will-change: transform;
-  transform-origin: 50% 50%;
-}
-
-@supports (animation-timeline: view()) {
-  .featured-swap {
-    perspective: 1600px;
-  }
-  .featured-swap > :nth-child(1) {
-    animation: featured-swap-left cubic-bezier(0.65, 0, 0.35, 1) both;
-    animation-timeline: view();
-    animation-range: cover 15% cover 85%;
-  }
-  .featured-swap > :nth-child(2) {
-    animation: featured-swap-right cubic-bezier(0.65, 0, 0.35, 1) both;
-    animation-timeline: view();
-    animation-range: cover 15% cover 85%;
-  }
-  @keyframes featured-swap-left {
-    0% {
-      transform: translate3d(0, 0, 0) rotate(0deg);
-      z-index: 1;
-    }
-    50% {
-      transform: translate3d(calc(100% + 4rem), -40px, 40px) rotate(-4deg);
-      z-index: 2;
-    }
-    100% {
-      transform: translate3d(0, 0, 0) rotate(0deg);
-      z-index: 1;
-    }
-  }
-  @keyframes featured-swap-right {
-    0% {
-      transform: translate3d(0, 0, 0) rotate(0deg);
-      z-index: 2;
-    }
-    50% {
-      transform: translate3d(calc(-100% - 4rem), 40px, 0) rotate(4deg);
-      z-index: 1;
-    }
-    100% {
-      transform: translate3d(0, 0, 0) rotate(0deg);
-      z-index: 2;
-    }
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .featured-swap > * {
-    animation: none !important;
-    transform: none !important;
-  }
-}
 
 html.lenis,
 html.lenis body {
