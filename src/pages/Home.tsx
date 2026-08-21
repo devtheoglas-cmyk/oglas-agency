@@ -123,7 +123,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
       <div className={SHELL}>
         <div className="mb-16 lg:mb-64">
           <h2
-            className="text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
+            className="showcase-word-left text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
           >
             {lineOne}
@@ -133,7 +133,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             <span
               aria-hidden="true"
               className={cn(
-                "pointer-events-none select-none font-display text-[clamp(1.8rem,6vw,7rem)] leading-none font-semibold tracking-[-0.04em] uppercase",
+                "showcase-ghost pointer-events-none select-none font-display text-[clamp(1.8rem,6vw,7rem)] leading-none font-semibold tracking-[-0.04em] uppercase",
                 dark ? "text-white/[0.07]" : "text-black/[0.06]",
               )}
             >
@@ -144,7 +144,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             </span>
           </div>
           <h2
-            className="text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
+            className="showcase-word-right text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
           >
             {lineTwo}

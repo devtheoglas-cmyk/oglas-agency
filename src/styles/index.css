@@ -245,6 +245,73 @@ button:focus-visible {
   }
 }
 
+/* WorkShowcase entrance: the two display words (CREATIVITY / CHANGE,
+   REFRAME / INTERACTION) slide in from opposite sides while the
+   ghost word behind them scales up to full size. Tied to scroll
+   position via CSS animation-timeline: view(). */
+.showcase-word,
+.showcase-ghost {
+  will-change: transform, opacity;
+}
+
+@supports (animation-timeline: view()) {
+  .showcase-word-left {
+    animation: showcase-slide-left cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+  .showcase-word-right {
+    animation: showcase-slide-right cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+  .showcase-ghost {
+    animation: showcase-ghost cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 15% cover 55%;
+  }
+  @keyframes showcase-slide-left {
+    from {
+      transform: translate3d(-35%, 0, 0);
+      opacity: 0;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  @keyframes showcase-slide-right {
+    from {
+      transform: translate3d(35%, 0, 0);
+      opacity: 0;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  @keyframes showcase-ghost {
+    from {
+      transform: scale(0.55);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-word-left,
+  .showcase-word-right,
+  .showcase-ghost {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
 html.lenis,
 html.lenis body {
   height: auto;
