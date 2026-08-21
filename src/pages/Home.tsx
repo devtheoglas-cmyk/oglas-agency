@@ -16,7 +16,7 @@ function Hero() {
     <section className="relative overflow-hidden bg-dark pt-32 pb-14 text-white lg:pt-40">
       <div className={`${SHELL} text-center`}>
         <h1
-          className="mx-auto max-w-[1800px] break-words font-display text-[clamp(1.5rem,6vw,6.25rem)] leading-[1.04] font-bold tracking-[-0.02em] uppercase [text-wrap:balance]"
+          className="mx-auto max-w-[1800px] break-words font-display text-[clamp(1.4rem,5.2vw,5.5rem)] leading-[0.95] font-bold tracking-[-0.03em] uppercase [text-wrap:balance]"
           data-reveal
         >
           {heroManifesto}
