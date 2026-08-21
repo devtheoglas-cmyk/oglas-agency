@@ -13,21 +13,23 @@ const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-dark pt-32 pb-14 text-white lg:pt-40">
-      <div className={`${SHELL} text-center`}>
-        <h1
-          className="mx-auto max-w-[1800px] break-words font-condensed text-[clamp(3.25rem,4.35vw,5.625rem)] leading-[0.84] font-bold tracking-[-0.035em] uppercase [text-wrap:balance]"
-          data-reveal
-        >
-          {heroManifesto}
-        </h1>
-        <div className="mt-20 flex justify-center" data-reveal>
-          <span className="rounded-full border border-white/35 px-6 py-2.5 font-body text-sm tracking-[0.12em] text-white uppercase">
-            Since 2019
-          </span>
+    <section className="relative flex min-h-screen flex-col overflow-hidden bg-dark text-white">
+      <div className="flex flex-1 flex-col justify-center px-4 pt-28 pb-16 sm:px-8 lg:pt-32">
+        <div className={`${SHELL} text-center`}>
+          <h1
+            className="mx-auto max-w-[1800px] break-words font-condensed text-[clamp(3.25rem,4.35vw,5.625rem)] leading-[0.84] font-bold tracking-[-0.035em] uppercase [text-wrap:balance]"
+            data-reveal
+          >
+            {heroManifesto}
+          </h1>
+          <div className="mt-16 flex justify-center lg:mt-20" data-reveal>
+            <span className="rounded-full border border-white/35 px-6 py-2.5 font-body text-sm tracking-[0.12em] text-white uppercase">
+              Since 2019
+            </span>
+          </div>
         </div>
       </div>
-      <div className="mt-16 lg:mt-20" data-reveal>
+      <div data-reveal>
         <BgImage
           alt="A collage of Oglas brand and packaging work"
           className="w-full"
