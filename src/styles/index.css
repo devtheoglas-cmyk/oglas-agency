@@ -119,6 +119,7 @@
   --font-display: "Schibsted Grotesk", sans-serif;
   --font-body: "Manrope", sans-serif;
   --font-wordmark: "Bebas Neue", sans-serif;
+  --font-condensed: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
 }
 
 :root {
