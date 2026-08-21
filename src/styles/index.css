@@ -49,6 +49,24 @@
 }
 
 @font-face {
+  font-family: "Vend Sans";
+  src: url("/fonts/VendSans-var.woff2") format("woff2-variations"),
+       url("/fonts/VendSans-var.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vend Sans";
+  src: url("/fonts/VendSans-italic-var.woff2") format("woff2-variations"),
+       url("/fonts/VendSans-italic-var.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Schibsted Grotesk";
   src: url("/fonts/schibsted-400.woff2") format("woff2");
   font-style: normal;
@@ -119,7 +137,7 @@
   --font-display: "Schibsted Grotesk", sans-serif;
   --font-body: "Manrope", sans-serif;
   --font-wordmark: "Bebas Neue", sans-serif;
-  --font-condensed: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-condensed: "Vend Sans", "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
 }
 
 :root {
