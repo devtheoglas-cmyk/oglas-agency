@@ -54,7 +54,7 @@ function SectionLabel({ children }: { children: string }) {
 
 function VisualsFelt() {
   return (
-    <section className="bg-dark py-16 text-white lg:py-36">
+    <section className="bg-dark py-20 text-white lg:py-36">
       <div className={SHELL}>
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6 lg:mb-20">
           <div className="flex flex-col gap-4">
@@ -119,7 +119,7 @@ function ShowcaseBand({ text, cta, dark }: { text: string; cta: string; dark: bo
 
 function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta, dark = true }: ShowcaseProps) {
   return (
-    <section className={cn("py-16 lg:py-72", dark ? "bg-dark text-white" : "bg-white text-black")}>
+    <section className={cn("py-20 lg:py-72", dark ? "bg-dark text-white" : "bg-white text-black")}>
       <div className={SHELL}>
         <div className="mb-10 lg:mb-64">
           <h2
@@ -150,7 +150,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             {lineTwo}
           </h2>
         </div>
-        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:gap-y-40" data-reveal>
+        <div className="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:gap-y-40" data-reveal>
           {works.map((work) => (
             <WorkCard key={work.slug} work={work} />
           ))}
@@ -166,7 +166,7 @@ function WhatWeDo() {
   const baseId = useId();
 
   return (
-    <section className="bg-white py-16 text-black lg:py-64">
+    <section className="bg-white py-20 text-black lg:py-64">
       <div className={SHELL}>
         <div className="whatwedo-head mb-16 max-w-[1100px] lg:mb-20">
           <h2 className="font-display text-[clamp(1.8rem,3.2vw,2.7rem)] font-bold tracking-[-0.02em] uppercase" data-reveal>
@@ -201,7 +201,7 @@ function WhatWeDo() {
               <div className="whatwedo-item pb-10" key={item.title}>
                 <div
                   className={cn(
-                    "whatwedo-card group rounded-3xl bg-dark p-6 text-white transition-all duration-500 ease-out sm:p-8 lg:p-12",
+                    "whatwedo-card group rounded-3xl bg-dark p-7 text-white transition-all duration-500 ease-out sm:p-9 lg:p-12",
                     isOpen && "whatwedo-card-open shadow-2xl shadow-black/40",
                   )}
                   data-state={isOpen ? "open" : "closed"}
@@ -213,7 +213,7 @@ function WhatWeDo() {
                     onClick={() => setOpen(isOpen ? "" : item.title)}
                     type="button"
                   >
-                    <span className="font-body text-2xl font-semibold transition-transform duration-500 ease-out group-hover:translate-x-1 lg:text-3xl">
+                    <span className="font-body text-xl font-semibold transition-transform duration-500 ease-out group-hover:translate-x-1 sm:text-2xl lg:text-3xl">
                       {item.title}
                     </span>
                     <span
