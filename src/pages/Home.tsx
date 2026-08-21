@@ -199,20 +199,28 @@ function WhatWeDo() {
 
             return (
               <div className="whatwedo-item pb-10" key={item.title}>
-                <div className="rounded-3xl bg-dark p-8 text-white lg:p-12">
+                <div
+                  className={cn(
+                    "whatwedo-card group rounded-3xl bg-dark p-8 text-white transition-all duration-500 ease-out lg:p-12",
+                    isOpen && "whatwedo-card-open shadow-2xl shadow-black/40",
+                  )}
+                  data-state={isOpen ? "open" : "closed"}
+                >
                   <button
                     aria-controls={panelId}
                     aria-expanded={isOpen}
-                    className="flex w-full items-start justify-between gap-6 text-left"
+                    className="flex w-full items-start justify-between gap-6 text-left transition-colors duration-300 hover:text-lime"
                     onClick={() => setOpen(isOpen ? "" : item.title)}
                     type="button"
                   >
-                    <span className="font-body text-2xl font-semibold lg:text-3xl">{item.title}</span>
+                    <span className="font-body text-2xl font-semibold transition-transform duration-500 ease-out group-hover:translate-x-1 lg:text-3xl">
+                      {item.title}
+                    </span>
                     <span
                       aria-hidden="true"
                       className={cn(
-                        "shrink-0 text-2xl leading-none transition-transform duration-300",
-                        isOpen ? "rotate-180" : "rotate-90",
+                        "shrink-0 text-2xl leading-none transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
+                        isOpen ? "rotate-180 text-lime" : "rotate-90",
                       )}
                     >
                       ↑
@@ -220,11 +228,13 @@ function WhatWeDo() {
                   </button>
 
                   <div
-                    className={cn("grid transition-all duration-500", isOpen ? "mt-8 grid-rows-[1fr]" : "grid-rows-[0fr]")}
-                    hidden={!isOpen}
+                    className={cn(
+                      "grid transition-[grid-template-rows,margin] duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)]",
+                      isOpen ? "mt-8 grid-rows-[1fr]" : "grid-rows-[0fr]",
+                    )}
                     id={panelId}
                   >
-                    <div className="overflow-hidden">
+                    <div className="whatwedo-panel overflow-hidden">
                       <p className="max-w-[620px] font-body text-base leading-relaxed text-white/75">
                         {item.description}
                       </p>
