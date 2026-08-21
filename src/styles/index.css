@@ -312,6 +312,84 @@ button:focus-visible {
   }
 }
 
+/* ShowcaseBand entrance: the two hairlines draw outward from the
+   center pill, the pill scales into place, and the display text
+   fades up while a small blur clears. Scroll-driven so the whole
+   band assembles itself as you scroll it into view. */
+.band-rule-left,
+.band-rule-right,
+.band-pill,
+.band-text {
+  will-change: transform, opacity;
+}
+
+@supports (animation-timeline: view()) {
+  .band-rule-left {
+    animation: band-rule-in cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+  .band-rule-right {
+    animation: band-rule-in cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+  .band-pill {
+    animation: band-pill-in cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 25%;
+  }
+  .band-text {
+    animation: band-text-in cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 45%;
+  }
+  @keyframes band-rule-in {
+    from {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+  @keyframes band-pill-in {
+    from {
+      transform: scale(0.4);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes band-text-in {
+    from {
+      transform: translate3d(0, 24px, 0);
+      opacity: 0;
+      filter: blur(6px);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .band-rule-left,
+  .band-rule-right,
+  .band-pill,
+  .band-text {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
 html.lenis,
 html.lenis body {
   height: auto;

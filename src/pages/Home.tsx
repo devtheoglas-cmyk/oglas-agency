@@ -101,14 +101,14 @@ function ShowcaseBand({ text, cta, dark }: { text: string; cta: string; dark: bo
   return (
     <div className="mt-24 lg:mt-72">
       <div className="flex items-center justify-center gap-6 lg:gap-10">
-        <span aria-hidden="true" className={cn("hidden h-px flex-1 border-t sm:block", ruleClass)} />
-        <span className="rounded-full border border-current/30 px-6 py-2.5 font-body text-[0.68rem] tracking-[0.2em] uppercase">
+        <span aria-hidden="true" className={cn("band-rule-left hidden h-px flex-1 border-t origin-right sm:block", ruleClass)} />
+        <span className="band-pill rounded-full border border-current/30 px-6 py-2.5 font-body text-[0.68rem] tracking-[0.2em] uppercase">
           {cta}
         </span>
-        <span aria-hidden="true" className={cn("hidden h-px flex-1 border-t sm:block", ruleClass)} />
+        <span aria-hidden="true" className={cn("band-rule-right hidden h-px flex-1 border-t origin-left sm:block", ruleClass)} />
       </div>
       <p
-        className="mx-auto mt-8 max-w-[880px] text-center font-display text-[clamp(1.4rem,2.8vw,2.4rem)] leading-[1.15] font-semibold tracking-[-0.02em] uppercase"
+        className="band-text mx-auto mt-8 max-w-[880px] text-center font-display text-[clamp(1.4rem,2.8vw,2.4rem)] leading-[1.15] font-semibold tracking-[-0.02em] uppercase"
         data-reveal
       >
         {text}
