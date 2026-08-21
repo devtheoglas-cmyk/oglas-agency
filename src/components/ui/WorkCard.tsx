@@ -39,12 +39,10 @@ function CardInner({
       {/* Colors inherit the section's currentColor so cards work on both dark
          and light sections (white text on dark, black text on light). */}
       <div className="mt-5 flex flex-col gap-3">
-        <div className="flex items-baseline gap-3">
-          <span className="font-body text-base font-semibold opacity-60">{work.year}</span>
+        <div className="flex items-baseline gap-3 font-display text-[clamp(1.125rem,1.77vw,34px)] leading-[1.02] font-semibold tracking-[-0.02em] uppercase">
+          <span className="opacity-60">{work.year}</span>
           <span className="opacity-60">•</span>
-          <h3 className="font-body text-base font-semibold tracking-[-0.005em] uppercase">
-            {work.name}
-          </h3>
+          <h3>{work.name}</h3>
         </div>
         <p className="font-body text-base opacity-60">{subtitle ?? work.type}</p>
         {showTags && (

@@ -60,7 +60,7 @@ function VisualsFelt() {
           <div className="flex flex-col gap-4">
             <SectionLabel>our works</SectionLabel>
             <h2
-              className="font-display text-[clamp(1.8rem,4.4vw,4.1rem)] leading-[1.02] font-extrabold tracking-[-0.055em] uppercase break-words"
+              className="font-display text-[clamp(2rem,4.93vw,94.63px)] leading-[1.02] font-semibold tracking-[-0.02em] uppercase break-words"
               data-reveal
             >
               Visuals created to be felt
@@ -123,7 +123,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
       <div className={SHELL}>
         <div className="mb-16 lg:mb-64">
           <h2
-            className="text-center font-display text-[clamp(2.4rem,13.5vw,13.5rem)] leading-[0.9] font-extrabold tracking-[-0.045em] uppercase break-words [text-wrap:balance]"
+            className="text-center font-display text-[clamp(2.75rem,17.4vw,334.53px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
           >
             {lineOne}
@@ -144,7 +144,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             </span>
           </div>
           <h2
-            className="text-center font-display text-[clamp(2.4rem,13.5vw,13.5rem)] leading-[0.9] font-extrabold tracking-[-0.045em] uppercase break-words [text-wrap:balance]"
+            className="text-center font-display text-[clamp(2.75rem,17.4vw,334.53px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
           >
             {lineTwo}
