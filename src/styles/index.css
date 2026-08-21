@@ -192,6 +192,36 @@ button:focus-visible {
   background: var(--accent);
 }
 
+/* Scroll-driven weight morph for WorkCard meta titles.
+   Each card starts at Vend Sans 200 and animates up to 800 as it
+   travels through the viewport, giving the "Our Works → Branding
+   Approach" run a visible type-weight shift as you scroll. Uses
+   CSS scroll-driven animations (Chrome 115+, Firefox 133+, Safari 26+);
+   browsers without support just render at the static font-weight. */
+@supports (animation-timeline: view()) {
+  .weight-morph {
+    animation: weight-morph linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 60%;
+  }
+  @keyframes weight-morph {
+    from {
+      font-variation-settings: "wght" 200;
+      letter-spacing: 0.02em;
+    }
+    to {
+      font-variation-settings: "wght" 800;
+      letter-spacing: -0.03em;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weight-morph {
+    animation: none !important;
+  }
+}
+
 html.lenis,
 html.lenis body {
   height: auto;
