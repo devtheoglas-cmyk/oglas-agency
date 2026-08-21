@@ -168,7 +168,7 @@ function WhatWeDo() {
   return (
     <section className="bg-white py-24 text-black lg:py-64">
       <div className={SHELL}>
-        <div className="mb-16 max-w-[1100px] lg:mb-20">
+        <div className="whatwedo-head mb-16 max-w-[1100px] lg:mb-20">
           <h2 className="font-display text-[clamp(1.8rem,3.2vw,2.7rem)] font-bold tracking-[-0.02em] uppercase" data-reveal>
             What we do
           </h2>
@@ -188,7 +188,7 @@ function WhatWeDo() {
 
             if (!expandable) {
               return (
-                <div className="flex w-full items-center justify-between gap-6 border-b border-hairline-dark py-7 lg:py-9" key={item.title}>
+                <div className="whatwedo-item flex w-full items-center justify-between gap-6 border-b border-hairline-dark py-7 lg:py-9" key={item.title}>
                   <span className="font-body text-2xl font-medium tracking-[-0.02em]">{item.title}</span>
                   <span aria-hidden="true" className="font-body text-2xl leading-none text-black/60">
                     ↓
@@ -198,7 +198,7 @@ function WhatWeDo() {
             }
 
             return (
-              <div className="pb-10" key={item.title}>
+              <div className="whatwedo-item pb-10" key={item.title}>
                 <div className="rounded-3xl bg-dark p-8 text-white lg:p-12">
                   <button
                     aria-controls={panelId}

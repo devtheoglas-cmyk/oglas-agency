@@ -390,6 +390,60 @@ button:focus-visible {
   }
 }
 
+/* WhatWeDo entrance: the heading block fades up as it enters, and
+   each accordion row slides in from the left as its own row reaches
+   the viewport. Because each row has its own view() timeline, they
+   naturally stagger as you scroll past them — no manual delays. */
+.whatwedo-head,
+.whatwedo-item {
+  will-change: transform, opacity;
+}
+
+@supports (animation-timeline: view()) {
+  .whatwedo-head {
+    animation: whatwedo-head-in cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 30%;
+  }
+  .whatwedo-item {
+    animation: whatwedo-item-in cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+  }
+  @keyframes whatwedo-head-in {
+    from {
+      transform: translate3d(0, 32px, 0);
+      opacity: 0;
+      filter: blur(4px);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+  @keyframes whatwedo-item-in {
+    from {
+      transform: translate3d(-48px, 0, 0);
+      opacity: 0;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatwedo-head,
+  .whatwedo-item {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
 
 html.lenis,
 html.lenis body {
