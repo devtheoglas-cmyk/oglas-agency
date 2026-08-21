@@ -1,3 +1,4 @@
+import { BgImage } from "../components/ui/BgImage";
 import { useReveal } from "../lib/useReveal";
 
 const founderStatementLines = [
@@ -17,14 +18,11 @@ export default function People() {
           className="mx-auto aspect-[1826/1199] max-w-[1826px] overflow-hidden bg-black"
           data-reveal
         >
-          <img
+          <BgImage
             alt="Portrait grid of The Oglas Agency team members"
-            className="block h-full w-full object-cover object-center"
-            decoding="async"
-            fetchPriority="high"
-            height={1600}
+            aspectRatio="1826 / 1199"
+            className="block h-full w-full"
             src="/assets/people/portraits.jpg"
-            width={1200}
           />
         </div>
       </section>

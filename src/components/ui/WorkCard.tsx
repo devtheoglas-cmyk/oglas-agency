@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { Work } from "../../data/works";
 import { cn } from "../../lib/cn";
+import { BgImage } from "./BgImage";
 
 interface WorkCardProps {
   work: Work;
@@ -28,11 +29,10 @@ function CardInner({
   return (
     <>
       <div className={cn("relative overflow-hidden", aspectClassName, frameClassName)}>
-        <img
+        <BgImage
           alt={`${work.name} — ${work.type}`}
-          className={cn("block h-full w-full", imageFit === "contain" ? "object-contain" : "object-cover")}
-          decoding="async"
-          loading="lazy"
+          className="block h-full w-full"
+          fit={imageFit}
           src={work.image}
         />
       </div>

@@ -1,4 +1,5 @@
 import { Link, Navigate, useParams } from "react-router-dom";
+import { BgImage } from "../components/ui/BgImage";
 import { WorkCard } from "../components/ui/WorkCard";
 import type { Work } from "../data/works";
 import { useReveal } from "../lib/useReveal";
@@ -48,7 +49,7 @@ const moreWork: Work[] = [
 function Full({ src, alt, ratio }: { src: string; alt: string; ratio: string }) {
   return (
     <div className="overflow-hidden bg-fishwala-navy" data-reveal style={{ aspectRatio: ratio }}>
-      <img alt={alt} className="block h-full w-full object-cover" decoding="async" loading="lazy" src={src} />
+      <BgImage alt={alt} className="block h-full w-full" src={src} />
     </div>
   );
 }
@@ -78,11 +79,10 @@ export default function WorkDetail() {
       </section>
 
       {/* Water hero (text baked into asset) */}
-      <img
+      <BgImage
         alt="Fishwala — Freshness. Human again."
         className="block w-full"
-        data-reveal
-        decoding="async"
+        fit="contain"
         src={`${IMG}/f868de050fea.webp`}
       />
 

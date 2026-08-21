@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
 import { cn } from "../../lib/cn";
+import { BgImage } from "./BgImage";
 
 export interface Testimonial {
   quote: string;
@@ -48,7 +49,7 @@ export function Carousel({ items, className }: CarouselProps) {
             <blockquote className="font-body text-base leading-relaxed sm:text-lg">{item.quote}</blockquote>
             <footer className="mt-8 flex items-center gap-4">
               {item.avatar && (
-                <img alt="" className="size-11 rounded-full object-cover" loading="lazy" src={item.avatar} />
+                <BgImage alt="" aspectRatio={1} className="size-11 rounded-full" src={item.avatar} />
               )}
               <span>
                 <span className="block font-semibold">{item.name}</span>

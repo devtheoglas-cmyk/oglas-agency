@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
 import { Link } from "react-router-dom";
+import { BgImage } from "../components/ui/BgImage";
 import { Carousel } from "../components/ui/Carousel";
 import { WorkCard } from "../components/ui/WorkCard";
 import { clients, heroManifesto, testimonials, whatWeDoIntro, whatWeDoItems } from "../data/home";
@@ -27,9 +28,10 @@ function Hero() {
         </div>
       </div>
       <div className="mt-16 lg:mt-20" data-reveal>
-        <img
+        <BgImage
           alt="A collage of Oglas brand and packaging work"
           className="w-full"
+          fit="contain"
           src="/assets/home/hero-collage.webp"
         />
       </div>
@@ -232,10 +234,10 @@ function WhatWeDo() {
                             </blockquote>
                             <div className="mt-6 flex items-center gap-3">
                               {item.testimonial.avatar && (
-                                <img
+                                <BgImage
                                   alt={item.testimonial.name}
-                                  className="size-10 rounded-full object-cover"
-                                  loading="lazy"
+                                  aspectRatio={1}
+                                  className="size-10 rounded-full"
                                   src={item.testimonial.avatar}
                                 />
                               )}
@@ -249,10 +251,10 @@ function WhatWeDo() {
                             <ul className="flex flex-wrap gap-3">
                               {item.clients.map((client) => (
                                 <li className="h-24 w-24 overflow-hidden rounded-2xl" key={client.name}>
-                                  <img
+                                  <BgImage
                                     alt={client.name}
-                                    className="h-full w-full object-cover"
-                                    loading="lazy"
+                                    aspectRatio={1}
+                                    className="h-full w-full"
                                     src={client.logo}
                                   />
                                 </li>
@@ -284,10 +286,10 @@ function LogoMarqueeRow({ reverse, duration }: { reverse?: boolean; duration: st
         <ul aria-hidden="true" className="flex shrink-0 items-center">
           {track.map((client, index) => (
             <li className="px-8 lg:px-14" key={`${client.name}-${index}`}>
-              <img
+              <BgImage
                 alt=""
-                className="h-12 w-auto object-contain opacity-90 lg:h-16"
-                loading="lazy"
+                className="block h-12 w-auto opacity-90 lg:h-16"
+                fit="contain"
                 src={client.logo}
               />
             </li>

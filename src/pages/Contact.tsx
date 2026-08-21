@@ -1,3 +1,4 @@
+import { BgImage } from "../components/ui/BgImage";
 import { ContactForm } from "../components/ui/ContactForm";
 import type { OfficeDetails } from "../data/site";
 import { siteDetails } from "../data/site";
@@ -128,11 +129,9 @@ export default function Contact() {
               </span>
             </div>
             <div className="overflow-hidden rounded-lg bg-white" data-reveal>
-              <img
+              <BgImage
                 alt="The Oglas Agency team"
                 className="block w-full"
-                decoding="async"
-                loading="lazy"
                 src="/assets/contact/team.webp"
               />
             </div>
