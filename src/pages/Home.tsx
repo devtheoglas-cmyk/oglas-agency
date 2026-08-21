@@ -14,15 +14,15 @@ const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-dark text-white">
-      <div className="flex flex-1 flex-col justify-center px-4 pt-28 pb-16 sm:px-8 lg:pt-32">
+      <div className="flex flex-1 flex-col justify-center px-4 pt-24 pb-12 sm:px-8 lg:pt-32 lg:pb-16">
         <div className={`${SHELL} text-center`}>
           <h1
-            className="mx-auto max-w-[1559px] break-words font-condensed text-[clamp(3rem,6.13vw,98.17px)] leading-[0.8] font-semibold tracking-[-0.03em] text-center text-white uppercase [text-wrap:balance] [leading-trim:none]"
+            className="mx-auto max-w-[1559px] break-words font-condensed text-[clamp(2.25rem,6.13vw,98.17px)] leading-[0.85] font-semibold tracking-[-0.03em] text-center text-white uppercase [text-wrap:balance] [leading-trim:none] lg:leading-[0.8]"
             data-reveal
           >
             {heroManifesto}
           </h1>
-          <div className="mt-16 flex justify-center lg:mt-20" data-reveal>
+          <div className="mt-10 flex justify-center lg:mt-20" data-reveal>
             <span className="rounded-full border border-white/35 px-6 py-2.5 font-body text-sm tracking-[0.12em] text-white uppercase">
               Since 2019
             </span>
@@ -54,7 +54,7 @@ function SectionLabel({ children }: { children: string }) {
 
 function VisualsFelt() {
   return (
-    <section className="bg-dark py-24 text-white lg:py-36">
+    <section className="bg-dark py-16 text-white lg:py-36">
       <div className={SHELL}>
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6 lg:mb-20">
           <div className="flex flex-col gap-4">
@@ -75,7 +75,7 @@ function VisualsFelt() {
             <span aria-hidden="true">↗</span>
           </Link>
         </div>
-        <div className="grid gap-x-16 gap-y-16 md:grid-cols-2 lg:gap-x-24" data-reveal>
+        <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 md:gap-x-16 lg:gap-x-24 lg:gap-y-16" data-reveal>
           {featuredWorks.map((work) => (
             <WorkCard key={work.slug} work={work} />
           ))}
@@ -99,7 +99,7 @@ interface ShowcaseProps {
 function ShowcaseBand({ text, cta, dark }: { text: string; cta: string; dark: boolean }) {
   const ruleClass = dark ? "border-white/15" : "border-black/15";
   return (
-    <div className="mt-24 lg:mt-72">
+    <div className="mt-16 lg:mt-72">
       <div className="flex items-center justify-center gap-6 lg:gap-10">
         <span aria-hidden="true" className={cn("band-rule-left hidden h-px flex-1 border-t origin-right sm:block", ruleClass)} />
         <span className="band-pill rounded-full border border-current/30 px-6 py-2.5 font-body text-[0.68rem] tracking-[0.2em] uppercase">
@@ -119,9 +119,9 @@ function ShowcaseBand({ text, cta, dark }: { text: string; cta: string; dark: bo
 
 function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta, dark = true }: ShowcaseProps) {
   return (
-    <section className={cn("py-28 lg:py-72", dark ? "bg-dark text-white" : "bg-white text-black")}>
+    <section className={cn("py-16 lg:py-72", dark ? "bg-dark text-white" : "bg-white text-black")}>
       <div className={SHELL}>
-        <div className="mb-16 lg:mb-64">
+        <div className="mb-10 lg:mb-64">
           <h2
             className="showcase-word-left text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
@@ -150,7 +150,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             {lineTwo}
           </h2>
         </div>
-        <div className="grid gap-x-8 gap-y-40 md:grid-cols-2" data-reveal>
+        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:gap-y-40" data-reveal>
           {works.map((work) => (
             <WorkCard key={work.slug} work={work} />
           ))}
@@ -166,7 +166,7 @@ function WhatWeDo() {
   const baseId = useId();
 
   return (
-    <section className="bg-white py-24 text-black lg:py-64">
+    <section className="bg-white py-16 text-black lg:py-64">
       <div className={SHELL}>
         <div className="whatwedo-head mb-16 max-w-[1100px] lg:mb-20">
           <h2 className="font-display text-[clamp(1.8rem,3.2vw,2.7rem)] font-bold tracking-[-0.02em] uppercase" data-reveal>
@@ -201,7 +201,7 @@ function WhatWeDo() {
               <div className="whatwedo-item pb-10" key={item.title}>
                 <div
                   className={cn(
-                    "whatwedo-card group rounded-3xl bg-dark p-8 text-white transition-all duration-500 ease-out lg:p-12",
+                    "whatwedo-card group rounded-3xl bg-dark p-6 text-white transition-all duration-500 ease-out sm:p-8 lg:p-12",
                     isOpen && "whatwedo-card-open shadow-2xl shadow-black/40",
                   )}
                   data-state={isOpen ? "open" : "closed"}

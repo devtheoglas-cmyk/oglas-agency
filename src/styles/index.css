@@ -206,7 +206,10 @@ button:focus-visible {
   will-change: transform, opacity;
 }
 
-@supports (animation-timeline: view()) {
+/* Skip the heavy 3D card flip on small screens — scroll-driven 3D
+   transforms can jitter on lower-power mobile GPUs and adds little
+   value at single-column widths. */
+@supports (animation-timeline: view()) and (min-width: 768px) {
   .card-flip {
     animation: card-flip cubic-bezier(0.2, 0.7, 0.2, 1) both;
     animation-timeline: view();
@@ -254,7 +257,7 @@ button:focus-visible {
   will-change: transform, opacity;
 }
 
-@supports (animation-timeline: view()) {
+@supports (animation-timeline: view()) and (min-width: 768px) {
   .showcase-word-left {
     animation: showcase-slide-left cubic-bezier(0.22, 0.61, 0.36, 1) both;
     animation-timeline: view();
