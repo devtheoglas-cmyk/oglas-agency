@@ -121,7 +121,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
   return (
     <section className={cn("py-28 lg:py-72", dark ? "bg-dark text-white" : "bg-white text-black")}>
       <div className={SHELL}>
-        <div className="mb-16 lg:mb-64">
+        <div className="mb-16 overflow-hidden lg:mb-64">
           <h2
             className="showcase-word-left text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
@@ -139,7 +139,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             >
               {ghost}
             </span>
-            <span className="absolute rounded-full border border-current/25 px-5 py-2 font-body text-[0.7rem] tracking-[0.2em] uppercase">
+            <span className="showcase-pill absolute rounded-full border border-current/25 bg-current/[0.02] px-5 py-2 font-body text-[0.7rem] tracking-[0.2em] backdrop-blur-sm uppercase">
               {overline}
             </span>
           </div>

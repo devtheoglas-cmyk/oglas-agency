@@ -245,57 +245,98 @@ button:focus-visible {
   }
 }
 
-/* WorkShowcase entrance: the two display words (CREATIVITY / CHANGE,
-   REFRAME / INTERACTION) slide in from opposite sides while the
-   ghost word behind them scales up to full size. Tied to scroll
-   position via CSS animation-timeline: view(). */
+/* WorkShowcase parallax: the two display words drift in opposite
+   horizontal directions continuously across the whole scroll range
+   of the section, entering from off-screen and sliding all the way
+   through. The ghost word behind them spins, scales, and pulses
+   opacity. The center pill gets a subtle scale + fade so it feels
+   anchored while the words move around it. Tied to CSS
+   animation-timeline: view() so every frame maps to a scroll
+   position. */
 .showcase-word,
-.showcase-ghost {
+.showcase-ghost,
+.showcase-pill {
   will-change: transform, opacity;
 }
 
 @supports (animation-timeline: view()) {
   .showcase-word-left {
-    animation: showcase-slide-left cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation: showcase-drift-left linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    animation-range: entry 0% exit 100%;
   }
   .showcase-word-right {
-    animation: showcase-slide-right cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation: showcase-drift-right linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    animation-range: entry 0% exit 100%;
   }
   .showcase-ghost {
-    animation: showcase-ghost cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation: showcase-ghost-spin linear both;
     animation-timeline: view();
-    animation-range: entry 15% cover 55%;
+    animation-range: entry 0% exit 100%;
   }
-  @keyframes showcase-slide-left {
-    from {
-      transform: translate3d(-35%, 0, 0);
+  .showcase-pill {
+    animation: showcase-pill-pop cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 50%;
+  }
+  @keyframes showcase-drift-left {
+    0% {
+      transform: translate3d(-45vw, 0, 0) skewX(4deg);
       opacity: 0;
+      filter: blur(6px);
     }
-    to {
-      transform: translate3d(0, 0, 0);
+    18% {
+      transform: translate3d(0, 0, 0) skewX(0deg);
       opacity: 1;
+      filter: blur(0);
     }
-  }
-  @keyframes showcase-slide-right {
-    from {
-      transform: translate3d(35%, 0, 0);
-      opacity: 0;
-    }
-    to {
-      transform: translate3d(0, 0, 0);
+    100% {
+      transform: translate3d(28vw, 0, 0) skewX(-2deg);
       opacity: 1;
+      filter: blur(0);
     }
   }
-  @keyframes showcase-ghost {
-    from {
-      transform: scale(0.55);
+  @keyframes showcase-drift-right {
+    0% {
+      transform: translate3d(45vw, 0, 0) skewX(-4deg);
+      opacity: 0;
+      filter: blur(6px);
+    }
+    18% {
+      transform: translate3d(0, 0, 0) skewX(0deg);
+      opacity: 1;
+      filter: blur(0);
+    }
+    100% {
+      transform: translate3d(-28vw, 0, 0) skewX(2deg);
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+  @keyframes showcase-ghost-spin {
+    0% {
+      transform: scale(0.4) rotate(-14deg);
+      opacity: 0;
+      letter-spacing: 0.2em;
+    }
+    50% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+      letter-spacing: 0;
+    }
+    100% {
+      transform: scale(1.6) rotate(14deg);
+      opacity: 0;
+      letter-spacing: -0.05em;
+    }
+  }
+  @keyframes showcase-pill-pop {
+    0% {
+      transform: scale(0.4);
       opacity: 0;
     }
-    to {
+    100% {
       transform: scale(1);
       opacity: 1;
     }
@@ -305,10 +346,12 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .showcase-word-left,
   .showcase-word-right,
-  .showcase-ghost {
+  .showcase-ghost,
+  .showcase-pill {
     animation: none !important;
     transform: none !important;
     opacity: 1 !important;
+    filter: none !important;
   }
 }
 
