@@ -123,7 +123,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
       <div className={SHELL}>
         <div className="mb-16 lg:mb-64">
           <h2
-            className="text-center font-display text-[clamp(2.75rem,17.4vw,334.53px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
+            className="text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
           >
             {lineOne}
@@ -144,7 +144,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             </span>
           </div>
           <h2
-            className="text-center font-display text-[clamp(2.75rem,17.4vw,334.53px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
+            className="text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
           >
             {lineTwo}
