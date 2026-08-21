@@ -75,7 +75,7 @@ function VisualsFelt() {
             <span aria-hidden="true">↗</span>
           </Link>
         </div>
-        <div className="grid gap-x-16 gap-y-16 md:grid-cols-2 lg:gap-x-24" data-reveal>
+        <div className="featured-swap grid gap-x-16 gap-y-16 md:grid-cols-2 lg:gap-x-24" data-reveal>
           {featuredWorks.map((work) => (
             <WorkCard key={work.slug} work={work} />
           ))}
