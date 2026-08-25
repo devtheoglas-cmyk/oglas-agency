@@ -17,7 +17,7 @@ function Hero() {
       <div className="flex flex-1 flex-col justify-center px-4 pt-24 pb-12 sm:px-8 lg:pt-32 lg:pb-16">
         <div className={`${SHELL} text-center`}>
           <h1
-            className="mx-auto max-w-[1559px] break-words font-condensed text-[clamp(2.5rem,6.13vw,98.17px)] leading-[0.88] font-semibold tracking-[-0.03em] text-center text-white uppercase [text-wrap:balance] [leading-trim:none] lg:leading-[0.8]"
+            className="mx-auto max-w-[1559px] break-words font-condensed text-[clamp(2.25rem,4.6vw,78px)] leading-[0.9] font-semibold tracking-[-0.03em] text-center text-white uppercase [text-wrap:balance] [leading-trim:none] lg:leading-[0.86]"
             data-reveal
           >
             {heroManifesto}
