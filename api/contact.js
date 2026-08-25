@@ -1,10 +1,10 @@
 // Vercel serverless function: receives contact-form submissions and forwards
-// them to admin@theoglas.com via the Resend API.
+// them to admin@oglasglobal.com via the Resend API.
 //
 // Required env var (Vercel project settings → Environment Variables):
 //   RESEND_API_KEY   — Resend API key (starts with "re_")
 // Optional env vars:
-//   CONTACT_TO_EMAIL   — recipient. Defaults to admin@theoglas.com
+//   CONTACT_TO_EMAIL   — recipient. Defaults to admin@oglasglobal.com
 //   CONTACT_FROM_EMAIL — sender. Defaults to onboarding@resend.dev
 //                        Once theoglas.com is verified in Resend, set this to
 //                        e.g. "The Oglas <contact@theoglas.com>".
@@ -50,7 +50,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Please enter your name." });
   }
 
-  const to = process.env.CONTACT_TO_EMAIL || "admin@theoglas.com";
+  const to = process.env.CONTACT_TO_EMAIL || "admin@oglasglobal.com";
   const from =
     process.env.CONTACT_FROM_EMAIL || "The Oglas <onboarding@resend.dev>";
 

@@ -8,7 +8,7 @@ const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /**
  * Contact form — client-side validation + POST to /api/contact (Vercel
- * serverless function) which forwards the message to admin@theoglas.com via
+ * serverless function) which forwards the message to admin@oglasglobal.com via
  * Resend. Requires RESEND_API_KEY on the server.
  */
 export function ContactForm() {
@@ -86,7 +86,7 @@ export function ContactForm() {
     } catch {
       setStatus("error");
       setStatusMessage(
-        "Could not send message. Please email admin@theoglas.com instead."
+        "Could not send message. Please email admin@oglasglobal.com instead."
       );
     }
   };
