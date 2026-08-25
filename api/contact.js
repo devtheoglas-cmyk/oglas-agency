@@ -98,11 +98,16 @@ export default async function handler(req, res) {
     });
 
     if (!resp.ok) {
-      const detail = await resp.text().catch(() => "");
-      console.error("Resend error:", resp.status, detail);
-      return res
-        .status(502)
-        .json({ error: "Could not send message. Please try again later." });
+      const raw = await resp.text().catch(() => "");
+      console.error("Resend error:", resp.status, raw);
+      let message = "Could not send message. Please try again later.";
+      try {
+        const parsed = JSON.parse(raw);
+        if (parsed?.message) message = parsed.message;
+      } catch {
+        if (raw) message = raw.slice(0, 300);
+      }
+      return res.status(502).json({ error: message, status: resp.status });
     }
 
     return res.status(200).json({ ok: true });
