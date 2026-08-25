@@ -50,9 +50,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Please enter your name." });
   }
 
-  const to = process.env.CONTACT_TO_EMAIL || "admin@oglasglobal.com";
-  const from =
-    process.env.CONTACT_FROM_EMAIL || "The Oglas <onboarding@resend.dev>";
+  const to = (process.env.CONTACT_TO_EMAIL || "admin@oglasglobal.com").trim();
+  const from = (
+    process.env.CONTACT_FROM_EMAIL || "The Oglas <onboarding@resend.dev>"
+  ).trim();
 
   const subject = `New enquiry — ${fullName || "no name"}${company ? ` (${company})` : ""}`;
 
