@@ -7,7 +7,10 @@ import { useReveal } from "../lib/useReveal";
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 const IMG = "/assets/workdetail";
 const B = "/assets/fishwala-brand";
-const RATIO = "1700 / 1080";
+// The source boards are 2380 × 1512 and share an 84px proofing footer.
+// Display only the finished artwork so the confidential release note and
+// board labels never appear on the published case study.
+const BRAND_ART_RATIO = "2380 / 1428";
 
 const overview = [
   "Over the years, the way people buy fresh food has changed. Customers now expect not just quality, but trust, transparency, and a brand they can rely on. In a space often crowded with noise and inconsistency, many fresh seafood businesses struggle to stand out while maintaining credibility.",
@@ -48,11 +51,16 @@ const moreWork: Work[] = [
   },
 ];
 
-/** A brand-book page rendered as a full-bleed frame at its native aspect. */
-function Page({ n, alt, ratio = RATIO }: { n: string; alt: string; ratio?: string }) {
+/** A brand-book page with its proofing footer cropped non-destructively. */
+function Page({ n, alt }: { n: string; alt: string }) {
   return (
-    <div className="relative overflow-hidden" data-reveal style={{ aspectRatio: ratio }}>
-      <BgImage alt={alt} fill src={`${B}/${n}.webp`} />
+    <div className="relative overflow-hidden" data-reveal style={{ aspectRatio: BRAND_ART_RATIO }}>
+      <BgImage
+        alt={alt}
+        fill
+        src={`${B}/${n}.webp`}
+        style={{ backgroundPosition: "center top", backgroundSize: "100% auto" }}
+      />
     </div>
   );
 }
@@ -78,19 +86,21 @@ export default function WorkDetail() {
   return (
     <div ref={pageRef} className="bg-white">
       {/* 1 — Navy intro */}
-      <section className="bg-fishwala-navy px-5 pt-40 pb-20 text-white sm:px-8 lg:px-[4.15vw] lg:pt-52 lg:pb-28">
-        <div className="mx-auto flex max-w-[1500px] flex-col items-center text-center">
+      <section className="grid bg-fishwala-navy px-5 pt-32 pb-16 text-white sm:px-8 md:min-h-[clamp(25.875rem,33vw,39rem)] md:place-items-center md:py-16 lg:px-[4.15vw]">
+        <div className="mx-auto flex w-full flex-col items-center text-center">
           <h1
-            className="font-display text-[clamp(2rem,4.6vw,5rem)] leading-[1.02] font-semibold tracking-[-0.02em] uppercase [text-wrap:balance]"
+            className="font-display text-[clamp(2.25rem,5vw,4.25rem)] leading-[0.93] font-semibold tracking-[-0.025em] uppercase [text-wrap:balance]"
             data-reveal
           >
-            Elevating the fresh food experience through strategic brand design
+            <span className="md:block">Elevating the fresh food</span>{" "}
+            <span className="md:block">experience through strategic</span>{" "}
+            <span className="md:block">brand design</span>
           </h1>
-          <div className="mt-12 flex flex-wrap justify-center gap-4" data-reveal>
-            <span className="rounded-full border border-white/45 px-5 py-2 font-body text-xs tracking-[0.12em] uppercase">
+          <div className="mt-12 flex flex-wrap justify-center gap-3" data-reveal>
+            <span className="rounded-full border border-white/70 px-3 py-0.5 font-body text-[clamp(0.7rem,1vw,0.9rem)] leading-none tracking-[-0.02em] uppercase">
               Project: Fishwala
             </span>
-            <span className="rounded-full border border-white/45 px-5 py-2 font-body text-xs tracking-[0.12em] uppercase">
+            <span className="rounded-full border border-white/70 px-3 py-0.5 font-body text-[clamp(0.7rem,1vw,0.9rem)] leading-none tracking-[-0.02em] uppercase">
               Year: 2025
             </span>
           </div>
@@ -98,9 +108,7 @@ export default function WorkDetail() {
       </section>
 
       {/* 2 — Water hero: Freshness, human again. */}
-      <div className="w-full" style={{ aspectRatio: RATIO }}>
-        <BgImage alt="Fishwala — Freshness, human again." fill src={`${B}/p03.webp`} />
-      </div>
+      <Page n="p03" alt="Fishwala — Freshness, human again." />
 
       {/* 3 — Overview */}
       <section className="py-20 text-black lg:py-28">
