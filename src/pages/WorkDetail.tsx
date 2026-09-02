@@ -1,6 +1,5 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { BgImage } from "../components/ui/BgImage";
-import { BrandGuidelineViewer } from "../components/ui/BrandGuidelineViewer";
 import { WorkCard } from "../components/ui/WorkCard";
 import type { Work } from "../data/works";
 import { useReveal } from "../lib/useReveal";
@@ -119,6 +118,25 @@ export default function WorkDetail() {
               </ul>
             </LabeledRow>
           </div>
+        </div>
+      </section>
+
+      {/* Mascot showcase — navy panel + character detail grid + caption */}
+      <section className="bg-white pb-10 lg:pb-16">
+        <div className={SHELL}>
+          <Full src={`${BRAND}/p24.webp`} alt="Fishwala mascot on a calm navy field" ratio={BRAND_RATIO} />
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            <Full src={`${BRAND}/p25.webp`} alt="Fishwala mascot detail" ratio="900 / 1188" bg="bg-fishwala-navy" />
+            <Full src={`${BRAND}/p26.webp`} alt="Fishwala mascot detail" ratio="900 / 1188" bg="bg-fishwala-navy" />
+            <Full src={`${BRAND}/p27.webp`} alt="Fishwala mascot detail" ratio="900 / 1188" bg="bg-fishwala-navy" />
+          </div>
+          <p
+            className="mx-auto mt-10 max-w-[720px] text-center font-body text-sm leading-relaxed text-black/50"
+            data-reveal
+          >
+            Fishwala&apos;s character is built around presence — not noise. He observes, understands, and represents
+            clarity in a noisy market. Every curve in his form mirrors the flow of water: simple, adaptive, calm.
+          </p>
         </div>
       </section>
 
@@ -248,13 +266,6 @@ export default function WorkDetail() {
       <section className="bg-white pb-12">
         <div className={SHELL}>
           <Full src={`${BRAND}/p31.webp`} alt="Fishwala — Fresh doesn't shout." ratio={BRAND_RATIO} bg="bg-white" />
-        </div>
-      </section>
-
-      {/* Brand guideline flipbook */}
-      <section className="bg-dark py-16 lg:py-24">
-        <div className={SHELL}>
-          <BrandGuidelineViewer />
         </div>
       </section>
 
