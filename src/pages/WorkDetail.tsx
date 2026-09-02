@@ -7,6 +7,8 @@ import { useReveal } from "../lib/useReveal";
 
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 const IMG = "/assets/workdetail";
+const BRAND = "/assets/fishwala-brand";
+const BRAND_RATIO = "1700 / 1080";
 
 const overview = [
   "Over the years, the way people buy fresh food has changed. Customers now expect not just quality, but trust, transparency, and a brand they can rely on. In a space often crowded with noise and inconsistency, many fresh seafood businesses struggle to stand out while maintaining credibility.",
@@ -79,13 +81,14 @@ export default function WorkDetail() {
         </div>
       </section>
 
-      {/* Water hero (text baked into asset) */}
-      <BgImage
-        alt="Fishwala — Freshness. Human again."
-        className="block w-full"
-        fit="contain"
-        src={`${IMG}/f868de050fea.webp`}
-      />
+      {/* Water hero — Freshness is not sold. It's felt. */}
+      <div className="mx-auto w-full" style={{ aspectRatio: BRAND_RATIO }}>
+        <BgImage
+          alt="Fishwala — Freshness is not sold. It's felt."
+          fill
+          src={`${BRAND}/p09.webp`}
+        />
+      </div>
 
       {/* Overview */}
       <section className="bg-dark py-20 text-white lg:py-28">
@@ -117,9 +120,9 @@ export default function WorkDetail() {
       {/* Brand marks */}
       <section className="bg-dark pb-10">
         <div className={`${SHELL} space-y-6`}>
-          <Full src={`${IMG}/f007f85e0aba.webp`} alt="Fishwala brand character" ratio="1837 / 721" />
-          <Full src={`${IMG}/2ff3f59366b8.webp`} alt="Fishwala visual identity system" ratio="1837 / 853" />
-          <Full src={`${IMG}/efd6e549b63c.webp`} alt="Fishwala logotype" ratio="1838 / 572" />
+          <Full src={`${BRAND}/p24.webp`} alt="Fishwala mascot — a presence, not a cartoon" ratio={BRAND_RATIO} />
+          <Full src={`${BRAND}/p11.webp`} alt="Fishwala primary logo" ratio={BRAND_RATIO} />
+          <Full src={`${BRAND}/p13.webp`} alt="Fishwala secondary logo" ratio={BRAND_RATIO} />
         </div>
       </section>
 
@@ -135,19 +138,19 @@ export default function WorkDetail() {
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <Full src={`${IMG}/9c75abeeadb9.webp`} alt="Fishwala apparel" ratio="896 / 568" />
-            <Full src={`${IMG}/ffc9cc5026f4.webp`} alt="Fishwala apparel" ratio="894 / 564" />
+            <Full src={`${BRAND}/p35.webp`} alt="Fishwala apparel" ratio={BRAND_RATIO} />
+            <Full src={`${BRAND}/p36.webp`} alt="Fishwala apparel" ratio={BRAND_RATIO} />
           </div>
           <div className="mt-6">
-            <Full src={`${IMG}/eeadbbf0c49a.webp`} alt="Fishwala storefront signage" ratio="1829 / 1144" />
+            <Full src={`${BRAND}/p44.webp`} alt="Fishwala storefront application" ratio={BRAND_RATIO} />
           </div>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
-            <Full src={`${IMG}/e842e140ea95.webp`} alt="Fishwala brand detail" ratio="608 / 384" />
-            <Full src={`${IMG}/c9ec08d7a67a.webp`} alt="Fishwala brand detail" ratio="607 / 384" />
-            <Full src={`${IMG}/2a42eebb4724.webp`} alt="Fishwala brand detail" ratio="602 / 384" />
+            <Full src={`${BRAND}/p40.webp`} alt="Fishwala brand detail" ratio={BRAND_RATIO} />
+            <Full src={`${BRAND}/p41.webp`} alt="Fishwala brand detail" ratio={BRAND_RATIO} />
+            <Full src={`${BRAND}/p42.webp`} alt="Fishwala brand detail" ratio={BRAND_RATIO} />
           </div>
           <div className="mt-6">
-            <Full src={`${IMG}/5c63d0aea3a5.webp`} alt="Fishwala in context" ratio="1831 / 1157" />
+            <Full src={`${BRAND}/p38.webp`} alt="Fishwala in context" ratio={BRAND_RATIO} />
           </div>
         </div>
       </section>
@@ -164,16 +167,16 @@ export default function WorkDetail() {
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <Full src={`${IMG}/625b353341da.webp`} alt="Fishwala signage" ratio="891 / 565" />
-            <Full src={`${IMG}/4a6a79d70c92.webp`} alt="Fishwala packaging" ratio="913 / 567" />
+            <Full src={`${BRAND}/p45.webp`} alt="Fishwala loyalty card" ratio={BRAND_RATIO} />
+            <Full src={`${BRAND}/p46.webp`} alt="Fishwala contact card" ratio={BRAND_RATIO} />
           </div>
           <div className="mt-6">
-            <Full src={`${IMG}/ed9719c4226d.webp`} alt="Fishwala stationery" ratio="1831 / 1151" />
+            <Full src={`${BRAND}/p47.webp`} alt="Fishwala social presence" ratio={BRAND_RATIO} />
           </div>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
-            <Full src={`${IMG}/ce54863d8e05.webp`} alt="Fishwala product" ratio="604 / 382" />
-            <Full src={`${IMG}/f368efd813ec.webp`} alt="Fishwala product" ratio="600 / 382" />
-            <Full src={`${IMG}/1b78f597ee25.webp`} alt="Fishwala product" ratio="602 / 382" />
+            <Full src={`${BRAND}/p50.webp`} alt="Fishwala packaging" ratio={BRAND_RATIO} />
+            <Full src={`${BRAND}/p51.webp`} alt="Fishwala packaging" ratio={BRAND_RATIO} />
+            <Full src={`${BRAND}/p52.webp`} alt="Fishwala packaging" ratio={BRAND_RATIO} />
           </div>
         </div>
       </section>
@@ -226,7 +229,7 @@ export default function WorkDetail() {
       {/* Billboard */}
       <section className="bg-dark pb-4">
         <div className={SHELL}>
-          <Full src={`${IMG}/226850b4b082.webp`} alt="Fishwala — Fresh doesn't shout." ratio="1826 / 1161" />
+          <Full src={`${BRAND}/p31.webp`} alt="Fishwala — Fresh doesn't shout." ratio={BRAND_RATIO} />
         </div>
       </section>
 
