@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { BgImage } from "../components/ui/BgImage";
+import { BrandGuidelineViewer } from "../components/ui/BrandGuidelineViewer";
 import { WorkCard } from "../components/ui/WorkCard";
 import type { Work } from "../data/works";
 import { useReveal } from "../lib/useReveal";
@@ -226,6 +227,13 @@ export default function WorkDetail() {
       <section className="bg-dark pb-4">
         <div className={SHELL}>
           <Full src={`${IMG}/226850b4b082.webp`} alt="Fishwala — Fresh doesn't shout." ratio="1826 / 1161" />
+        </div>
+      </section>
+
+      {/* Brand guideline flipbook */}
+      <section className="bg-dark py-16 lg:py-24">
+        <div className={SHELL}>
+          <BrandGuidelineViewer />
         </div>
       </section>
 
