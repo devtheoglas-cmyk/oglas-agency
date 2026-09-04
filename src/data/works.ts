@@ -9,6 +9,7 @@ export interface Work {
   tags: WorkTag[];
   image: string; // path under /assets
   hasCaseStudy?: boolean;
+  caseStudySlug?: string;
 }
 
 const DEFAULT_TAGS: WorkTag[] = ["Branding", "Brand strategy", "Graphics", "Visual Identity"];
@@ -60,7 +61,8 @@ export const brandWorks: Work[] = [
     year: "2025",
     tagline: "A reminder of what honesty feels like,",
     tags: WEB_TAGS,
-    image: "/assets/home/cards/velvet-leather.webp",
+    image: "/assets/home/cards/velvet-properties.webp",
+    hasCaseStudy: true,
   },
   {
     slug: "fishwala-2",
@@ -71,6 +73,7 @@ export const brandWorks: Work[] = [
     tags: DEFAULT_TAGS,
     image: "/assets/home/cards/fishwala-apparel.webp",
     hasCaseStudy: true,
+    caseStudySlug: "fishwala",
   },
 ];
 
@@ -111,6 +114,8 @@ export const productWorks: Work[] = [
     tagline: "A reminder of what honesty feels like,",
     tags: WEB_TAGS,
     image: "/assets/home/cards/velvet-properties.webp",
+    hasCaseStudy: true,
+    caseStudySlug: "velvet-properties",
   },
   {
     slug: "heartflo",

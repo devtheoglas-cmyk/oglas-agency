@@ -17,11 +17,11 @@ const WEB_TAGS = ["Branding", "Web design", "Graphics", "Visual Identity"];
 
 const worksIndex: IndexWork[] = [
   { slug: "fishwala", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/fishwala-stickers.webp", hasCaseStudy: true, categories: ["Branding", "Social media"] },
-  { slug: "velvet-properties", name: "Velvet Properties", type: "Real Estate Broker", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/home/cards/velvet-properties.webp", categories: ["Web", "Branding"] },
+  { slug: "velvet-properties", name: "Velvet Properties", type: "Real Estate Broker", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/home/cards/velvet-properties.webp", hasCaseStudy: true, categories: ["Web", "Branding"] },
   { slug: "hopinz", name: "Hopinz", type: "Supermarket", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/hopinz.webp", categories: ["Branding"] },
   { slug: "offbean", name: "Offbean", type: "Coffee Cafe", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/offbean-drippers.webp", categories: ["Branding", "Social media"] },
   { slug: "snaxx", name: "Snaxx", type: "Vending Machine", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/snaxx.webp", categories: ["Apps", "Branding"] },
-  { slug: "fishwala-2", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/fishwala-apparel.webp", hasCaseStudy: true, categories: ["Branding", "Social media"] },
+  { slug: "fishwala-2", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/fishwala-apparel.webp", hasCaseStudy: true, caseStudySlug: "fishwala", categories: ["Branding", "Social media"] },
   { slug: "velvet-leather", name: "Velvet Leather", type: "Leather Goods", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/velvet-leather.webp", categories: ["Branding"] },
   { slug: "yellow-and", name: "Yellow And", type: "Stay Marketplace", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/home/cards/yellowand-summer.webp", categories: ["Web", "Apps"] },
 ];

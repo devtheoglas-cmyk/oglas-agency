@@ -85,7 +85,7 @@ export function WorkCard({
     return (
       <Link
         className="group block outline-offset-8"
-        to="/works/fishwala"
+        to={`/works/${work.caseStudySlug ?? work.slug}`}
         aria-label={`View the ${work.name} case study`}
       >
         <div className={cn("card-flip", className)}>{inner}</div>

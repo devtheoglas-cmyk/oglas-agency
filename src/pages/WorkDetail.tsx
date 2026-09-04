@@ -3,6 +3,7 @@ import { BgImage } from "../components/ui/BgImage";
 import { WorkCard } from "../components/ui/WorkCard";
 import type { Work } from "../data/works";
 import { useReveal } from "../lib/useReveal";
+import VelvetWorkDetail from "./VelvetWorkDetail";
 
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 const IMG = "/assets/workdetail";
@@ -81,6 +82,7 @@ export default function WorkDetail() {
   const { slug } = useParams();
   const pageRef = useReveal<HTMLDivElement>();
 
+  if (slug === "velvet-properties") return <VelvetWorkDetail />;
   if (slug !== "fishwala") return <Navigate replace to="/works" />;
 
   return (

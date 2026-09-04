@@ -13,6 +13,7 @@ const TITLES: Readonly<Record<string, string>> = {
   "/services": "Services | The Oglas Agency",
   "/works": "Works | The Oglas Agency",
   "/works/fishwala": "Fishwala | The Oglas Agency",
+  "/works/velvet-properties": "Velvet Properties | The Oglas Agency",
   "/contacts": "Contact | The Oglas Agency",
   "/privacy": "Privacy Policy | The Oglas Agency",
 };
