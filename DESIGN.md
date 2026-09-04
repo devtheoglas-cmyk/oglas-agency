@@ -89,7 +89,7 @@ The Oglas frame is high-contrast and neutral, with lime reserved for interaction
 
 ## Typography
 
-**Display Font:** Vend Sans (with condensed sans-serif fallbacks)  
+**Display Font:** Vend Sans (with condensed sans-serif fallbacks)
 **Body Font:** Manrope (with sans-serif fallback)
 
 **Character:** The pairing combines forceful, compressed editorial headlines with calm, highly legible explanation. Oglas typography provides continuity while each client's supplied artwork carries its own native lettering inside imagery and bespoke hero gestures.
