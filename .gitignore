@@ -13,3 +13,4 @@ dist
 # Local design review captures and source-document working renders.
 .impeccable/review/
 work/pdfs/
+tmp/pdfs/

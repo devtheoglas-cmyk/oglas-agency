@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-04T06:17:20.5585540Z",
+  "title": "Design System: Oglas Case Studies",
+  "extensions": {
+    "colorMeta": {
+      "canvas-dark": {
+        "role": "neutral",
+        "displayName": "Studio Dark",
+        "canonical": "#0c0c0c",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(24% 0 0)", "oklch(35% 0 0)", "oklch(47% 0 0)", "oklch(60% 0 0)", "oklch(72% 0 0)", "oklch(84% 0 0)", "oklch(95% 0 0)"]
+      },
+      "canvas-black": {
+        "role": "neutral",
+        "displayName": "Absolute Black",
+        "canonical": "#000000",
+        "tonalRamp": ["oklch(10% 0 0)", "oklch(22% 0 0)", "oklch(34% 0 0)", "oklch(46% 0 0)", "oklch(58% 0 0)", "oklch(70% 0 0)", "oklch(82% 0 0)", "oklch(95% 0 0)"]
+      },
+      "canvas-light": {
+        "role": "neutral",
+        "displayName": "Gallery White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(27% 0 0)", "oklch(39% 0 0)", "oklch(51% 0 0)", "oklch(63% 0 0)", "oklch(75% 0 0)", "oklch(87% 0 0)", "oklch(100% 0 0)"]
+      },
+      "canvas-off-white": {
+        "role": "neutral",
+        "displayName": "Soft Proof",
+        "canonical": "#f8f5f5",
+        "tonalRamp": ["oklch(15% 0.006 15)", "oklch(27% 0.006 15)", "oklch(39% 0.006 15)", "oklch(51% 0.006 15)", "oklch(63% 0.006 15)", "oklch(75% 0.006 15)", "oklch(87% 0.006 15)", "oklch(97% 0.006 15)"]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Editorial Gray",
+        "canonical": "#767676",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(25% 0 0)", "oklch(35% 0 0)", "oklch(45% 0 0)", "oklch(55% 0 0)", "oklch(65% 0 0)", "oklch(80% 0 0)", "oklch(95% 0 0)"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline Gray",
+        "canonical": "#e5e5e5",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(27% 0 0)", "oklch(39% 0 0)", "oklch(51% 0 0)", "oklch(63% 0 0)", "oklch(75% 0 0)", "oklch(87% 0 0)", "oklch(95% 0 0)"]
+      },
+      "accent-lime": {
+        "role": "primary",
+        "displayName": "Signal Lime",
+        "canonical": "#e3ff51",
+        "tonalRamp": ["oklch(15% 0.07 112)", "oklch(27% 0.10 112)", "oklch(39% 0.13 112)", "oklch(51% 0.16 112)", "oklch(63% 0.18 112)", "oklch(75% 0.18 112)", "oklch(87% 0.15 112)", "oklch(95% 0.08 112)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Condensed Display",
+        "purpose": "Project statements, major section headings, and work-card titles."
+      },
+      "body": {
+        "displayName": "Editorial Body",
+        "purpose": "Strategy narrative, service lists, subtitles, and supporting information."
+      },
+      "label": {
+        "displayName": "Section Label",
+        "purpose": "Compact uppercase labels that anchor editorial rows."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "header-surface",
+        "value": "background-color 300ms, border-color 300ms",
+        "purpose": "Moves the fixed header from transparent over the client hero to the dark Oglas navigation surface."
+      },
+      {
+        "name": "reveal-progressive",
+        "value": "intersection-triggered with a 2000ms visibility safety net",
+        "purpose": "Enhances case-study pacing without ever making content depend on motion for visibility."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Case Metadata Chip",
+      "kind": "chip",
+      "refersTo": "case-meta-chip",
+      "description": "Compact project and year facts placed inside the opening brand statement.",
+      "html": "<span class=\"ds-case-meta\">PROJECT: GYMKHA</span>",
+      "css": ".ds-case-meta { display: inline-flex; align-items: center; border: 1px solid rgb(255 255 255 / 0.6); border-radius: 9999px; padding: 4px 16px; color: #fff; background: transparent; font-family: Manrope, sans-serif; font-size: 12px; line-height: 1.5; text-transform: uppercase; }"
+    },
+    {
+      "name": "Detail Row",
+      "kind": "custom",
+      "description": "The reusable label-and-content structure for overview, services, brand design, and identity chapters.",
+      "html": "<section class=\"ds-detail-row\"><h2 class=\"ds-detail-label\">OVERVIEW</h2><p class=\"ds-detail-copy\">A concise strategic explanation supports the visual story.</p></section>",
+      "css": ".ds-detail-row { display: grid; gap: 24px; color: #000; } .ds-detail-label { margin: 0; font-family: Manrope, sans-serif; font-size: 16px; line-height: 1.5; font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; } .ds-detail-copy { margin: 0; max-width: 1100px; font-family: Manrope, sans-serif; font-size: clamp(16px, 1.35vw, 22px); line-height: 1.55; } @media (min-width: 1024px) { .ds-detail-row { grid-template-columns: 0.28fr 1fr; gap: 64px; } }"
+    },
+    {
+      "name": "Service List",
+      "kind": "custom",
+      "description": "A quiet, hairline-divided inventory of project services inside a detail row.",
+      "html": "<ul class=\"ds-service-list\"><li>Brand Direction</li><li>Visual Identity</li><li>Campaign System</li></ul>",
+      "css": ".ds-service-list { margin: 0; padding: 0; list-style: none; color: #000; font-family: Manrope, sans-serif; font-size: clamp(20px, 2vw, 32px); } .ds-service-list li { border-bottom: 1px solid rgb(0 0 0 / 0.15); padding: 20px 0; }"
+    },
+    {
+      "name": "Image Board",
+      "kind": "card",
+      "refersTo": "work-card-frame",
+      "description": "A square-cornered, ratio-preserving frame for supplied brand-book artwork.",
+      "html": "<div class=\"ds-image-board\" role=\"img\" aria-label=\"Case-study brand application board\"><span>BRAND APPLICATION</span></div>",
+      "css": ".ds-image-board { display: grid; aspect-ratio: 1920 / 995; place-items: center; overflow: hidden; background: var(--bg-dark, #0c0c0c); color: rgb(255 255 255 / 0.55); border-radius: 0; font-family: Manrope, sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Work Card",
+      "kind": "card",
+      "description": "The shared portfolio handoff used in the final More work section.",
+      "html": "<a class=\"ds-work-card\" href=\"#\"><div class=\"ds-work-frame\"></div><div class=\"ds-work-title\"><span>2025</span><span>•</span><strong>VELVET PROPERTIES</strong></div><p>The art of realty.</p></a>",
+      "css": ".ds-work-card { display: block; color: inherit; text-decoration: none; outline-offset: 8px; } .ds-work-card:focus-visible { outline: 2px solid var(--accent, #e3ff51); } .ds-work-frame { aspect-ratio: 920 / 582; overflow: hidden; background: var(--bg-dark, #0c0c0c); } .ds-work-title { display: flex; align-items: baseline; gap: 12px; margin-top: 20px; font-family: 'Vend Sans', 'Arial Narrow', sans-serif; font-size: clamp(20px, 1.77vw, 34px); line-height: 1.02; font-weight: 600; letter-spacing: -0.02em; text-transform: uppercase; } .ds-work-title span { opacity: 0.6; } .ds-work-card p { margin: 12px 0 0; font-family: Manrope, sans-serif; font-size: 16px; opacity: 0.6; }"
+    },
+    {
+      "name": "Primary Navigation Link",
+      "kind": "nav",
+      "description": "The Oglas header link treatment shared above every client-specific opening statement.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Works</a>",
+      "css": ".ds-nav-link { position: relative; display: block; padding: 12px 0; color: #fff; font-family: Manrope, sans-serif; font-size: 14.72px; line-height: 1.5; font-weight: 500; text-decoration: none; transition: color 200ms; } .ds-nav-link::after { content: ''; position: absolute; right: 0; bottom: 4px; left: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 200ms; } .ds-nav-link:hover, .ds-nav-link[aria-current=\"page\"] { color: var(--accent, #e3ff51); } .ds-nav-link:hover::after, .ds-nav-link[aria-current=\"page\"]::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid var(--accent, #e3ff51); outline-offset: 5px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Brand Book",
+    "overview": "An Oglas case study should feel less like a portfolio template and more like stepping inside a finished identity. The shared interface is editorial, quiet, and structurally consistent; it establishes pacing, legibility, and navigation, then recedes so the client work can lead. Each project opens with a bespoke, full-scale brand statement before moving through context, identity, applications, and a final invitation to explore more work.\n\nThe system deliberately separates the Oglas frame from the client's visual world. Oglas owns the page shell, typography for explanatory copy, information hierarchy, image-board rhythm, global navigation, work cards, and footer. The client owns the hero palette, marks, campaign language, brand imagery, and any project-specific bands. Velvet's deep green and copper geometry, Fishwala's navy identity, and Gymkha's monochrome athletic world are scoped expressions, not additions to the global Oglas token set.",
+    "keyCharacteristics": [
+      "Image-led storytelling with full-width brand-book boards.",
+      "A restrained black, white, and lime Oglas frame around client-specific worlds.",
+      "Large condensed display type paired with clear, compact body copy.",
+      "Alternation between immersive visual sequences and concise editorial explanation.",
+      "One responsive structure that remains complete from mobile through wide desktop."
+    ],
+    "rules": [
+      {
+        "name": "The Client World Boundary Rule",
+        "body": "A client's palette may transform its hero, boards, and project-specific bands, but it never becomes a global Oglas token. In particular, Gymkha's black-and-white system is a scoped brand expression, not a site-wide palette decision.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lime Means Interface Rule",
+        "body": "Keep signal lime attached to navigation, focus, and interactive state. Do not recolor client artwork or case-study narrative with it unless lime belongs to that client's supplied identity.",
+        "section": "colors"
+      },
+      {
+        "name": "The Artwork Keeps Its Voice Rule",
+        "body": "Do not imitate a client's proprietary typeface across Oglas UI. Use Oglas display and body roles for live interface text; preserve client typography inside supplied boards or a deliberately scoped hero treatment.",
+        "section": "typography"
+      },
+      {
+        "name": "The Short Copy Rule",
+        "body": "Narrative blocks explain strategy only where they strengthen the visual story. Keep them compact enough that the next application board remains the dominant reading reward.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shared Spine Rule",
+        "body": "Preserve the sequence of bespoke opening statement, first application board, editorial context, identity/application rhythm, and “More work” handoff even when the number and grouping of boards differ.",
+        "section": "layout"
+      },
+      {
+        "name": "The Board Leads Rule",
+        "body": "Explanatory text is a pause between visual chapters, not a competing poster. Give the largest share of page area to high-fidelity project imagery.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Gallery Rule",
+        "body": "Do not add decorative drop shadows to boards, narrative rows, service lists, or work cards. Depth comes from sequencing and tonal transitions.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the wide shared shell, editorial detail row, board rhythm, “More work” handoff, global navigation, and footer across every case study.",
+      "Do let each supplied brand book determine its project's palette, marks, campaign language, board ratios, and visual density.",
+      "Do use concise live text and descriptive alternative text to make the visual story understandable and accessible.",
+      "Do keep interaction states unmistakably Oglas, including visible keyboard focus and motion fallbacks for reduced-motion users."
+    ],
+    "donts": [
+      "Don't promote a client-specific color, type treatment, mark, or slogan into the global Oglas token system.",
+      "Don't make Gymkha's black-and-white palette the default for other case studies; it belongs to Gymkha's scoped visual world.",
+      "Don't flatten Velvet, Fishwala, Gymkha, or future clients into one generic hero composition.",
+      "Don't add decorative cards, shadows, gradients, or interface chrome between boards when spacing and tonal contrast already establish the chapter break.",
+      "Don't omit narrative, application boards, or “More work” on mobile; adapt the grid and spacing instead."
+    ]
+  }
+}

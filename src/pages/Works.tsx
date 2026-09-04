@@ -21,6 +21,7 @@ const worksIndex: IndexWork[] = [
   { slug: "hopinz", name: "Hopinz", type: "Supermarket", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/hopinz.webp", categories: ["Branding"] },
   { slug: "offbean", name: "Offbean", type: "Coffee Cafe", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/offbean-drippers.webp", categories: ["Branding", "Social media"] },
   { slug: "snaxx", name: "Snaxx", type: "Vending Machine", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/snaxx.webp", categories: ["Apps", "Branding"] },
+  { slug: "gymkha", name: "Gymkha", type: "Gym wear", year: "2025", tagline: "Take the first step.", tags: DEFAULT_TAGS, image: "/assets/home/cards/gymkha.webp", hasCaseStudy: true, categories: ["Branding"] },
   { slug: "fishwala-2", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/fishwala-apparel.webp", hasCaseStudy: true, caseStudySlug: "fishwala", categories: ["Branding", "Social media"] },
   { slug: "velvet-leather", name: "Velvet Leather", type: "Leather Goods", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/velvet-leather.webp", categories: ["Branding"] },
   { slug: "yellow-and", name: "Yellow And", type: "Stay Marketplace", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/home/cards/yellowand-summer.webp", categories: ["Web", "Apps"] },

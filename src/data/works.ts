@@ -93,9 +93,10 @@ export const productWorks: Work[] = [
     name: "Gymkha",
     type: "Gym wear",
     year: "2025",
-    tagline: "A reminder of what honesty feels like,",
+    tagline: "Take the first step.",
     tags: DEFAULT_TAGS,
     image: "/assets/home/cards/gymkha.webp",
+    hasCaseStudy: true,
   },
   {
     slug: "aspirant-wave",
