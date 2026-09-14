@@ -14,7 +14,7 @@ export const siteDetails = {
   businessEmail: "hello@theoglas.com",
   socials: {
     linkedin: "https://www.linkedin.com",
-    instagram: "https://www.instagram.com",
+    instagram: "https://www.instagram.com/oglas.global/",
     behance: "https://www.behance.net",
   },
   offices: {
