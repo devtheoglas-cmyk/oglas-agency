@@ -54,7 +54,7 @@ function SectionLabel({ children }: { children: string }) {
 
 function VisualsFelt() {
   return (
-    <section className="bg-dark py-20 text-white lg:py-36">
+    <section className="bg-dark py-14 text-white lg:py-24">
       <div className={SHELL}>
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6 lg:mb-20">
           <div className="flex flex-col gap-4">
@@ -99,7 +99,7 @@ interface ShowcaseProps {
 function ShowcaseBand({ text, cta, dark }: { text: string; cta: string; dark: boolean }) {
   const ruleClass = dark ? "border-white/15" : "border-black/15";
   return (
-    <div className="mt-16 lg:mt-72">
+    <div className="mt-16 lg:mt-32">
       <div className="flex items-center justify-center gap-6 lg:gap-10">
         <span aria-hidden="true" className={cn("band-rule-left hidden h-px flex-1 border-t origin-right sm:block", ruleClass)} />
         <span className="band-pill rounded-full border border-current/30 px-6 py-2.5 font-body text-[0.68rem] tracking-[0.2em] uppercase">
@@ -122,7 +122,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
   const keywords = Array.from(new Set(works.flatMap((w) => w.tags)));
 
   return (
-    <section className={cn("py-20 lg:py-56", dark ? "bg-dark text-white" : "bg-white text-black")}>
+    <section className={cn("py-14 lg:py-28", dark ? "bg-dark text-white" : "bg-white text-black")}>
       <div className={SHELL}>
         <div className="mb-12 lg:mb-24">
           <h2
