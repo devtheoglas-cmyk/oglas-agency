@@ -428,41 +428,12 @@ function BuildBoldly() {
   );
 }
 
-const ribbonWords = ["Branding", "Web Design", "Digital Marketing", "UX / UI", "Development", "Motion"];
-
-function SlantedMarquee() {
-  return (
-    <div className="relative z-10 overflow-hidden bg-dark py-8 lg:py-12">
-      <div className="marquee -mx-[8%] -rotate-[4deg] bg-lime">
-        <ul
-          className="marquee__track flex w-max items-center py-3 lg:py-4"
-          aria-hidden="true"
-          style={{ animationDuration: "26s" }}
-        >
-          {[...ribbonWords, ...ribbonWords, ...ribbonWords].map((word, i) => (
-            <li
-              className="flex items-center gap-6 px-6 font-display text-[clamp(1.3rem,2.6vw,2.6rem)] font-semibold tracking-[-0.01em] text-black uppercase lg:gap-10 lg:px-10"
-              key={`${word}-${i}`}
-            >
-              {word}
-              <span aria-hidden="true" className="opacity-40">
-                ✦
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
 export default function Home() {
   const pageRef = useReveal<HTMLDivElement>();
 
   return (
     <div ref={pageRef}>
       <Hero />
-      <SlantedMarquee />
       <VisualsFelt />
       <WorkShowcase
         overline="strategic opportunity"
