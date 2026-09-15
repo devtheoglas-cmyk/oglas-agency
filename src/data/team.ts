@@ -38,7 +38,7 @@ export const agency: TeamMember[] = [
   {
     name: "Risheen",
     role: "Business Developer",
-    bio: "A brand consultant and business developer with experience across India, the GCC, US, UK, Canada, and New Zealand. Having worked with brands including Wonderla, Danube, Amend Dental, and Amana Business Setup, they specialize in business development and growth, with a track record of closing high-value projects and retainers.",
+    bio: "A business developer with experience spanning India, the GCC, US, UK, Canada, and New Zealand. Specializing in business development and growth, Risheen focuses on building strong client relationships and closing high-value projects and retainers — turning conversations into partnerships and opportunities into long-term growth at Oglas.",
   },
   {
     name: "Hina",
