@@ -28,7 +28,7 @@ function CardInner({
 }: WorkCardProps) {
   return (
     <>
-      <div className={cn("relative overflow-hidden", aspectClassName, frameClassName)}>
+      <div className={cn("relative overflow-hidden border border-current/10", aspectClassName, frameClassName)}>
         <BgImage
           alt={`${work.name} — ${work.type}`}
           className="transition-transform duration-[900ms] ease-out will-change-transform group-hover:scale-[1.06]"
