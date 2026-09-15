@@ -107,9 +107,9 @@ export function WorkCard({
         to={`/works/${work.caseStudySlug ?? work.slug}`}
         aria-label={`View the ${work.name} case study`}
       >
-        <div className={cn("card-flip", className)}>{inner}</div>
+        <div className={cn("card-reveal", className)}>{inner}</div>
       </Link>
     );
   }
-  return <article className={cn("card-flip group block", className)}>{inner}</article>;
+  return <article className={cn("card-reveal group block", className)}>{inner}</article>;
 }

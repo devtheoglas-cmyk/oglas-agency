@@ -65,6 +65,10 @@ function VisualsFelt() {
             >
               Visuals created to be felt
             </h2>
+            <span
+              aria-hidden="true"
+              className="works-accent mt-1 h-[3px] w-40 rounded-full bg-lime lg:w-56"
+            />
           </div>
           <Link
             className="flex shrink-0 items-center gap-2 rounded-full border border-white/30 px-6 py-3 font-body text-sm tracking-wide uppercase transition-colors hover:bg-lime hover:text-black"

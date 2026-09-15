@@ -218,56 +218,76 @@ button:focus-visible {
   }
 }
 
-/* Scroll-driven 3D flip-in for WorkCards.
-   Each card enters the viewport rotated ~65° on its Y axis and
-   flips upright as it scrolls to center. Cards on the right column
-   flip in from the opposite side for a symmetrical "opening deck"
-   effect between the Our Works and Branding Approach sections.
+/* Scroll-driven reveal for WorkCards.
+   Each card lifts into place as it scrolls into view: it starts a
+   little lower and slightly smaller, then rises to rest and fades in.
+   This replaces an earlier 3D Y-axis flip that felt disorienting.
+   Only transform + opacity animate, so the motion stays on the GPU
+   compositor and reads as smooth rather than stuttery.
    Uses CSS animation-timeline: view() — no JS. Browsers without
-   support show the card statically upright; reduced-motion is
+   support show the card statically in place; reduced-motion is
    respected. */
-.card-flip {
-  transform-origin: 50% 50%;
-  backface-visibility: hidden;
+.card-reveal {
   will-change: transform, opacity;
 }
 
-/* Skip the heavy 3D card flip on small screens — scroll-driven 3D
-   transforms can jitter on lower-power mobile GPUs and adds little
-   value at single-column widths. */
+/* Run the scroll-linked reveal from tablet up only; on phones the grid
+   is a single column, where the motion adds little, so cards render
+   static. */
 @supports (animation-timeline: view()) and (min-width: 768px) {
-  .card-flip {
-    animation: card-flip cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  .card-reveal {
+    animation: card-rise cubic-bezier(0.22, 0.61, 0.36, 1) both;
     animation-timeline: view();
-    animation-range: entry 0% cover 45%;
+    animation-range: entry 0% cover 42%;
   }
-  .card-flip:nth-child(even) {
-    animation-name: card-flip-alt;
-  }
-  @keyframes card-flip {
+  @keyframes card-rise {
     from {
-      transform: perspective(1600px) rotateY(-65deg) rotateX(8deg) translateZ(-120px);
+      transform: translate3d(0, 64px, 0) scale(0.965);
       opacity: 0;
     }
     to {
-      transform: perspective(1600px) rotateY(0deg) rotateX(0deg) translateZ(0);
-      opacity: 1;
-    }
-  }
-  @keyframes card-flip-alt {
-    from {
-      transform: perspective(1600px) rotateY(65deg) rotateX(8deg) translateZ(-120px);
-      opacity: 0;
-    }
-    to {
-      transform: perspective(1600px) rotateY(0deg) rotateX(0deg) translateZ(0);
+      transform: translate3d(0, 0, 0) scale(1);
       opacity: 1;
     }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-flip {
+  .card-reveal {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* "Our Works" heading accent: a short lime rule that draws out from
+   the left as the works/card section scrolls into view — a small cue
+   that you've arrived at the work. Scroll-driven, reduced-motion safe. */
+.works-accent {
+  transform-origin: left center;
+}
+
+@supports (animation-timeline: view()) {
+  .works-accent {
+    animation: works-accent-draw cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+    will-change: transform, opacity;
+  }
+  @keyframes works-accent-draw {
+    from {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .works-accent {
     animation: none !important;
     transform: none !important;
     opacity: 1 !important;
