@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from "react";
+import { useId, useState } from "react";
 import { Link } from "react-router-dom";
 import { BgImage } from "../components/ui/BgImage";
 import { Carousel } from "../components/ui/Carousel";
@@ -12,57 +12,24 @@ import { useReveal } from "../lib/useReveal";
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 
 function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const frame = useRef<number>(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>): void => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const { clientX, clientY } = e;
-    cancelAnimationFrame(frame.current);
-    frame.current = requestAnimationFrame(() => {
-      const rect = el.getBoundingClientRect();
-      el.style.setProperty("--mx", `${clientX - rect.left}px`);
-      el.style.setProperty("--my", `${clientY - rect.top}px`);
-    });
-  };
-
-  const words = heroManifesto.trim().split(/\s+/);
-
   return (
-    <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      className="hero-spot relative flex min-h-screen flex-col overflow-hidden bg-dark text-white"
-    >
-      {/* Lime spotlight that follows the cursor */}
-      <span aria-hidden="true" className="hero-glow pointer-events-none absolute inset-0 z-0" />
-
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-4 pt-24 pb-12 sm:px-8 lg:pt-32 lg:pb-16">
+    <section className="relative flex min-h-screen flex-col overflow-hidden bg-dark text-white">
+      <div className="flex flex-1 flex-col justify-center px-4 pt-24 pb-12 sm:px-8 lg:pt-32 lg:pb-16">
         <div className={`${SHELL} text-center`}>
           <h1
             className="mx-auto max-w-[1559px] break-words font-condensed text-[clamp(2.25rem,4.6vw,78px)] leading-[0.9] font-semibold tracking-[-0.03em] text-center text-white uppercase [text-wrap:balance] [leading-trim:none] lg:leading-[0.86]"
             data-reveal
           >
-            {words.map((word, i) => (
-              <span key={`${word}-${i}`}>
-                <span className="hero-word" style={{ animationDelay: `${0.12 + i * 0.035}s` }}>
-                  {word}
-                </span>
-                {i < words.length - 1 ? " " : ""}
-              </span>
-            ))}
+            {heroManifesto}
           </h1>
           <div className="mt-10 flex justify-center lg:mt-20" data-reveal>
-            <span className="hero-badge inline-flex items-center gap-2.5 rounded-full border border-white/35 px-6 py-2.5 font-body text-sm tracking-[0.12em] text-white uppercase">
-              <span aria-hidden="true" className="hero-live-dot size-2 rounded-full bg-lime" />
+            <span className="rounded-full border border-white/35 px-6 py-2.5 font-body text-sm tracking-[0.12em] text-white uppercase">
               Since 2019
             </span>
           </div>
         </div>
       </div>
-
-      <div className="relative z-10" data-reveal>
+      <div data-reveal>
         <BgImage
           alt="A collage of Oglas brand and packaging work"
           className="w-full"
@@ -70,15 +37,6 @@ function Hero() {
           src="/assets/home/hero-collage.webp"
         />
       </div>
-
-      {/* Gentle scroll cue */}
-      <span
-        aria-hidden="true"
-        className="hero-scroll-cue pointer-events-none absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/50 lg:flex"
-      >
-        <span className="font-body text-[0.6rem] tracking-[0.25em] uppercase">Scroll</span>
-        <span className="hero-scroll-line h-8 w-px bg-white/40" />
-      </span>
     </section>
   );
 }
