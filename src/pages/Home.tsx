@@ -29,10 +29,10 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div data-reveal>
+      <div className="overflow-hidden" data-reveal>
         <BgImage
           alt="A collage of Oglas brand and packaging work"
-          className="w-full"
+          className="hero-collage-motion w-full"
           fit="contain"
           src="/assets/home/hero-collage.webp"
         />

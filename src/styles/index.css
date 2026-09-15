@@ -192,6 +192,32 @@ button:focus-visible {
   background: var(--accent);
 }
 
+/* Hero collage parallax: the tilted brand collage drifts vertically
+   and holds a slight over-scale (clipped by its overflow-hidden
+   wrapper) as it scrolls through the viewport, giving it depth. */
+@supports (animation-timeline: view()) {
+  .hero-collage-motion {
+    animation: hero-collage-parallax linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+    will-change: transform;
+  }
+  @keyframes hero-collage-parallax {
+    from {
+      transform: scale(1.06) translateY(-2.5%);
+    }
+    to {
+      transform: scale(1.06) translateY(2.5%);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-collage-motion {
+    animation: none;
+    transform: none;
+  }
+}
+
 /* Scroll-driven 3D flip-in for WorkCards.
    Each card enters the viewport rotated ~65° on its Y axis and
    flips upright as it scrolls to center. Cards on the right column
