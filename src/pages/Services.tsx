@@ -73,14 +73,25 @@ export default function Services() {
                         </p>
                         <ul className="flex flex-col gap-3 lg:min-w-[280px]">
                           {service.deliverables.map((item) => (
-                            <li
-                              className="flex items-center gap-3 border-b border-hairline-dark pb-3 font-body text-base"
-                              key={item}
-                            >
-                              <span aria-hidden="true" className="text-emerald">
-                                ✦
+                            <li className="border-b border-hairline-dark pb-3" key={item.label}>
+                              <span className="flex items-center gap-3 font-body text-base">
+                                <span aria-hidden="true" className="text-emerald">
+                                  ✦
+                                </span>
+                                {item.label}
                               </span>
-                              {item}
+                              {item.children && (
+                                <ul className="mt-2 flex flex-col gap-2 pl-7">
+                                  {item.children.map((child) => (
+                                    <li className="flex items-center gap-2 font-body text-sm text-black/60" key={child}>
+                                      <span aria-hidden="true" className="text-emerald/70">
+                                        –
+                                      </span>
+                                      {child}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
                             </li>
                           ))}
                         </ul>
