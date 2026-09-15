@@ -118,10 +118,13 @@ function ShowcaseBand({ text, cta, dark }: { text: string; cta: string; dark: bo
 }
 
 function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta, dark = true }: ShowcaseProps) {
+  // Unique keywords drawn from the projects themselves, for the ribbon.
+  const keywords = Array.from(new Set(works.flatMap((w) => w.tags)));
+
   return (
-    <section className={cn("py-20 lg:py-72", dark ? "bg-dark text-white" : "bg-white text-black")}>
+    <section className={cn("py-20 lg:py-56", dark ? "bg-dark text-white" : "bg-white text-black")}>
       <div className={SHELL}>
-        <div className="mb-10 lg:mb-64">
+        <div className="mb-12 lg:mb-24">
           <h2
             className="showcase-word-left text-center font-display text-[clamp(2.5rem,13vw,250px)] leading-[0.74] font-semibold tracking-[-0.02em] uppercase break-words [text-wrap:balance]"
             data-reveal
@@ -150,7 +153,31 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
             {lineTwo}
           </h2>
         </div>
-        <div className="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:gap-y-40" data-reveal>
+
+        {/* Keyword ribbon — fills the gap between the display words and the
+           project grid with quiet motion. */}
+        <div
+          className={cn(
+            "marquee relative mb-14 overflow-hidden border-y py-5 lg:mb-20",
+            dark ? "border-white/12" : "border-black/12",
+          )}
+        >
+          <ul className="marquee__track flex w-max items-center" aria-hidden="true" style={{ animationDuration: "38s" }}>
+            {[...keywords, ...keywords, ...keywords, ...keywords].map((k, i) => (
+              <li
+                className="flex items-center gap-8 px-8 font-display text-[clamp(1rem,2vw,1.9rem)] font-semibold tracking-[-0.01em] uppercase opacity-70 lg:gap-12 lg:px-12"
+                key={`${k}-${i}`}
+              >
+                {k}
+                <span aria-hidden="true" className="text-lime">
+                  ✦
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="grid gap-x-8 gap-y-16 md:grid-cols-2 lg:gap-y-24" data-reveal>
           {works.map((work) => (
             <WorkCard key={work.slug} work={work} />
           ))}
