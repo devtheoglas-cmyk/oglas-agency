@@ -4,11 +4,37 @@ import type { Work } from "../data/works";
 import { useReveal } from "../lib/useReveal";
 
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
-const B = "/assets/velvet-brand";
-const IMG = "/assets/workdetail";
-const BOARD_RATIO = "1920 / 970";
+const B = "/assets/velvet-web";
+
+// Full-bleed design bands sliced from the Figma case study, in document order.
+// width 1920 for every band; ratio = 1920 / band-height.
+const BANDS: { n: string; h: number; alt: string }[] = [
+  { n: "b01", h: 2820, alt: "Velvet Properties homepage — The Art of Curated Realty, desktop and mobile" },
+  { n: "b02", h: 2710, alt: "Velvet Properties — Your Real Estate Solutions services layout" },
+  { n: "b03", h: 1198, alt: "Velvet Properties — property management section" },
+  { n: "b04", h: 2662, alt: "Velvet Properties — web design approach and brand colour palette" },
+  { n: "b05", h: 1408, alt: "Velvet Properties — marketing insights section" },
+  { n: "b06", h: 1822, alt: "Velvet Properties — marketing insights property mockups" },
+  { n: "b07", h: 1800, alt: "Velvet Properties — brand positioning section" },
+  { n: "b08", h: 1437, alt: "Velvet Properties — about the agency" },
+  { n: "b09", h: 1583, alt: "Velvet Properties — sales appraisal section" },
+  { n: "b10", h: 1524, alt: "Velvet Properties — curated listings section" },
+  { n: "b11", h: 1606, alt: "Velvet Properties — property listing page mockups" },
+  { n: "b12", h: 1459, alt: "Velvet Properties — listing detail page mockups" },
+  { n: "b13", h: 1233, alt: "Velvet Properties — closing composition and footer" },
+];
 
 const moreWork: Work[] = [
+  {
+    slug: "gymkha",
+    name: "Gymkha",
+    type: "Gym wear",
+    year: "2025",
+    tagline: "Take the first step.",
+    tags: ["Branding", "Web design", "Graphics", "Visual Identity"],
+    image: "/assets/home/cards/gymkha.webp",
+    hasCaseStudy: true,
+  },
   {
     slug: "fishwala",
     name: "Fishwala",
@@ -19,21 +45,16 @@ const moreWork: Work[] = [
     image: "/assets/home/cards/fishwala-stickers.webp",
     hasCaseStudy: true,
   },
-  {
-    slug: "yellow-and",
-    name: "Yellow And",
-    type: "Stay Marketplace",
-    year: "2025",
-    tagline: "A reminder of what honesty feels like,",
-    tags: ["Branding", "Web design", "Graphics", "Visual Identity"],
-    image: `${IMG}/90fe42c75249.webp`,
-  },
 ];
 
-function Board({ page, alt }: { page: string; alt: string }) {
+function Band({ n, h, alt }: { n: string; h: number; alt: string }) {
   return (
-    <div className="relative overflow-hidden" data-reveal style={{ aspectRatio: BOARD_RATIO }}>
-      <BgImage alt={alt} fill src={`${B}/${page}.webp`} />
+    <div
+      className="relative w-full overflow-hidden bg-[#052c2f]"
+      data-reveal
+      style={{ aspectRatio: `1920 / ${h}` }}
+    >
+      <BgImage alt={alt} fill fit="cover" src={`${B}/${n}.webp`} />
     </div>
   );
 }
@@ -54,194 +75,101 @@ export default function VelvetWorkDetail() {
 
   return (
     <div ref={pageRef} className="bg-white text-black">
+      {/* Hero */}
       <section
         aria-labelledby="velvet-title"
-        className="relative isolate grid min-h-[clamp(31rem,52vw,48rem)] overflow-hidden bg-[#052d30] px-5 pt-32 pb-16 text-[#ffeade] sm:px-8 md:place-items-center md:py-24 lg:px-[4.15vw]"
+        className="relative isolate grid min-h-[clamp(28rem,46vw,42rem)] overflow-hidden bg-[#052c2f] px-5 pt-32 pb-16 text-[#ffeade] sm:px-8 md:place-items-center md:py-24 lg:px-[4.15vw]"
       >
-        <div aria-hidden="true" className="absolute inset-0 overflow-hidden text-[#ffbf94]">
+        <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
           <span
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[47%] font-display text-[clamp(27rem,68vw,72rem)] leading-none font-semibold text-transparent opacity-20"
-            style={{ WebkitTextStroke: "1px rgb(255 191 148 / 0.5)" }}
-          >
-            V
-          </span>
-          <span
-            className="absolute top-1/2 left-1/2 -translate-x-[56%] -translate-y-[47%] font-display text-[clamp(22rem,56vw,60rem)] leading-none font-semibold text-transparent opacity-15"
-            style={{ WebkitTextStroke: "1px rgb(255 191 148 / 0.5)" }}
-          >
-            V
-          </span>
-          <span
-            className="absolute top-1/2 left-1/2 -translate-x-[44%] -translate-y-[47%] font-display text-[clamp(17rem,44vw,48rem)] leading-none font-semibold text-transparent opacity-10"
-            style={{ WebkitTextStroke: "1px rgb(255 191 148 / 0.5)" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[47%] font-display text-[clamp(24rem,60vw,64rem)] leading-none font-semibold text-transparent opacity-[0.18]"
+            style={{ WebkitTextStroke: "1px rgb(255 215 185 / 0.55)" }}
           >
             V
           </span>
         </div>
 
         <div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-center text-center">
+          <p className="mb-6 font-body text-xs tracking-[0.32em] text-[#ffd7b9] uppercase" data-reveal>
+            Website Design
+          </p>
           <h1
-            className="font-display text-[clamp(2.75rem,6.2vw,6rem)] leading-[0.88] font-semibold tracking-[-0.025em] uppercase [text-wrap:balance]"
+            className="font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.9] font-semibold tracking-[-0.025em] uppercase [text-wrap:balance]"
             data-reveal
             id="velvet-title"
           >
             <span className="block">Redefining luxury real estate</span>
-            <span className="block text-[#ffbf94]">through the art of identity</span>
+            <span className="block text-[#ffd7b9]">through a refined digital home</span>
           </h1>
-          <p className="mt-8 font-body text-[clamp(0.85rem,1.1vw,1.05rem)] tracking-[0.28em] text-[#ffeade]/80 uppercase" data-reveal>
+          <p
+            className="mt-8 font-body text-[clamp(0.85rem,1.1vw,1.05rem)] tracking-[0.28em] text-[#ffeade]/80 uppercase"
+            data-reveal
+          >
             The art of realty
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-3" data-reveal>
-            <span className="rounded-full border border-[#ffbf94]/75 px-4 py-1 font-body text-xs uppercase">
+            <span className="rounded-full border border-[#ffd7b9]/70 px-4 py-1 font-body text-xs uppercase">
               Project: Velvet Properties
             </span>
-            <span className="rounded-full border border-[#ffbf94]/75 px-4 py-1 font-body text-xs uppercase">
+            <span className="rounded-full border border-[#ffd7b9]/70 px-4 py-1 font-body text-xs uppercase">
               Year: 2025
             </span>
           </div>
         </div>
       </section>
 
-      <Board page="p02" alt="Velvet Properties interior and geometric V brand mark" />
+      {/* Hero website mockup */}
+      <div className="relative w-full overflow-hidden bg-white" data-reveal style={{ aspectRatio: "1920 / 966" }}>
+        <BgImage alt="Velvet Properties website — The Art of Realty hero" fill src={`${B}/hero.webp`} />
+      </div>
 
+      {/* Overview */}
       <section className="py-20 lg:py-28">
         <div className={SHELL}>
           <DetailRow label="Overview">
             <div className="max-w-[1100px] space-y-7 font-body text-[clamp(1rem,1.35vw,1.375rem)] leading-[1.55]">
               <p>
-                Velvet Properties is a boutique real estate agency specializing in the curation and acquisition of
-                luxury properties. Established with a vision to redefine the art of real estate, the brand elevates
-                the living experience by transforming exceptional spaces into timeless masterpieces.
+                Velvet Properties is a Brisbane-based real estate agency specializing in luxury waterfront and canal
+                homes. As the brand grew within a competitive high-end market, it required a digital presence that could
+                clearly communicate its premium positioning while supporting lead generation and property sales.
               </p>
               <p>
-                Built around credibility, integrity, transparency, and honesty, the identity balances a polished
-                real-estate presence with an expressive system rooted in art, architecture, and detail.
+                The primary objective was to create a website that not only showcases high-value listings but also
+                strengthens the agency&rsquo;s credibility as a trusted selling partner. The platform needed to balance
+                refined visual presentation with practical functionality, ensuring users could explore properties
+                easily, access clear next steps, and engage with confidence.
+              </p>
+              <p>
+                From the interactive hero slider to structured content hierarchy, every design decision was focused on
+                clarity, usability, and strategic positioning. The result is a premium and modern real estate platform
+                that combines visual elegance with a conversion-driven experience.
               </p>
             </div>
           </DetailRow>
         </div>
       </section>
 
+      {/* Our role */}
       <section className="pb-20 lg:pb-28">
         <div className={SHELL}>
-          <DetailRow label="Services">
+          <DetailRow label="Our role">
             <ul className="font-body text-[clamp(1.25rem,2vw,2rem)]">
-              <li className="border-b border-black/15 py-5">Brand Strategy</li>
-              <li className="border-b border-black/15 py-5">Visual Identity</li>
-              <li className="border-b border-black/15 py-5">Brand Collateral</li>
+              <li className="border-b border-black/15 py-5">Website Design</li>
+              <li className="border-b border-black/15 py-5">Brand Design</li>
+              <li className="border-b border-black/15 py-5">Design Strategy</li>
+              <li className="border-b border-black/15 py-5">UX Research</li>
             </ul>
           </DetailRow>
         </div>
       </section>
 
-      <section className="pb-8">
-        <div className={SHELL}>
-          <Board page="p16" alt="Velvet Properties — Crafting Stories, Legacies Begin Here" />
-        </div>
-      </section>
+      {/* Full-bleed design bands */}
+      {BANDS.map((band) => (
+        <Band key={band.n} alt={band.alt} h={band.h} n={band.n} />
+      ))}
 
-      <section className="pb-14">
-        <div className={SHELL}>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Board page="p17" alt="Velvet Properties art of realty campaign composition" />
-            <Board page="p07" alt="Velvet Properties geometric V identity construction" />
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-14 lg:pb-20">
-        <div className={SHELL}>
-          <DetailRow label="Brand Design">
-            <p className="max-w-[1100px] font-body text-[clamp(1rem,1.35vw,1.375rem)] leading-[1.55]">
-              The identity reframes property as something more considered than a transaction. A sculpted V, a quiet
-              wordmark, and the line “The Art of Realty” create a flexible visual language that feels architectural,
-              assured, and distinctly personal.
-            </p>
-          </DetailRow>
-        </div>
-      </section>
-
-      <section className="pb-6">
-        <div className={SHELL}>
-          <Board page="p09" alt="Velvet Properties wordmark on deep green" />
-        </div>
-      </section>
-
-      <section className="pb-14">
-        <div className={SHELL}>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Board page="p13" alt="Velvet Properties embossed brand book" />
-            <Board page="p15" alt="Velvet Properties brand colour palette" />
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-6">
-        <div className={SHELL}>
-          <Board page="p23" alt="Velvet Properties embossed V brand mark" />
-        </div>
-      </section>
-
-      <section className="py-14 lg:py-20">
-        <div className={SHELL}>
-          <DetailRow label="Identity System">
-            <p className="max-w-[1100px] font-body text-[clamp(1rem,1.35vw,1.375rem)] leading-[1.55]">
-              Deep green provides stability and trust, while copper and peach bring warmth and cultivated character.
-              The nested V pattern extends the mark into a recognizable frame for spaces, imagery, print, and
-              large-format communications.
-            </p>
-          </DetailRow>
-        </div>
-      </section>
-
-      <section className="pb-6">
-        <div className={SHELL}>
-          <Board page="p26" alt="Velvet Properties architectural window campaign" />
-        </div>
-      </section>
-
-      <section className="pb-16 lg:pb-24">
-        <div className={SHELL}>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Board page="p28" alt="Velvet Properties embossed pattern detail" />
-            <Board page="p33" alt="Velvet Properties outdoor realty campaign" />
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#052d30] py-6 sm:py-8 lg:py-12">
-        <div className={SHELL}>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Board page="p37" alt="Velvet Properties business card mockup" />
-            <Board page="p38" alt="Velvet Properties envelope mockup" />
-          </div>
-          <div className="mt-6">
-            <Board page="p41" alt="Velvet Properties stationery suite" />
-          </div>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            <Board page="p42" alt="Velvet Properties letterhead front and back" />
-            <Board page="p43" alt="Velvet Properties visiting card system" />
-            <Board page="p44" alt="Velvet Properties branded envelope system" />
-          </div>
-          <div className="mt-6">
-            <Board page="p45" alt="Velvet Properties letter pad system" />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-6 lg:py-10">
-        <div className={SHELL}>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Board page="p46" alt="Velvet Properties street-level campaign" />
-            <Board page="p47" alt="Velvet Properties paired architectural advertisements" />
-          </div>
-          <div className="mt-6">
-            <Board page="p48" alt="Velvet Properties large-format Realty campaign" />
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-20 pt-14 lg:pb-28 lg:pt-20">
+      {/* More work */}
+      <section className="pb-20 pt-16 lg:pb-28 lg:pt-24">
         <div className={SHELL}>
           <div className="border-t border-black/12 pt-12">
             <h2

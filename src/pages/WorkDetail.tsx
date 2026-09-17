@@ -3,6 +3,7 @@ import { BgImage } from "../components/ui/BgImage";
 import { WorkCard } from "../components/ui/WorkCard";
 import type { Work } from "../data/works";
 import { useReveal } from "../lib/useReveal";
+import AspirantWaveWorkDetail from "./AspirantWaveWorkDetail";
 import GymkhaWorkDetail from "./GymkhaWorkDetail";
 import VelvetWorkDetail from "./VelvetWorkDetail";
 
@@ -85,6 +86,7 @@ export default function WorkDetail() {
 
   if (slug === "velvet-properties") return <VelvetWorkDetail />;
   if (slug === "gymkha") return <GymkhaWorkDetail />;
+  if (slug === "aspirant-wave") return <AspirantWaveWorkDetail />;
   if (slug !== "fishwala") return <Navigate replace to="/works" />;
 
   return (
