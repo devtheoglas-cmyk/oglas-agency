@@ -133,9 +133,10 @@ export const productWorks: Work[] = [
     name: "Snaxx",
     type: "Vending Machine",
     year: "2025",
-    tagline: "A reminder of what honesty feels like,",
-    tags: DEFAULT_TAGS,
+    tagline: "Quick, simple, accessible.",
+    tags: WEB_TAGS,
     image: "/assets/home/cards/snaxx.webp",
+    hasCaseStudy: true,
   },
 ];
 

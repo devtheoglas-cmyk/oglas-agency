@@ -5,6 +5,7 @@ import type { Work } from "../data/works";
 import { useReveal } from "../lib/useReveal";
 import AspirantWaveWorkDetail from "./AspirantWaveWorkDetail";
 import GymkhaWorkDetail from "./GymkhaWorkDetail";
+import SnaxxWorkDetail from "./SnaxxWorkDetail";
 import VelvetWorkDetail from "./VelvetWorkDetail";
 
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
@@ -87,6 +88,7 @@ export default function WorkDetail() {
   if (slug === "velvet-properties") return <VelvetWorkDetail />;
   if (slug === "gymkha") return <GymkhaWorkDetail />;
   if (slug === "aspirant-wave") return <AspirantWaveWorkDetail />;
+  if (slug === "snaxx") return <SnaxxWorkDetail />;
   if (slug !== "fishwala") return <Navigate replace to="/works" />;
 
   return (
