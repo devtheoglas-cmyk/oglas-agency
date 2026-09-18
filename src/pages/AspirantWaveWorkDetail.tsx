@@ -8,9 +8,13 @@ const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 const B = "/assets/aspirant-web";
 
 // Full-bleed presentation slides sliced from the Figma case study, in order.
-// Native frame width 997; ratio = 997 / band-height.
-const BANDS: { n: string; h: number; bg: string; alt: string }[] = [
-  { n: "b01-main", h: 4787, bg: "#ef4335", alt: "Aspirant Wave homepage — A Wave of Possibilities for Every Education Aspirant" },
+// w/h are each file's exact pixel dimensions (ratio = w / h); w defaults to 997.
+const BANDS: { n: string; h: number; w?: number; bg: string; alt: string }[] = [
+  { n: "b01-01", h: 3200, w: 2991, bg: "#ef4335", alt: "Aspirant Wave homepage — hero, A Wave of Possibilities" },
+  { n: "b01-02", h: 3200, w: 2991, bg: "#ef4335", alt: "Aspirant Wave homepage — proven expertise and personalized assistance" },
+  { n: "b01-03", h: 3200, w: 2991, bg: "#ef4335", alt: "Aspirant Wave homepage — tailored academic programs and scholarships" },
+  { n: "b01-04", h: 3200, w: 2991, bg: "#ef4335", alt: "Aspirant Wave homepage — success stories and student testimonials" },
+  { n: "b01-05", h: 1561, w: 2991, bg: "#ef4335", alt: "Aspirant Wave homepage — highlights and footer" },
 ];
 
 const moreWork: Work[] = [
@@ -36,9 +40,9 @@ const moreWork: Work[] = [
   },
 ];
 
-function Band({ n, h, bg, alt }: { n: string; h: number; bg: string; alt: string }) {
+function Band({ n, h, w = 997, bg, alt }: { n: string; h: number; w?: number; bg: string; alt: string }) {
   return (
-    <div className="relative w-full overflow-hidden" data-reveal style={{ aspectRatio: `997 / ${h}`, backgroundColor: bg }}>
+    <div className="relative w-full overflow-hidden" data-reveal style={{ aspectRatio: `${w} / ${h}`, backgroundColor: bg }}>
       <BgImage alt={alt} fill fit="cover" src={`${B}/${n}.webp`} />
     </div>
   );
@@ -160,7 +164,7 @@ export default function AspirantWaveWorkDetail() {
 
       {/* Full-bleed design bands */}
       {BANDS.map((band) => (
-        <Band key={band.n} alt={band.alt} bg={band.bg} h={band.h} n={band.n} />
+        <Band key={band.n} alt={band.alt} bg={band.bg} h={band.h} n={band.n} w={band.w} />
       ))}
 
       {/* More work */}
