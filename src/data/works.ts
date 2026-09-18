@@ -64,17 +64,6 @@ export const brandWorks: Work[] = [
     image: "/assets/home/cards/velvet-properties.webp",
     hasCaseStudy: true,
   },
-  {
-    slug: "fishwala-2",
-    name: "Fishwala",
-    type: "Premium Fresh Fish Store",
-    year: "2025",
-    tagline: "A reminder of what honesty feels like,",
-    tags: DEFAULT_TAGS,
-    image: "/assets/home/cards/fishwala-apparel.webp",
-    hasCaseStudy: true,
-    caseStudySlug: "fishwala",
-  },
 ];
 
 // Home "REFRAME / INTERACTION" product/app grid.
