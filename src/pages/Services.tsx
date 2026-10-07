@@ -1,31 +1,30 @@
-import { Fragment, useEffect, useRef, type CSSProperties, type MouseEvent, type ReactNode } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Fragment, useEffect, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChapterDock } from "../components/services/ChapterDock";
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, Spark } from "../components/services/icons";
+import { ArrowDown, ArrowUpRight } from "../components/services/icons";
 import { ProcessTrack } from "../components/services/ProcessTrack";
-import { ServicePlate } from "../components/services/ServicePlate";
 import { ServicesFaq } from "../components/services/ServicesFaq";
+import { WorkReel } from "../components/services/WorkReel";
 import { BgImage } from "../components/ui/BgImage";
-import { faqs, services, servicesIntro, type Service } from "../data/services";
+import { faqs, services, servicesIntro, servicesSummary, type Service } from "../data/services";
 import { siteDetails } from "../data/site";
 import { brandWorks, productWorks, type Work } from "../data/works";
 import { cn } from "../lib/cn";
 import { scrollToSection } from "../lib/scrollToSection";
-import { useReducedMotion } from "../lib/useReducedMotion";
 import "../styles/services.css";
 
 /*
-  THESIS: Each discipline proves itself by doing its job on screen: a looping, phase-captioned
-  plate beside a complete written spec, instead of the category's icon-card-and-blurb grid.
-  OWN-WORLD: The Oglas frame unchanged: studio dark, gallery white and soft proof fields,
-  Vend Sans display in uppercase, Manrope body, hairline rows, square plates, lime only for
-  interface state and the plates' own signal.
-  STORY: See all five disciplines at once, read any one in full detail (included, how it runs,
-  what you receive, who it suits, real work), understand the shared process, ask, then start.
-  FIRST VIEWPORT: The existing manifesto rising word by word across the shell, a supporting
-  line with the Start a project pill beneath it, and a five-column index of the disciplines
-  pinned to the bottom of the viewport, each wiping lime on hover.
-  FORM: Discipline chapters with sticky proof plates, chapter dock, pinned process track.
+  THESIS: Each service is explained in full beside the real work that proves it, instead of
+  the category's icon-card-and-blurb grid or synthetic illustrations.
+  OWN-WORLD: The Oglas frame unchanged: studio dark and gallery white chapters, Vend Sans
+  display in uppercase, Manrope body, hairline rows, square image frames, lime only for
+  interface state.
+  STORY: See all five services at once, read any one in full (included, how it works, what
+  you receive, who it is for, related work), understand the shared process, ask, then start.
+  FIRST VIEWPORT: The existing manifesto rising word by word, a one-line summary with the
+  Start a project pill, and a five-column index of the services along the bottom.
+  FORM: Service chapters with a sticky, scroll-synced reel of real project images.
   FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review,
   the verdict, DESIGN.md, and every shipping raster carrying its provenance
 */
@@ -64,7 +63,7 @@ function Hero() {
 
         <div className="svc-hero-follow mt-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between lg:mt-14">
           <p className="max-w-[560px] font-body text-[clamp(1.05rem,1.3vw,1.3rem)] leading-[1.55] text-white/70">
-            Five disciplines, one team: from the first idea to launch, and everything that follows.
+            {servicesSummary}
           </p>
           <Link
             className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-white px-7 py-4 font-body text-sm font-semibold tracking-[0.08em] text-black uppercase transition-colors duration-300 hover:bg-lime"
@@ -76,7 +75,11 @@ function Hero() {
         </div>
       </div>
 
-      <nav aria-label="Our services" className={`${SHELL} svc-hero-follow pb-10 lg:pb-14`} style={{ "--delay": "0.95s" } as CSSProperties}>
+      <nav
+        aria-label="Our services"
+        className={`${SHELL} svc-hero-follow pb-10 lg:pb-14`}
+        style={{ "--delay": "0.95s" } as CSSProperties}
+      >
         <ol className="grid border-t border-white/15 md:grid-cols-5">
           {services.map((service) => (
             <li className="border-b border-white/15 md:border-b-0 md:border-l md:first:border-l-0" key={service.id}>
@@ -106,9 +109,9 @@ function Hero() {
 
 /* ------------------------------------------------------------------ */
 
-function Block({ label, children, className }: { label: string; children: ReactNode; className?: string }) {
+function Block({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className={className}>
+    <div>
       <h3 className="mb-6 font-body text-sm font-bold tracking-[0.08em] uppercase opacity-55 lg:mb-8">{label}</h3>
       {children}
     </div>
@@ -142,6 +145,22 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
   const muted = dark ? "text-white/70" : "text-black/70";
   const rule = dark ? "border-white/15" : "border-black/15";
   const works = service.work.map(findWork).filter((work): work is Work => Boolean(work));
+  const content = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const count = service.reel.length;
+
+  // Step the image reel as the reader moves through the chapter's text.
+  useEffect(() => {
+    const node = content.current;
+    if (!node || count === 0) return;
+    const trigger = ScrollTrigger.create({
+      trigger: node,
+      start: "top 65%",
+      end: "bottom 65%",
+      onUpdate: (self) => setActive(Math.min(count - 1, Math.floor(self.progress * count))),
+    });
+    return () => trigger.kill();
+  }, [count]);
 
   return (
     <section
@@ -151,7 +170,7 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
       id={service.id}
     >
       <div className={`${SHELL} pt-24 pb-24 lg:pt-36 lg:pb-36`}>
-        <header className={cn("grid gap-6 border-b pb-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-end lg:gap-16 lg:pb-14", rule)}>
+        <header className={cn("border-b pb-10 lg:pb-14", rule)}>
           <h2
             className="svc-title font-display text-[clamp(2.6rem,8vw,9rem)] leading-[0.86] font-extrabold tracking-[-0.045em] uppercase outline-none [overflow-wrap:anywhere]"
             data-section-heading
@@ -160,17 +179,14 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
           >
             {service.title}
           </h2>
-          <p className="font-body text-[clamp(1.1rem,1.35vw,1.4rem)] leading-[1.45] font-medium">{service.promise}</p>
         </header>
 
-        <div className="mt-12 grid gap-14 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-[4.5vw]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <div className="mx-auto w-full lg:max-w-[min(100%,calc((100svh_-_16rem)*1.25))]">
-              <ServicePlate service={service} />
-            </div>
+        <div className="mt-12 grid gap-14 lg:mt-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-[4.5vw]">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <WorkReel active={active} images={service.reel} title={service.title} />
           </div>
 
-          <div className="flex min-w-0 flex-col gap-16 lg:gap-24">
+          <div className="flex min-w-0 flex-col gap-16 lg:gap-24" ref={content}>
             <div className={cn("max-w-[64ch] space-y-5 font-body text-[clamp(1.05rem,1.2vw,1.25rem)] leading-[1.65]", muted)}>
               {service.description.map((paragraph) => (
                 <p key={paragraph.slice(0, 32)}>{paragraph}</p>
@@ -182,8 +198,8 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
                 {service.capabilities.map((capability) => (
                   <li className={cn("svc-cap border-b py-5 lg:py-6", rule)} key={capability.label}>
                     <div className="grid gap-1.5 sm:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] sm:gap-8">
-                      <h4 className="m-0 font-body text-lg leading-snug font-semibold tracking-[-0.01em]">{capability.label}</h4>
-                      <p className={cn("m-0 font-body text-base leading-[1.6]", muted)}>{capability.detail}</p>
+                      <h4 className="font-body text-lg leading-snug font-semibold tracking-[-0.01em]">{capability.label}</h4>
+                      <p className={cn("font-body text-base leading-[1.6]", muted)}>{capability.detail}</p>
                     </div>
                     {capability.children && (
                       <ul className={cn("mt-5 grid gap-4 border-l pl-5 sm:ml-[calc(42.5%_+_1.15rem)]", rule)}>
@@ -200,44 +216,34 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
               </ul>
             </Block>
 
-            <Block label="How it runs">
+            <Block label="How it works">
               <ol className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
                 {service.steps.map((step, i) => (
                   <li className={cn("svc-step relative border-t pt-6", rule)} key={step.title}>
-                    <span className="font-display text-sm font-bold tracking-[0.04em] tabular-nums opacity-50">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    <span className="font-body text-sm font-semibold tabular-nums opacity-50">{String(i + 1).padStart(2, "0")}</span>
                     <h4 className="mt-3 mb-2 font-body text-lg font-semibold tracking-[-0.01em]">{step.title}</h4>
-                    <p className={cn("m-0 font-body text-base leading-[1.6]", muted)}>{step.detail}</p>
+                    <p className={cn("font-body text-base leading-[1.6]", muted)}>{step.detail}</p>
                   </li>
                 ))}
               </ol>
             </Block>
 
             <div className="grid gap-16 md:grid-cols-2 md:gap-10">
-              <Block label="You receive">
-                <ul className="flex flex-wrap gap-2">
+              <Block label="What you receive">
+                <ul className={cn("border-t", rule)}>
                   {service.deliverables.map((item) => (
-                    <li
-                      className={cn(
-                        "inline-flex items-center gap-2 rounded-full border px-4 py-2 font-body text-sm",
-                        dark ? "border-white/20" : "border-black/20",
-                      )}
-                      key={item}
-                    >
-                      <Check className={cn("size-3.5 shrink-0", dark ? "text-lime" : "text-black")} strokeWidth={2.2} />
+                    <li className={cn("border-b py-3.5 font-body text-base", rule)} key={item}>
                       {item}
                     </li>
                   ))}
                 </ul>
               </Block>
 
-              <Block label="Right for you if">
-                <ul className="grid gap-4">
+              <Block label="Who it's for">
+                <ul className={cn("border-t", rule)}>
                   {service.fit.map((line) => (
-                    <li className="flex gap-3 font-body text-base leading-[1.55]" key={line}>
-                      <ArrowRight className={cn("mt-1 size-4 shrink-0", dark ? "text-lime" : "text-black")} />
-                      <span className={muted}>{line}</span>
+                    <li className={cn("border-b py-3.5 font-body text-base leading-[1.55]", rule, muted)} key={line}>
+                      {line}
                     </li>
                   ))}
                 </ul>
@@ -245,7 +251,7 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
             </div>
 
             {works.length > 0 && (
-              <Block label="See it in our work">
+              <Block label="Related work">
                 <ul className="grid gap-x-6 gap-y-10 sm:grid-cols-2">
                   {works.map((work) => (
                     <li key={work.slug}>
@@ -264,90 +270,6 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
 
 /* ------------------------------------------------------------------ */
 
-function CapabilityRibbon() {
-  const labels = services.flatMap((service) =>
-    service.capabilities.flatMap((capability) => [capability.label, ...(capability.children?.map((child) => child.label) ?? [])]),
-  );
-  const unique = Array.from(new Set(labels));
-  const half = Math.ceil(unique.length / 2);
-  const rows = [unique.slice(0, half), unique.slice(half)];
-
-  return (
-    <section aria-hidden="true" className="overflow-hidden border-t border-white/10 bg-dark py-16 text-white lg:py-24">
-      {rows.map((row, r) => (
-        <div className={cn("marquee group relative overflow-hidden", r === 1 && "svc-ribbon-reverse mt-3 lg:mt-5")} key={r}>
-          <div className="marquee__track flex w-max items-center" style={{ animationDuration: `${70 + r * 12}s` }}>
-            {[0, 1].map((copy) => (
-              <ul className="flex shrink-0 items-center" key={copy}>
-                {row.map((label) => (
-                  <li className="flex items-center" key={`${copy}-${label}`}>
-                    <span
-                      className={cn(
-                        "px-6 font-display text-[clamp(2.2rem,5.4vw,5.75rem)] leading-[1.05] font-extrabold tracking-[-0.04em] whitespace-nowrap uppercase lg:px-10",
-                        r === 1 && "text-white/25",
-                      )}
-                    >
-                      {label}
-                    </span>
-                    <Spark className="size-[clamp(1rem,1.8vw,1.75rem)] shrink-0 text-lime" />
-                  </li>
-                ))}
-              </ul>
-            ))}
-          </div>
-        </div>
-      ))}
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-
-function MagneticLink({ to, children }: { to: string; children: ReactNode }) {
-  const area = useRef<HTMLDivElement>(null);
-  const button = useRef<HTMLAnchorElement>(null);
-  const reducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    const areaEl = area.current;
-    const buttonEl = button.current;
-    if (!areaEl || !buttonEl || reducedMotion) return;
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-
-    const move = (event: PointerEvent): void => {
-      const rect = areaEl.getBoundingClientRect();
-      const x = event.clientX - (rect.left + rect.width / 2);
-      const y = event.clientY - (rect.top + rect.height / 2);
-      buttonEl.style.transform = `translate3d(${x * 0.28}px, ${y * 0.28}px, 0)`;
-    };
-    const reset = (): void => {
-      buttonEl.style.transform = "";
-    };
-
-    areaEl.addEventListener("pointermove", move);
-    areaEl.addEventListener("pointerleave", reset);
-    return () => {
-      areaEl.removeEventListener("pointermove", move);
-      areaEl.removeEventListener("pointerleave", reset);
-    };
-  }, [reducedMotion]);
-
-  return (
-    <div className="grid size-[clamp(14rem,22vw,20rem)] shrink-0 place-items-center" ref={area}>
-      <Link
-        className="group grid size-[clamp(9.5rem,13vw,12rem)] place-items-center rounded-full bg-lime text-center text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
-        ref={button}
-        to={to}
-      >
-        <span className="flex flex-col items-center gap-2 font-body text-sm font-bold tracking-[0.08em] uppercase">
-          <ArrowUpRight className="size-6 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          {children}
-        </span>
-      </Link>
-    </div>
-  );
-}
-
 function ClosingCta() {
   const { dubai, india } = siteDetails.offices;
   const studios = [
@@ -358,15 +280,21 @@ function ClosingCta() {
   return (
     <section aria-labelledby="services-cta-title" className="bg-dark text-white">
       <div className={`${SHELL} py-24 lg:py-40`}>
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+        <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
           <h2
-            className="font-display text-[clamp(2.6rem,6.6vw,7.5rem)] leading-[0.88] font-extrabold tracking-[-0.045em] uppercase"
+            className="font-display text-[clamp(2.6rem,6.6vw,7.5rem)] leading-[0.88] font-extrabold tracking-[-0.045em] uppercase [text-wrap:balance]"
             id="services-cta-title"
           >
             Have a project in mind?
             <span className="block text-white/35">Let&apos;s build it together.</span>
           </h2>
-          <MagneticLink to="/contacts">Start a project</MagneticLink>
+          <Link
+            className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-white px-8 py-5 font-body text-sm font-semibold tracking-[0.08em] text-black uppercase transition-colors duration-300 hover:bg-lime"
+            to="/contacts"
+          >
+            Start a project
+            <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
         </div>
 
         <dl className="mt-16 grid gap-10 border-t border-white/15 pt-10 sm:grid-cols-2 lg:mt-24 lg:max-w-[880px]">
@@ -418,7 +346,6 @@ export default function Services() {
         <Chapter key={service.id} service={service} tone={i % 2 === 0 ? "light" : "dark"} />
       ))}
       <ChapterDock services={services} />
-      <CapabilityRibbon />
       <ProcessTrack />
       <section aria-labelledby="faq-title" className="bg-white text-black">
         <div className={`${SHELL} grid gap-12 py-24 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)] lg:gap-16 lg:py-36`}>
@@ -427,10 +354,10 @@ export default function Services() {
               className="font-display text-[clamp(2.4rem,4.4vw,4.75rem)] leading-[0.9] font-extrabold tracking-[-0.04em] uppercase"
               id="faq-title"
             >
-              Questions, answered
+              FAQ
             </h2>
             <p className="mt-6 max-w-[34ch] font-body text-base leading-[1.6] text-black/65">
-              Anything we have not covered? Write to{" "}
+              Other questions? Email{" "}
               <a className="font-semibold text-black underline underline-offset-4" href={`mailto:${siteDetails.offices.dubai.email}`}>
                 {siteDetails.offices.dubai.email}
               </a>

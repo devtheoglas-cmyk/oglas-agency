@@ -38,7 +38,7 @@ export function ChapterDock({ services }: { services: Service[] }) {
   return (
     <nav
       aria-label="Service chapters"
-      className="svc-dock fixed bottom-4 left-1/2 z-40 max-w-[calc(100vw-2rem)] sm:bottom-6"
+      className="svc-dock fixed bottom-6 left-1/2 z-40 hidden lg:block"
       data-visible={isVisible}
       inert={!isVisible}
     >
@@ -58,7 +58,7 @@ export function ChapterDock({ services }: { services: Service[] }) {
                 type="button"
               >
                 <span className="tabular-nums">{i + 1}</span>
-                <span className={cn(current ? "inline" : "hidden md:inline")}>{service.short}</span>
+                <span>{service.short}</span>
               </button>
             </li>
           );

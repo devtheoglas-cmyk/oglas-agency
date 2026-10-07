@@ -9,7 +9,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 
 /**
- * "How a project moves": on large screens the section pins and the six
+ * "How we work": on large screens the section pins and the six
  * stages travel sideways as you scroll, with a lime rule tracking progress.
  * Below lg, or with reduced motion, the same list reads as a vertical
  * timeline, so no content depends on the pinned version.
@@ -90,7 +90,7 @@ export function ProcessTrack() {
             id="process-title"
             tabIndex={-1}
           >
-            How a project moves
+            How we work
           </h2>
           <p className="max-w-[560px] font-body text-[clamp(1.05rem,1.2vw,1.25rem)] leading-[1.6] text-black/70">
             {processIntro}
@@ -109,16 +109,12 @@ export function ProcessTrack() {
               key={stage.title}
             >
               <div className="svc-stage-body flex h-full flex-col">
-                <div className="flex items-baseline gap-4">
-                  <span className="font-display text-[clamp(3.5rem,6vw,6rem)] leading-[0.8] font-extrabold tracking-[-0.05em] text-black/15 tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-display text-[clamp(1.6rem,2.2vw,2.4rem)] leading-none font-bold tracking-[-0.03em] uppercase">
-                    {stage.title}
-                  </h3>
-                </div>
+                <span className="font-body text-sm font-semibold tabular-nums text-black/50">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 font-display text-[clamp(1.8rem,2.4vw,2.6rem)] leading-none font-bold tracking-[-0.03em] uppercase">
+                  {stage.title}
+                </h3>
                 <p className="mt-6 max-w-[38ch] font-body text-base leading-[1.6] text-black/75 lg:mt-8">{stage.detail}</p>
-                <dl className="mt-6 grid gap-4 border-t border-black/10 pt-5 font-body text-sm lg:mt-auto">
+                <dl className="mt-6 grid gap-4 border-t border-black/10 pt-5 font-body text-sm lg:mt-8">
                   <div className="grid grid-cols-[7.5rem_1fr] gap-3">
                     <dt className="font-semibold tracking-[0.06em] text-black/50 uppercase">You see</dt>
                     <dd className="m-0 text-black/85">{stage.youSee}</dd>
