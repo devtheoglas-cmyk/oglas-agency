@@ -1,0 +1,447 @@
+/* Services page motion.
+   Loaded only with the /services route (imported from pages/Services.tsx).
+
+   Rules of the road:
+   - Every element's resting style is its finished state. Motion only ever
+     plays *toward* that state, so reduced-motion visitors and browsers
+     without scroll-driven animation see complete content.
+   - Plate loops share one duration (--plate-loop) so each illustration and
+     its caption strip stay in step. Four equal phases: 0–25–50–75–100%.
+   - Plates pause off screen ([data-state="idle"]) and on request
+     ([data-state="paused"]); reduced motion renders them static. */
+
+/* ------------------------------------------------------------------ */
+/* Opening statement: words rise out of their own line masks on load    */
+/* ------------------------------------------------------------------ */
+
+.svc-word {
+  display: inline-block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+  vertical-align: top;
+}
+
+.svc-word > span {
+  display: inline-block;
+  animation: svc-word-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 38ms + 120ms);
+}
+
+@keyframes svc-word-rise {
+  from {
+    transform: translate3d(0, 105%, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.svc-hero-follow {
+  animation: svc-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--delay, 0.7s);
+}
+
+@keyframes svc-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Service index: a lime field wipes up behind the hovered discipline. */
+.svc-index-fill {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-index:hover .svc-index-fill,
+.svc-index:focus-visible .svc-index-fill {
+  clip-path: inset(0 0 0 0);
+}
+
+.svc-index:focus-visible {
+  outline-offset: -2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Chapters                                                             */
+/* ------------------------------------------------------------------ */
+
+.svc-chapter[data-tone="dark"] {
+  --svc-accent: #e3ff51;
+}
+
+.svc-chapter[data-tone="light"] {
+  --svc-accent: #0c0c0c;
+}
+
+/* Step rules: the accent line draws across each step as it scrolls in. */
+.svc-step::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--svc-accent);
+  transform-origin: left center;
+}
+
+@supports (animation-timeline: view()) {
+  .svc-title {
+    animation: svc-title-in cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 32%;
+  }
+
+  @keyframes svc-title-in {
+    from {
+      clip-path: inset(100% 0 -10% 0);
+      transform: translate3d(0, 0.35em, 0);
+    }
+    to {
+      clip-path: inset(0 0 -10% 0);
+      transform: none;
+    }
+  }
+
+  .svc-cap {
+    animation: svc-row-in cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 90%;
+  }
+
+  @keyframes svc-row-in {
+    from {
+      opacity: 0.1;
+      transform: translate3d(0, 18px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .svc-step::after {
+    animation: svc-rule-draw cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 30% cover 45%;
+  }
+
+  .svc-step:nth-child(2)::after {
+    animation-range: entry 55% cover 55%;
+  }
+
+  .svc-step:nth-child(3)::after {
+    animation-range: entry 70% cover 60%;
+  }
+
+  .svc-step:nth-child(4)::after {
+    animation-range: entry 85% cover 65%;
+  }
+
+  @keyframes svc-rule-draw {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Proof plates                                                         */
+/* ------------------------------------------------------------------ */
+
+.svc-plate {
+  --plate-loop: 12s;
+}
+
+.svc-plate svg {
+  font-family: var(--font-body);
+}
+
+.svc-plate .svc-display {
+  font-family: var(--font-display);
+}
+
+.svc-plate .svc-mono {
+  font-family: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
+}
+
+.svc-plate [data-a] {
+  animation-duration: var(--plate-loop);
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+  animation-delay: var(--d, 0s);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.svc-plate[data-state="idle"] [data-a],
+.svc-plate[data-state="paused"] [data-a] {
+  animation-play-state: paused;
+}
+
+.svc-plate[data-state="static"] [data-a] {
+  animation: none;
+}
+
+/* Elements that only exist mid-story are hidden at rest. */
+.svc-plate [data-a^="only"],
+.svc-plate [data-a="flag"],
+.svc-plate [data-a="cursor"],
+.svc-plate [data-a="click"],
+.svc-plate [data-a="heart"],
+.svc-plate [data-a="user"],
+.svc-plate [data-a="packet"] {
+  opacity: 0;
+}
+
+.svc-plate [data-a^="draw"] {
+  stroke-dasharray: 1;
+}
+
+.svc-plate [data-a^="grow"],
+.svc-plate [data-a^="bar"] {
+  transform-origin: left center;
+}
+
+.svc-plate [data-a^="lift"] {
+  transform-origin: center bottom;
+}
+
+.svc-plate [data-a^="bar"],
+.svc-plate [data-a="progress"] {
+  animation-timing-function: linear;
+  transform-origin: left center;
+}
+
+/* The cursor path is drawn with its tip at 0,0, so its own top-left corner
+   is the tip: the click squeeze scales around where it points. */
+.svc-plate [data-a="cursor"] {
+  transform-origin: 0 0;
+}
+
+/* Phase 1 = 0–25%, phase 2 = 25–50%, phase 3 = 50–75%, phase 4 = 75–100%.
+   Everything holds until 93% and clears by 98% so the loop restarts clean. */
+
+.svc-plate [data-a="fade-1"] { animation-name: svc-fade-1; }
+.svc-plate [data-a="fade-2"] { animation-name: svc-fade-2; }
+.svc-plate [data-a="fade-3"] { animation-name: svc-fade-3; }
+.svc-plate [data-a="fade-4"] { animation-name: svc-fade-4; }
+@keyframes svc-fade-1 { 0%, 1% { opacity: 0; } 8%, 93% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes svc-fade-2 { 0%, 26% { opacity: 0; } 33%, 93% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes svc-fade-3 { 0%, 51% { opacity: 0; } 58%, 93% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes svc-fade-4 { 0%, 76% { opacity: 0; } 83%, 93% { opacity: 1; } 98%, 100% { opacity: 0; } }
+
+.svc-plate [data-a="rise-1"] { animation-name: svc-rise-1; }
+.svc-plate [data-a="rise-2"] { animation-name: svc-rise-2; }
+.svc-plate [data-a="rise-3"] { animation-name: svc-rise-3; }
+.svc-plate [data-a="rise-4"] { animation-name: svc-rise-4; }
+@keyframes svc-rise-1 { 0%, 1% { opacity: 0; transform: translateY(14px); } 8%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-rise-2 { 0%, 26% { opacity: 0; transform: translateY(14px); } 33%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-rise-3 { 0%, 51% { opacity: 0; transform: translateY(14px); } 58%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-rise-4 { 0%, 76% { opacity: 0; transform: translateY(14px); } 83%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+
+.svc-plate [data-a="slide-3"] { animation-name: svc-slide-3; }
+.svc-plate [data-a="slide-4"] { animation-name: svc-slide-4; }
+@keyframes svc-slide-3 { 0%, 51% { opacity: 0; transform: translateX(28px); } 58%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-slide-4 { 0%, 76% { opacity: 0; transform: translateX(36px); } 83%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+
+.svc-plate [data-a="pop-1"] { animation-name: svc-pop-1; }
+.svc-plate [data-a="pop-2"] { animation-name: svc-pop-2; }
+.svc-plate [data-a="pop-3"] { animation-name: svc-pop-3; }
+.svc-plate [data-a="pop-4"] { animation-name: svc-pop-4; }
+@keyframes svc-pop-1 { 0%, 1% { opacity: 0; transform: scale(0.2); } 7%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-pop-2 { 0%, 26% { opacity: 0; transform: scale(0.2); } 32%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-pop-3 { 0%, 51% { opacity: 0; transform: scale(0.2); } 57%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-pop-4 { 0%, 76% { opacity: 0; transform: scale(0.2); } 82%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+
+.svc-plate [data-a="grow-1"] { animation-name: svc-grow-1; }
+.svc-plate [data-a="grow-2"] { animation-name: svc-grow-2; }
+.svc-plate [data-a="grow-3"] { animation-name: svc-grow-3; }
+.svc-plate [data-a="grow-4"] { animation-name: svc-grow-4; }
+@keyframes svc-grow-1 { 0%, 1% { opacity: 0; transform: scaleX(0); } 2% { opacity: 1; } 8%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-grow-2 { 0%, 26% { opacity: 0; transform: scaleX(0); } 27% { opacity: 1; } 33%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-grow-3 { 0%, 51% { opacity: 0; transform: scaleX(0); } 52% { opacity: 1; } 58%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-grow-4 { 0%, 76% { opacity: 0; transform: scaleX(0); } 77% { opacity: 1; } 83%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+
+.svc-plate [data-a="lift-2"] { animation-name: svc-lift-2; }
+.svc-plate [data-a="lift-4"] { animation-name: svc-lift-4; }
+@keyframes svc-lift-2 { 0%, 26% { opacity: 0; transform: scaleY(0); } 27% { opacity: 1; } 34%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-lift-4 { 0%, 76% { opacity: 0; transform: scaleY(0); } 77% { opacity: 1; } 84%, 93% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: none; } }
+
+.svc-plate [data-a="draw-1"] { animation-name: svc-draw-1; }
+.svc-plate [data-a="draw-2"] { animation-name: svc-draw-2; }
+.svc-plate [data-a="draw-3"] { animation-name: svc-draw-3; }
+.svc-plate [data-a="draw-4"] { animation-name: svc-draw-4; }
+@keyframes svc-draw-1 { 0%, 1% { opacity: 0; stroke-dashoffset: 1; } 2% { opacity: 1; stroke-dashoffset: 1; } 12%, 93% { opacity: 1; stroke-dashoffset: 0; } 98%, 100% { opacity: 0; stroke-dashoffset: 0; } }
+@keyframes svc-draw-2 { 0%, 26% { opacity: 0; stroke-dashoffset: 1; } 27% { opacity: 1; stroke-dashoffset: 1; } 37%, 93% { opacity: 1; stroke-dashoffset: 0; } 98%, 100% { opacity: 0; stroke-dashoffset: 0; } }
+@keyframes svc-draw-3 { 0%, 51% { opacity: 0; stroke-dashoffset: 1; } 52% { opacity: 1; stroke-dashoffset: 1; } 62%, 93% { opacity: 1; stroke-dashoffset: 0; } 98%, 100% { opacity: 0; stroke-dashoffset: 0; } }
+@keyframes svc-draw-4 { 0%, 76% { opacity: 0; stroke-dashoffset: 1; } 77% { opacity: 1; stroke-dashoffset: 1; } 87%, 93% { opacity: 1; stroke-dashoffset: 0; } 98%, 100% { opacity: 0; stroke-dashoffset: 0; } }
+
+.svc-plate [data-a="only-1"] { animation-name: svc-only-1; }
+.svc-plate [data-a="only-2"] { animation-name: svc-only-2; }
+@keyframes svc-only-1 { 0%, 1% { opacity: 0; } 4%, 22% { opacity: 1; } 25%, 100% { opacity: 0; } }
+@keyframes svc-only-2 { 0%, 26% { opacity: 0; } 29%, 47% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+/* Caption strip: each label lights for its phase while its bar fills. */
+.svc-plate [data-a="tab-1"] { animation-name: svc-tab-1; }
+.svc-plate [data-a="tab-2"] { animation-name: svc-tab-2; }
+.svc-plate [data-a="tab-3"] { animation-name: svc-tab-3; }
+.svc-plate [data-a="tab-4"] { animation-name: svc-tab-4; }
+@keyframes svc-tab-1 { 0% { opacity: 1; } 24% { opacity: 1; } 26%, 100% { opacity: 0.4; } }
+@keyframes svc-tab-2 { 0%, 24% { opacity: 0.4; } 26%, 49% { opacity: 1; } 51%, 100% { opacity: 0.4; } }
+@keyframes svc-tab-3 { 0%, 49% { opacity: 0.4; } 51%, 74% { opacity: 1; } 76%, 100% { opacity: 0.4; } }
+@keyframes svc-tab-4 { 0%, 74% { opacity: 0.4; } 76%, 97% { opacity: 1; } 99%, 100% { opacity: 0.4; } }
+
+.svc-plate [data-a="bar-1"] { animation-name: svc-bar-1; }
+.svc-plate [data-a="bar-2"] { animation-name: svc-bar-2; }
+.svc-plate [data-a="bar-3"] { animation-name: svc-bar-3; }
+.svc-plate [data-a="bar-4"] { animation-name: svc-bar-4; }
+@keyframes svc-bar-1 { 0% { transform: scaleX(0); } 25%, 96% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0); } }
+@keyframes svc-bar-2 { 0%, 25% { transform: scaleX(0); } 50%, 96% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0); } }
+@keyframes svc-bar-3 { 0%, 50% { transform: scaleX(0); } 75%, 96% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0); } }
+@keyframes svc-bar-4 { 0%, 75% { transform: scaleX(0); } 96% { transform: scaleX(1); } 99%, 100% { transform: scaleX(0); } }
+
+/* Brand: the lime dot travels from the crowded middle to open space. */
+.svc-plate [data-a="seek"] { animation-name: svc-seek; }
+@keyframes svc-seek {
+  0%, 9% { opacity: 0; transform: translate(-60px, 44px); }
+  11% { opacity: 1; transform: translate(-60px, 44px); }
+  19%, 93% { opacity: 1; transform: none; }
+  98%, 100% { opacity: 0; transform: none; }
+}
+
+/* Web: the cursor reaches the call to action and clicks it. */
+.svc-plate [data-a="cursor"] { animation-name: svc-cursor; }
+@keyframes svc-cursor {
+  0%, 59% { opacity: 0; transform: translate(330px, 268px); }
+  61% { opacity: 1; transform: translate(330px, 268px); }
+  68% { opacity: 1; transform: translate(88px, 180px); }
+  69.5% { opacity: 1; transform: translate(88px, 180px) scale(0.82); }
+  71%, 74% { opacity: 1; transform: translate(88px, 180px); }
+  77%, 100% { opacity: 0; transform: translate(88px, 180px); }
+}
+
+.svc-plate [data-a="click"] { animation-name: svc-click; }
+@keyframes svc-click {
+  0%, 69% { opacity: 0; transform: scale(0.3); }
+  70% { opacity: 1; transform: scale(0.4); }
+  76%, 100% { opacity: 0; transform: scale(1.7); }
+}
+
+/* Marketing: likes float up from the post. */
+.svc-plate [data-a="heart"] { animation-name: svc-heart; }
+@keyframes svc-heart {
+  0%, 53% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  55% { opacity: 1; transform: translate(0, -6px) scale(0.8); }
+  66%, 100% { opacity: 0; transform: translate(var(--hx, 0px), -120px) scale(1.15); }
+}
+
+/* UX: the user walks the journey, stalls on friction, then gets through. */
+.svc-plate [data-a="user"] { animation-name: svc-user; animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+@keyframes svc-user {
+  0%, 30% { opacity: 0; transform: translateX(0); }
+  32% { opacity: 1; transform: translateX(0); }
+  45% { opacity: 1; transform: translateX(402px); }
+  48%, 50% { opacity: 0; transform: translateX(402px); }
+  51% { opacity: 0; transform: translateX(0); }
+  52% { opacity: 1; transform: translateX(0); }
+  57% { opacity: 1; transform: translateX(268px); }
+  58% { transform: translateX(262px); }
+  59% { transform: translateX(272px); }
+  60% { transform: translateX(264px); }
+  61%, 66% { opacity: 1; transform: translateX(268px); }
+  72% { opacity: 1; transform: translateX(402px); }
+  75%, 100% { opacity: 0; transform: translateX(402px); }
+}
+
+.svc-plate [data-a="flag"] { animation-name: svc-flag; }
+@keyframes svc-flag {
+  0%, 57% { opacity: 0; transform: scale(0.6); }
+  59%, 64% { opacity: 1; transform: none; }
+  66%, 100% { opacity: 0; transform: none; }
+}
+
+.svc-plate [data-a="fixed"] { animation-name: svc-fixed; }
+@keyframes svc-fixed {
+  0%, 64% { opacity: 0; transform: scale(0.4); }
+  67%, 93% { opacity: 1; transform: none; }
+  98%, 100% { opacity: 0; transform: none; }
+}
+
+/* Dev: data packets flow from each service into the site. */
+.svc-plate [data-a="packet"] { animation-name: svc-packet; animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
+@keyframes svc-packet {
+  0%, 30% { opacity: 0; transform: translateX(0); }
+  31% { opacity: 1; transform: translateX(0); }
+  38% { opacity: 1; transform: translateX(-52px); }
+  39%, 100% { opacity: 0; transform: translateX(-52px); }
+}
+
+.svc-plate [data-a="progress"] { animation-name: svc-progress; animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+@keyframes svc-progress {
+  0%, 77% { transform: scaleX(0); }
+  89%, 93% { transform: scaleX(1); }
+  98%, 100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Chapter dock, ribbon, process                                        */
+/* ------------------------------------------------------------------ */
+
+.svc-dock {
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease;
+}
+
+.svc-dock[data-visible="false"] {
+  opacity: 0;
+  transform: translate3d(-50%, 140%, 0);
+  pointer-events: none;
+}
+
+.svc-dock[data-visible="true"] {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.svc-ribbon-reverse .marquee__track {
+  animation-direction: reverse;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion: finished states, no travel                           */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-word > span,
+  .svc-hero-follow,
+  .svc-title,
+  .svc-cap,
+  .svc-step::after {
+    animation: none !important;
+    transform: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+  }
+
+  .svc-plate [data-a] {
+    animation: none !important;
+  }
+
+  .svc-index-fill,
+  .svc-dock {
+    transition: opacity 0.2s ease !important;
+  }
+}
