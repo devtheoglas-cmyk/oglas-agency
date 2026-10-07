@@ -181,8 +181,8 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
           </h2>
         </header>
 
-        <div className="mt-12 grid gap-14 lg:mt-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-[4.5vw]">
-          <div className="lg:sticky lg:top-32 lg:self-start">
+        <div className="mt-12 grid grid-cols-1 gap-14 lg:mt-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-[4.5vw]">
+          <div className="min-w-0 lg:sticky lg:top-32 lg:self-start">
             <WorkReel active={active} images={service.reel} title={service.title} />
           </div>
 

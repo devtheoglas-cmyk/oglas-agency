@@ -62,7 +62,7 @@ export function WorkReel({ images, active, title }: { images: ReelImage[]; activ
         )}
       </figure>
 
-      <ul aria-label={`${title} work`} className="svc-reel-strip -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8 lg:hidden">
+      <ul aria-label={`${title} work`} className="svc-reel-strip -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:hidden">
         {images.map((image) => (
           <li className="w-[84%] shrink-0 snap-start sm:w-[62%]" key={image.src}>
             <div className="relative aspect-[16/10] overflow-hidden bg-ink">
