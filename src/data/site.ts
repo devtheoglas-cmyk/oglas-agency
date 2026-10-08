@@ -11,7 +11,7 @@ export interface OfficeDetails {
 }
 
 export const siteDetails = {
-  businessEmail: "hello@theoglas.com",
+  businessEmail: "admin@oglasglobal.com",
   socials: {
     linkedin: "https://www.linkedin.com/company/ogc-it/",
     instagram: "https://www.instagram.com/oglas.global/",
