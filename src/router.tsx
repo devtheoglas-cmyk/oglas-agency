@@ -5,7 +5,6 @@ import { Layout } from "./components/layout/Layout";
 const Home = lazy(() => import("./pages/Home"));
 const People = lazy(() => import("./pages/People"));
 const Services = lazy(() => import("./pages/Services"));
-const ComputerVision = lazy(() => import("./pages/ComputerVision"));
 const Works = lazy(() => import("./pages/Works"));
 const WorkDetail = lazy(() => import("./pages/WorkDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -19,7 +18,6 @@ export const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "about", element: <People /> },
       { path: "services", element: <Services /> },
-      { path: "intelligent-computer-vision", element: <ComputerVision /> },
       { path: "works", element: <Works /> },
       { path: "works/:slug", element: <WorkDetail /> },
       { path: "contacts", element: <Contact /> },

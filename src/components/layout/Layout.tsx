@@ -11,7 +11,6 @@ const TITLES: Readonly<Record<string, string>> = {
   "/": "The Oglas Agency",
   "/about": "About | The Oglas Agency",
   "/services": "Services | The Oglas Agency",
-  "/intelligent-computer-vision": "Intelligent Computer Vision | Oglas AI",
   "/works": "Works | The Oglas Agency",
   "/works/fishwala": "Fishwala | The Oglas Agency",
   "/works/velvet-properties": "Velvet Properties | The Oglas Agency",
