@@ -62,9 +62,11 @@ function Hero() {
         </h1>
 
         <div className="svc-hero-follow mt-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between lg:mt-14">
-          <p className="max-w-[560px] font-body text-[clamp(1.05rem,1.3vw,1.3rem)] leading-[1.55] text-white/70">
-            {servicesSummary}
-          </p>
+          <div className="max-w-[560px] space-y-4 font-body text-[clamp(1.05rem,1.3vw,1.3rem)] leading-[1.55] text-white/70">
+            {servicesSummary.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
           <Link
             className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-white px-7 py-4 font-body text-sm font-semibold tracking-[0.08em] text-black uppercase transition-colors duration-300 hover:bg-lime"
             to="/contacts"
@@ -296,6 +298,10 @@ function ClosingCta() {
             <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
+        <p className="mt-8 max-w-[760px] font-body text-lg leading-[1.6] text-white/70 lg:mt-10">
+          Whether you need a new brand identity, a website, digital marketing, UX/UI design or web development, let&apos;s
+          discuss your business goals and find the right creative approach for your next project.
+        </p>
 
         <dl className="mt-16 grid gap-10 border-t border-white/15 pt-10 sm:grid-cols-2 lg:mt-24 lg:max-w-[880px]">
           {studios.map((studio) => (

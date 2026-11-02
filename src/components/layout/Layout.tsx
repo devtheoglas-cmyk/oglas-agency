@@ -10,7 +10,7 @@ import { SkipLink } from "./SkipLink";
 const TITLES: Readonly<Record<string, string>> = {
   "/": "Oglas Global | Branding & Creative Agency in Dubai",
   "/about": "About | The Oglas Agency",
-  "/services": "Services | The Oglas Agency",
+  "/services": "Creative Services in Dubai | Oglas Global",
   "/works": "Works | The Oglas Agency",
   "/works/fishwala": "Fishwala | The Oglas Agency",
   "/works/velvet-properties": "Velvet Properties | The Oglas Agency",
@@ -19,6 +19,11 @@ const TITLES: Readonly<Record<string, string>> = {
   "/works/snaxx": "Snaxx | The Oglas Agency",
   "/contacts": "Contact | The Oglas Agency",
   "/privacy": "Privacy Policy | The Oglas Agency",
+};
+
+const DESCRIPTIONS: Readonly<Record<string, string>> = {
+  "/services":
+    "Explore brand design, web design, digital marketing, UX/UI design and web development from Oglas Global's studios in Dubai and Calicut.",
 };
 
 function titleForPath(pathname: string): string {
@@ -35,7 +40,17 @@ export function Layout() {
   useEffect(() => initializeSmoothScroll(), [reducedMotion]);
 
   useEffect(() => {
-    document.title = titleForPath(location.pathname);
+    const title = titleForPath(location.pathname);
+    document.title = title;
+    document.querySelector<HTMLMetaElement>('meta[property="og:title"]')?.setAttribute("content", title);
+    document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]')?.setAttribute("content", title);
+
+    const description = DESCRIPTIONS[location.pathname];
+    if (!description) return;
+
+    document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", description);
+    document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.setAttribute("content", description);
+    document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]')?.setAttribute("content", description);
   }, [location.pathname]);
 
   useEffect(() => {

@@ -45,7 +45,7 @@ export function WorkReel({ images, active, title }: { images: ReelImage[]; activ
                 data-state={i === active ? "active" : i < active ? "past" : "next"}
                 key={image.src}
               >
-                <BgImage alt={`${image.project}, ${image.caption}`} className="svc-reel-image" fill src={image.src} />
+                <BgImage alt={image.alt ?? `${image.project}, ${image.caption}`} className="svc-reel-image" fill src={image.src} />
               </div>
             ))}
         </div>
@@ -66,7 +66,7 @@ export function WorkReel({ images, active, title }: { images: ReelImage[]; activ
         {images.map((image) => (
           <li className="w-[84%] shrink-0 snap-start sm:w-[62%]" key={image.src}>
             <div className="relative aspect-[16/10] overflow-hidden bg-ink">
-              {near && <BgImage alt={`${image.project}, ${image.caption}`} fill src={image.src} />}
+              {near && <BgImage alt={image.alt ?? `${image.project}, ${image.caption}`} fill src={image.src} />}
             </div>
             <p className="mt-3 font-body text-sm">
               <span className="font-semibold">{image.project}</span>

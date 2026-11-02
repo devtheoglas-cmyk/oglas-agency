@@ -14,6 +14,7 @@ export interface ReelImage {
   src: string;
   project: string;
   caption: string;
+  alt?: string;
 }
 
 export interface Service {
@@ -35,10 +36,12 @@ export interface Service {
 }
 
 export const servicesIntro =
-  "We solve problems with creativity anywhere they exist, spanning advertising, brand strategy, experience, design, and much more.";
+  "Branding, Web Design & Digital Marketing Services in Dubai";
 
-export const servicesSummary =
-  "Brand design, web design, digital marketing, UX/UI design and web development, from our studios in Dubai and Calicut.";
+export const servicesSummary = [
+  "Oglas Global brings together brand design, web design, digital marketing, UX/UI design and web development to help businesses build stronger brands and meaningful digital experiences.",
+  "Our teams work from Dubai and Calicut, delivering creative solutions for businesses across different markets.",
+];
 
 export const services: Service[] = [
   {
@@ -47,60 +50,60 @@ export const services: Service[] = [
     short: "Brand",
     highlights: ["Strategy & positioning", "Logo & identity", "Brand guidelines"],
     description: [
-      "We shape identities that feel unmistakably yours — from the core idea and voice to a complete visual system built to scale. Every mark, colour, and type choice is made to hold up across print, packaging, screens, and space.",
-      "We start with research and positioning, then design the logo, colours, typography and supporting graphics, and finish with guidelines and templates your team can use day to day.",
+      "We create distinctive brand identities through strategic branding, thoughtful design and creative direction. From understanding your business positioning and audience to developing logos, visual identities and brand guidelines, we build consistent brand systems that communicate what your business stands for.",
+      "Our branding process considers how your identity appears across digital platforms, print, packaging and physical spaces, helping your brand maintain a recognizable presence as your business grows.",
     ],
     capabilities: [
       {
         label: "Brand strategy & positioning",
-        detail: "Research into your audience and competitors, and a clear statement of what the brand stands for.",
+        detail: "Research into your business, audience and competitors to establish a clear brand position.",
       },
-      { label: "Brand voice & messaging", detail: "Tone of voice, key messages and taglines." },
-      { label: "Logo & wordmark", detail: "Primary logo, alternate versions, icon and favicon." },
+      { label: "Brand voice & messaging", detail: "Developing your brand's tone of voice, key messages and taglines." },
+      { label: "Logo & wordmark", detail: "Creating primary logos, alternate versions, icons and favicons." },
       {
         label: "Visual identity system",
-        detail: "Colour palette, typography, graphic elements, icons and photography style.",
+        detail: "Developing color palettes, typography, graphic elements, icons and photography direction.",
       },
       {
         label: "Brand guidelines",
-        detail: "A document showing how to use the brand correctly: logo spacing, colours, type and common mistakes.",
+        detail: "Documenting logo usage, spacing, colors, typography and other essential brand rules.",
       },
       {
         label: "Art direction",
-        detail: "Direction for photography, illustration and layouts across campaigns and content.",
+        detail: "Establishing the visual direction for photography, illustration and layouts across campaigns and content.",
       },
       {
         label: "Brand applications",
-        detail: "Stationery, packaging, signage, merchandise and social media templates.",
+        detail: "Applying the identity across stationery, packaging, signage, merchandise and social media templates.",
       },
-      { label: "Rebranding", detail: "Updating an existing brand while keeping what customers already recognise." },
+      { label: "Rebranding", detail: "Updating an existing brand identity while retaining the elements customers already recognize." },
     ],
     steps: [
-      { title: "Discovery", detail: "Workshop and research into the business, audience and competitors." },
-      { title: "Strategy", detail: "Positioning, personality and tone of voice agreed with you." },
-      { title: "Identity design", detail: "Logo and visual system concepts, refined over review rounds." },
-      { title: "Guidelines & handover", detail: "Brand guidelines, final artwork and templates delivered." },
+      { title: "Discovery", detail: "Research into your business, audience and competitors." },
+      { title: "Strategy", detail: "Agreeing on brand positioning, personality and tone of voice." },
+      { title: "Identity Design", detail: "Developing and refining logo and visual identity concepts." },
+      { title: "Guidelines & Handover", detail: "Delivering brand guidelines, final artwork and templates." },
     ],
     deliverables: [
       "Brand strategy summary",
       "Logo files for print and digital",
-      "Colour and type specification",
+      "Color and typography specifications",
       "Brand guidelines",
       "Stationery and packaging artwork",
       "Social media templates",
     ],
     fit: [
-      "You are launching a new business.",
-      "Your brand looks different across channels and needs to be made consistent.",
-      "Your current identity no longer fits what the business offers.",
+      "You're launching a new business and need a distinctive identity.",
+      "Your brand looks inconsistent across different channels.",
+      "Your existing identity no longer represents what your business offers.",
     ],
     work: ["fishwala", "velvet-properties"],
     reel: [
-      { src: "/assets/services/brand-1.webp", project: "Velvet Properties", caption: "Logo construction" },
-      { src: "/assets/services/brand-2.webp", project: "Fishwala", caption: "Colour palette" },
+      { src: "/assets/services/brand-1.webp", project: "Velvet Properties", caption: "Logo construction", alt: "Velvet Properties logo construction showing geometric logo development lines." },
+      { src: "/assets/services/brand-2.webp", project: "Fishwala", caption: "Colour palette", alt: "Fishwala brand colour palette featuring navy, white, blue and orange." },
       { src: "/assets/services/brand-3.webp", project: "Fishwala", caption: "Typography" },
-      { src: "/assets/services/brand-4.webp", project: "Fishwala", caption: "Storefront signage" },
-      { src: "/assets/services/brand-5.webp", project: "Velvet Properties", caption: "Business cards" },
+      { src: "/assets/services/brand-4.webp", project: "Fishwala", caption: "Storefront signage", alt: "Fishwala storefront signage displaying the brand logo and illustrated fish mascot." },
+      { src: "/assets/services/brand-5.webp", project: "Velvet Properties", caption: "Business cards", alt: "Velvet Properties branded business cards featuring a dark green visual identity." },
     ],
   },
   {
@@ -109,45 +112,45 @@ export const services: Service[] = [
     short: "Web",
     highlights: ["Sitemap & wireframes", "Responsive design", "Clickable prototypes"],
     description: [
-      "We design websites that carry the brand and guide the visitor — clear structure, confident typography, and layouts that feel effortless. Every screen is planned around what a user actually needs to do next.",
-      "Each page is planned around a goal, such as an enquiry, a booking or a sale, and designed for mobile as carefully as for desktop. You review the full site as a clickable prototype before development starts.",
+      "Our web design services focus on creating responsive, user-friendly websites that communicate your brand and guide visitors towards meaningful actions. From website structure and wireframes to visual design and interactive prototypes, we plan each page around what your audience needs to do next.",
+      "Every website design considers usability across desktop, tablet and mobile. We also create clickable prototypes so you can review important pages and user journeys before development begins.",
     ],
     capabilities: [
-      { label: "Site structure & sitemap", detail: "The pages the site needs and how visitors move between them." },
-      { label: "Wireframes", detail: "Simple layouts that settle content and priorities before visual design." },
-      { label: "Visual design", detail: "Every page designed in your brand style." },
-      { label: "Responsive layouts", detail: "Desktop, tablet and mobile layouts designed separately." },
-      { label: "Design system", detail: "Reusable components and styles that keep new pages consistent." },
-      { label: "Interactive prototypes", detail: "A clickable version of the site for reviewing key journeys." },
-      { label: "Landing pages", detail: "Single-purpose pages for campaigns and launches." },
-      { label: "E-commerce design", detail: "Product listings, product pages, cart and checkout." },
+      { label: "Site Structure & Sitemap", detail: "Planning the pages your website needs and how visitors move between them." },
+      { label: "Wireframes", detail: "Creating page layouts that establish content hierarchy and priorities before visual design." },
+      { label: "Visual Design", detail: "Designing website pages that reflect your brand identity and visual direction." },
+      { label: "Responsive Layouts", detail: "Developing separate design considerations for desktop, tablet and mobile screens." },
+      { label: "Design System", detail: "Establishing reusable components and styles to maintain consistency across pages." },
+      { label: "Interactive Prototypes", detail: "Building clickable website previews to review important interactions and user journeys." },
+      { label: "Landing Pages", detail: "Designing focused pages for marketing campaigns, product launches and events." },
+      { label: "E-commerce Design", detail: "Planning product listings, product pages, shopping carts and checkout experiences." },
     ],
     steps: [
-      { title: "Brief & sitemap", detail: "Goals, audience and content gathered and turned into a sitemap." },
-      { title: "Wireframes", detail: "Key pages laid out to agree structure and priorities." },
-      { title: "Visual design", detail: "Pages designed for desktop and mobile, with feedback at each round." },
-      { title: "Prototype & handoff", detail: "Clickable prototype for sign-off, then files and specs for development." },
+      { title: "Brief & Sitemap", detail: "Gathering business goals, audience information and content requirements." },
+      { title: "Wireframes", detail: "Mapping important pages and agreeing on website structure." },
+      { title: "Visual Design", detail: "Designing desktop and mobile pages with feedback at each stage." },
+      { title: "Prototype & Handoff", detail: "Preparing clickable prototypes and design files for development." },
     ],
     deliverables: [
-      "Sitemap",
-      "Wireframes",
+      "Website sitemap",
+      "Page wireframes",
       "Desktop and mobile designs",
-      "Clickable prototype",
+      "Clickable website prototype",
       "Component library",
       "Developer-ready design files",
     ],
     fit: [
-      "You are launching or relaunching a website.",
-      "Your current site looks dated or brings in few enquiries.",
-      "You need landing pages for a launch, campaign or event.",
+      "You're launching or redesigning a business website.",
+      "Your current website looks outdated or generates few enquiries.",
+      "You need dedicated landing pages for a campaign, launch or event.",
     ],
     work: ["velvet-properties", "gymkha", "aspirant-wave", "snaxx"],
     reel: [
-      { src: "/assets/services/web-1.webp", project: "Velvet Properties", caption: "Homepage" },
-      { src: "/assets/services/web-2.webp", project: "Gymkha", caption: "E-commerce website" },
+      { src: "/assets/services/web-1.webp", project: "Velvet Properties", caption: "Homepage", alt: "Velvet Properties real estate homepage website design displayed on a desktop screen." },
+      { src: "/assets/services/web-2.webp", project: "Gymkha", caption: "E-commerce website", alt: "Gymkha sportswear e-commerce website design displayed in a portfolio presentation." },
       { src: "/assets/services/web-3.webp", project: "Aspirant Wave", caption: "Homepage" },
-      { src: "/assets/services/web-4.webp", project: "Snaxx", caption: "Website" },
-      { src: "/assets/services/web-5.webp", project: "Velvet Properties", caption: "Property management pages on mobile" },
+      { src: "/assets/services/web-4.webp", project: "Snaxx", caption: "Website", alt: "Snaxx vending machine website design displayed on a laptop mockup." },
+      { src: "/assets/services/web-5.webp", project: "Velvet Properties", caption: "Property management pages on mobile", alt: "Velvet Properties property listing page with search and property filters." },
     ],
   },
   {
@@ -156,54 +159,55 @@ export const services: Service[] = [
     short: "Marketing",
     highlights: ["Social media & video", "Meta & Google Ads", "SEO"],
     description: [
-      "We turn a brand into content people stop for. From social campaigns to always-on creative, we plan, design, and produce work that stays consistent and keeps the audience engaged.",
-      "We plan social media, paid advertising and SEO together, produce the content and ads, and review the results with you regularly to decide what to change.",
+      "Our digital marketing services help businesses strengthen their online presence through strategic campaigns, creative content and performance-focused advertising.",
+      "From social media marketing and video production to Meta Ads, Google Ads and SEO, we plan and manage digital campaigns designed to reach relevant audiences, build engagement and support business growth.",
+      "We bring content creation, advertising and search optimization together, reviewing campaign performance and identifying opportunities to improve.",
     ],
     capabilities: [
-      { label: "Campaign strategy", detail: "Goals, audiences, channels and messages planned before launch." },
+      { label: "Campaign Strategy", detail: "Planning goals, target audiences, channels and key messages before launching campaigns." },
       {
         label: "Social Media Marketing",
-        detail: "Content calendars, post and story design, captions and community management.",
+        detail: "Creating content calendars, social media posts, stories, captions and community management plans.",
         children: [
-          { label: "Video Production", detail: "Reels and short-form video, from planning and shooting to editing." },
+          { label: "Video Production", detail: "Producing reels and short-form videos from planning and shooting to editing." },
         ],
       },
-      { label: "Influencer Marketing", detail: "Finding suitable creators, briefing them and managing collaborations." },
+      { label: "Influencer Marketing", detail: "Identifying suitable creators, preparing campaign briefs and managing collaborations." },
       {
         label: "Performance Marketing",
-        detail: "Paid campaigns set up, run and optimised against agreed goals.",
+        detail: "Setting up, managing and optimizing paid campaigns against agreed objectives.",
         children: [
-          { label: "Meta Ads", detail: "Facebook and Instagram campaigns, audiences and ad creative." },
-          { label: "Google Ads", detail: "Search, display and YouTube campaigns." },
+          { label: "Meta Ads", detail: "Planning and managing Facebook and Instagram campaigns, including audience targeting and creative development." },
+          { label: "Google Ads", detail: "Managing search, display and YouTube advertising campaigns." },
         ],
       },
-      { label: "SEO", detail: "Technical fixes, keyword research and content to improve search rankings." },
+      { label: "SEO", detail: "Supporting search visibility through technical improvements, keyword research and relevant content development." },
     ],
     steps: [
-      { title: "Audit & goals", detail: "Review of your current channels and agreement on goals." },
-      { title: "Strategy & calendar", detail: "Channels, messages and a content calendar agreed before production." },
-      { title: "Create & launch", detail: "Posts, videos and ads produced, approved and published." },
-      { title: "Measure & optimise", detail: "Results reviewed with you, and budgets and content adjusted." },
+      { title: "Audit & Goals", detail: "Reviewing existing channels, campaigns and business objectives." },
+      { title: "Strategy & Calendar", detail: "Agreeing on channels, messages and content schedules." },
+      { title: "Create & Launch", detail: "Producing posts, videos and advertisements for approval and publication." },
+      { title: "Measure & Optimize", detail: "Reviewing results and refining campaigns, budgets and content." },
     ],
     deliverables: [
       "Channel strategy",
       "Content calendar",
-      "Posts, stories and reels",
-      "Ad campaigns and ad creative",
+      "Social media posts, stories and reels",
+      "Advertising campaigns and creative assets",
       "Performance reports",
     ],
     fit: [
-      "You post regularly but your audience is not growing.",
-      "You are launching a product, location or event.",
-      "You want ads run by the same team that makes the content.",
+      "You're publishing content regularly but your audience isn't growing.",
+      "You're launching a product, business location or event.",
+      "You want advertising and creative production managed by the same team.",
     ],
     work: ["fishwala"],
     reel: [
-      { src: "/assets/services/marketing-1.webp", project: "Fishwala", caption: "Instagram profile" },
-      { src: "/assets/services/marketing-2.webp", project: "Fishwala", caption: "Campaign lines" },
+      { src: "/assets/services/marketing-1.webp", project: "Fishwala", caption: "Instagram profile", alt: "Fishwala Instagram profile showing its brand identity and social media presentation." },
+      { src: "/assets/services/marketing-2.webp", project: "Fishwala", caption: "Campaign lines", alt: "Fishwala promotional campaign graphics featuring branded advertising messages." },
       { src: "/assets/services/marketing-3.webp", project: "Gymkha", caption: "Campaign visual" },
-      { src: "/assets/services/marketing-4.webp", project: "Gymkha", caption: "Apparel campaign" },
-      { src: "/assets/services/marketing-5.webp", project: "Fishwala", caption: "Outdoor billboard" },
+      { src: "/assets/services/marketing-4.webp", project: "Gymkha", caption: "Apparel campaign", alt: "Gymkha sportswear apparel campaign featuring bold branded typography." },
+      { src: "/assets/services/marketing-5.webp", project: "Fishwala", caption: "Outdoor billboard", alt: "Fishwala outdoor advertising billboard featuring the Fresh Doesn't Shout campaign." },
     ],
   },
   {
@@ -212,30 +216,30 @@ export const services: Service[] = [
     short: "UX/UI",
     highlights: ["User research", "Flows & wireframes", "UI & usability testing"],
     description: [
-      "We design products that are simple to use and satisfying to move through. Research, user flows, wireframes, and polished interfaces come together into an experience that feels obvious in the best way.",
-      "We research how your users behave, map their journeys, find where they get stuck and design screens that fix it. Prototypes are tested with real users before development.",
+      "Our UX/UI design services focus on creating intuitive digital products that are easy to navigate and enjoyable to use. Through user research, journey mapping, wireframing and interface design, we develop experiences that help people complete tasks with clarity and confidence.",
+      "We study how users interact with digital products, identify points of friction and refine the experience through interactive prototypes and usability testing before development.",
     ],
     capabilities: [
-      { label: "User research", detail: "Interviews, surveys and analytics reviews." },
-      { label: "Journey mapping & user flows", detail: "Each step a user takes, mapped to show gaps and friction." },
+      { label: "User Research", detail: "Using interviews, surveys and analytics reviews to understand user needs and behavior." },
+      { label: "Journey Mapping & User Flows", detail: "Mapping user journeys to identify gaps, friction and opportunities to improve interactions." },
       {
-        label: "Information architecture",
-        detail: "Navigation and content structure based on how users look for things.",
+        label: "Information Architecture",
+        detail: "Planning navigation and content structures around how users find information.",
       },
-      { label: "Wireframes", detail: "Screen layouts focused on structure and function." },
+      { label: "Wireframes", detail: "Creating screen layouts that establish structure, content priorities and functionality." },
       {
-        label: "UI design",
-        detail: "Final screens in your brand, including empty, loading, error and success states.",
+        label: "UI Design",
+        detail: "Designing final interfaces, including empty, loading, error and success states.",
       },
-      { label: "Interaction design", detail: "Animations and transitions that give clear feedback." },
-      { label: "Usability testing", detail: "Users try the prototype and we fix the problems they hit." },
-      { label: "Design systems", detail: "Components, styles and documentation for consistent product design." },
+      { label: "Interaction Design", detail: "Planning animations and transitions that provide clear feedback during interactions." },
+      { label: "Usability Testing", detail: "Testing prototypes with users and refining designs based on identified problems." },
+      { label: "Design Systems", detail: "Creating reusable components, styles and documentation for consistent digital product design." },
     ],
     steps: [
-      { title: "Research", detail: "Interviews and data to understand users and their problems." },
-      { title: "Flows & structure", detail: "User journeys and navigation mapped and agreed." },
-      { title: "Wireframe & prototype", detail: "Screens linked into a prototype and tested with users." },
-      { title: "UI & handoff", detail: "Final interface and specs prepared for development." },
+      { title: "Research", detail: "Interviews and data analysis to understand users and their problems." },
+      { title: "Flows & Structure", detail: "Mapping user journeys and agreeing on navigation." },
+      { title: "Wireframe & Prototype", detail: "Connecting screens into interactive prototypes and testing important journeys." },
+      { title: "UI & Handoff", detail: "Delivering final interface designs and specifications for development." },
     ],
     deliverables: [
       "Research findings",
@@ -243,20 +247,20 @@ export const services: Service[] = [
       "Wireframes",
       "Final UI designs",
       "Interactive prototype",
-      "Design system and specs",
+      "Design system and specifications",
     ],
     fit: [
-      "You are building a new app or digital product.",
-      "Users drop off before completing sign-up, booking or checkout.",
-      "Your product has grown and the design is no longer consistent.",
+      "You're building a new application or digital product.",
+      "Users drop off before completing registration, booking or checkout.",
+      "Your product has grown and its interface is no longer consistent.",
     ],
     work: ["gymkha", "aspirant-wave", "snaxx"],
     reel: [
-      { src: "/assets/services/ux-1.webp", project: "Gymkha", caption: "Shopping on mobile" },
-      { src: "/assets/services/ux-2.webp", project: "Heartflo", caption: "Meditation app screen" },
+      { src: "/assets/services/ux-1.webp", project: "Gymkha", caption: "Shopping on mobile", alt: "Gymkha mobile shopping interface displayed on a smartphone." },
+      { src: "/assets/services/ux-2.webp", project: "Heartflo", caption: "Meditation app screen", alt: "Heartflo meditation application onboarding screen showing its mobile UI." },
       { src: "/assets/services/ux-3.webp", project: "Gymkha", caption: "Cart flow" },
-      { src: "/assets/services/ux-4.webp", project: "Velvet Properties", caption: "Listing search and filters" },
-      { src: "/assets/services/ux-5.webp", project: "Gymkha", caption: "Explore page" },
+      { src: "/assets/services/ux-4.webp", project: "Velvet Properties", caption: "Listing search and filters", alt: "Velvet Properties property search interface with desktop and mobile layouts." },
+      { src: "/assets/services/ux-5.webp", project: "Gymkha", caption: "Explore page", alt: "Gymkha Explore Fits digital shopping page displayed in a UI design presentation." },
     ],
   },
   {
@@ -265,30 +269,30 @@ export const services: Service[] = [
     short: "Development",
     highlights: ["Front-end build", "CMS integration", "Performance & SEO"],
     description: [
-      "We build fast, reliable websites and applications that match the design pixel for pixel. Clean, maintainable code, smooth performance, and everything wired up to work the way it should.",
-      "Design and development happen in the same studio, so the build follows the approved design closely. Every site is tested across devices and browsers, set up for search and supported after launch.",
+      "Our web development services focus on building fast, reliable and responsive websites that bring approved designs to life. From front-end development and CMS integration to third-party connections, testing and launch configuration, we develop websites designed to work smoothly across devices.",
+      "Design and development happen within the same studio, allowing the development process to follow the approved visual direction closely. Every website is tested across devices and browsers, with performance, technical SEO and post-launch support considered throughout the process.",
     ],
     capabilities: [
-      { label: "Front-end build", detail: "Responsive, accessible code built from the approved design." },
+      { label: "Front-end Development", detail: "Building responsive and accessible interfaces from approved designs." },
       {
-        label: "CMS integration",
-        detail: "A content management system so your team can edit pages, posts and listings.",
+        label: "CMS Integration",
+        detail: "Integrating content management systems so your team can update website pages, posts and listings.",
       },
       {
-        label: "Forms & integrations",
-        detail: "Contact forms, booking tools, analytics and other third-party services.",
+        label: "Forms & Integrations",
+        detail: "Connecting contact forms, booking tools, analytics and other third-party services.",
       },
-      { label: "Animation & interaction", detail: "Motion from the design built to run smoothly on all devices." },
-      { label: "Performance & SEO", detail: "Fast loading, clean markup, metadata and structured data." },
-      { label: "Testing & QA", detail: "Checks across browsers, devices and screen sizes before launch." },
-      { label: "Launch setup", detail: "Domain, hosting, SSL and analytics configured." },
-      { label: "Ongoing support", detail: "Updates, fixes and improvements after launch." },
+      { label: "Animation & Interaction", detail: "Implementing animations and interactive elements that work smoothly across devices." },
+      { label: "Performance & SEO", detail: "Working on loading speed, clean markup, metadata and structured data." },
+      { label: "Testing & Quality Assurance", detail: "Checking website functionality across browsers, devices and screen sizes before launch." },
+      { label: "Launch Setup", detail: "Configuring domain, hosting, SSL and analytics." },
+      { label: "Ongoing Support", detail: "Providing updates, fixes and improvements after launch." },
     ],
     steps: [
-      { title: "Technical plan", detail: "Platform, integrations and content structure agreed." },
-      { title: "Build", detail: "Pages developed on a private preview link you can review." },
-      { title: "Test & refine", detail: "Testing across devices and browsers, plus speed and SEO checks." },
-      { title: "Launch & support", detail: "Go-live, a CMS walkthrough and ongoing support." },
+      { title: "Technical Plan", detail: "Agreeing on the platform, integrations and content structure." },
+      { title: "Build", detail: "Developing website pages on a private preview link for review." },
+      { title: "Test & Refine", detail: "Testing across devices and browsers, followed by speed and SEO checks." },
+      { title: "Launch & Support", detail: "Publishing the website, providing a CMS walkthrough and supporting it after launch." },
     ],
     deliverables: [
       "Production website",
@@ -299,17 +303,17 @@ export const services: Service[] = [
       "Post-launch support",
     ],
     fit: [
-      "You have approved designs that need building.",
-      "Your current site is slow or hard to update.",
-      "You want one team to handle design and development.",
+      "You have approved website designs that need development.",
+      "Your current website is slow or difficult to update.",
+      "You want one team to manage both design and development.",
     ],
     work: [],
     reel: [
-      { src: "/assets/services/dev-1.webp", project: "Mio Pizzeria", caption: "Website" },
+      { src: "/assets/services/dev-1.webp", project: "Mio Pizzeria", caption: "Website", alt: "Mio Pizzeria website displayed on a laptop mockup." },
       { src: "/assets/services/dev-2.webp", project: "Velvet Properties", caption: "Homepage on mobile" },
-      { src: "/assets/services/dev-3.webp", project: "Velvet Properties", caption: "About page, desktop and mobile" },
+      { src: "/assets/services/dev-3.webp", project: "Velvet Properties", caption: "About page, desktop and mobile", alt: "Velvet Properties responsive About page displayed in desktop and mobile layouts." },
       { src: "/assets/services/dev-4.webp", project: "Velvet Properties", caption: "Listings on mobile" },
-      { src: "/assets/services/dev-5.webp", project: "Aspirant Wave", caption: "Homepage" },
+      { src: "/assets/services/dev-5.webp", project: "Aspirant Wave", caption: "Homepage", alt: "Aspirant Wave education consultancy homepage displayed in a website design presentation." },
     ],
   },
 ];
@@ -321,44 +325,45 @@ export interface ProcessStage {
   weNeed: string;
 }
 
-export const processIntro = "Every project goes through the same six stages, whichever services it involves.";
+export const processIntro =
+  "Every project follows six stages, whatever services it involves. This process keeps expectations clear, gives you opportunities to review progress and helps our team move from the initial idea to launch and ongoing improvement.";
 
 export const processStages: ProcessStage[] = [
   {
     title: "Discover",
-    detail: "We learn about the business, its goals, audience and competitors.",
-    youSee: "A written brief",
-    weNeed: "An intro call and any existing material",
+    detail: "We learn about your business, goals, target audience and competitors.",
+    youSee: "A written project brief.",
+    weNeed: "An introductory call and any existing relevant materials.",
   },
   {
     title: "Define",
-    detail: "We agree scope, approach and timeline.",
-    youSee: "A proposal with scope and timeline",
-    weNeed: "Sign-off on scope",
+    detail: "We agree on the project scope, approach and timeline before work begins.",
+    youSee: "A proposal outlining the scope and timeline.",
+    weNeed: "Your approval of the proposed scope.",
   },
   {
     title: "Design",
-    detail: "We present concepts and refine them over review rounds.",
+    detail: "We present concepts, explain our approach and refine the work through review rounds.",
     youSee: "Designs and prototypes at each milestone",
     weNeed: "Consolidated feedback",
   },
   {
     title: "Build",
-    detail: "Development, artwork, content and campaigns are produced.",
-    youSee: "Preview links and progress updates",
-    weNeed: "Content and approvals",
+    detail: "Development, artwork, content and campaign materials are produced according to the agreed direction.",
+    youSee: "Preview links and progress updates.",
+    weNeed: "Required content and approvals.",
   },
   {
     title: "Launch",
-    detail: "We go live, hand over files and guidelines, and check everything works.",
-    youSee: "The live product and final files",
-    weNeed: "Final approval",
+    detail: "We go live, hand over final files and guidelines, and check that everything works as expected.",
+    youSee: "The live product and final deliverables.",
+    weNeed: "Final approval.",
   },
   {
     title: "Grow",
-    detail: "We measure results, make improvements and provide support.",
+    detail: "We review results, identify improvement opportunities and provide ongoing support where agreed.",
     youSee: "Reports and recommendations",
-    weNeed: "Regular check-ins",
+    weNeed: "Regular check-ins and feedback.",
   },
 ];
 
@@ -369,34 +374,43 @@ export interface Faq {
 
 export const faqs: Faq[] = [
   {
+    question: "What services does the agency offer?",
+    answer:
+      "We offer five main service categories: Brand Design, Web Design, Digital Marketing, UX/UI Design and Web Development. You can choose an individual service or combine multiple services depending on your business needs.",
+  },
+  {
     question: "Do I need to take all five services?",
     answer:
-      "No. You can start with one service, such as a new identity or a website, and add others later. The same team handles all five, so the work stays consistent.",
+      "No. You can start with one service, such as a new brand identity or website, and add other services later. Our team can coordinate the work across all five service categories to maintain consistency.",
   },
   {
     question: "How long does a project take?",
-    answer: "It depends on the scope. After the first call we send a timeline with milestones before work begins.",
-  },
-  {
-    question: "How much does it cost?",
-    answer: "Pricing depends on scope. We send a proposal with deliverables, timeline and cost before any work starts.",
-  },
-  {
-    question: "What do you need from us to start?",
     answer:
-      "A call about your business and goals, plus any existing material such as logos, brand files, website access or past campaigns.",
+      "Project timelines depend on the scope, deliverables and requirements. After our initial discussion, we'll provide a proposed timeline with milestones before work begins.",
+  },
+  {
+    question: "How much do your services cost?",
+    answer:
+      "Pricing depends on the project scope and the deliverables involved. We prepare a proposal outlining the agreed work, timeline and cost before starting the project.",
+  },
+  {
+    question: "What do you need from us to get started?",
+    answer:
+      "We begin with a conversation about your business and goals. Existing materials such as logos, brand files, website access and previous campaigns can also help us understand your requirements.",
   },
   {
     question: "How involved will we be?",
     answer:
-      "You review the work at each milestone. We present it, explain the decisions and collect your feedback before moving on.",
+      "You'll have opportunities to review the work at each agreed milestone. We'll present the concepts, explain the decisions and collect your feedback before moving to the next stage.",
   },
   {
     question: "Do you work with clients outside the UAE?",
-    answer: "Yes. We have studios in Dubai and Calicut, India, and run reviews over video calls.",
+    answer:
+      "Yes. Our studios are located in Dubai and Calicut, India. Project discussions, reviews and approvals can also be managed through video calls.",
   },
   {
-    question: "What happens after launch?",
-    answer: "We offer ongoing support: updates, fixes, new pages, campaign content and performance reviews.",
+    question: "What happens after the project launches?",
+    answer:
+      "We offer ongoing support where agreed, including updates, fixes, new website pages, campaign content and performance reviews.",
   },
 ];
