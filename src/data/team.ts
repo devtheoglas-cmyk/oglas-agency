@@ -26,12 +26,6 @@ export const leadership: TeamMember[] = [
     bio: "With experience supporting projects across India, the UAE, Saudi Arabia, and the GCC, Fazna helps keep Oglas running at its best. Having worked alongside brands such as Wonderla, Pacio, The House of Organic, and Galaxy, she specializes in operations, client relations, recruitment, and project coordination. At Oglas, she ensures seamless collaboration between clients, teams, and projects, creating the structure that enables great work to happen.",
   },
   {
-    name: "Arshad",
-    photo: "/assets/people/team/arshad.webp",
-    role: "Brand Consultant & Business Developer",
-    bio: "A brand consultant and business developer with experience across India, the GCC, US, UK, Canada, and New Zealand. Having worked with brands including Wonderla, Danube, Amend Dental, and Amana Business Setup, he specializes in business development and growth, with a track record of closing high-value projects and retainers.",
-  },
-  {
     name: "Allwin",
     photo: "/assets/people/team/allwin.webp",
     role: "Marketing Lead",
@@ -63,12 +57,6 @@ export const agency: TeamMember[] = [
     photo: "/assets/people/team/sreeshanth.webp",
     role: "Performance Marketer",
     bio: "Sreeshanth is a performance marketer with experience across India and the USA, specializing in Meta Ads, Google Ads, SEO, and digital growth. Working across real estate, healthcare, solar energy, retail, and logistics, he has generated ₹8 Cr+ in business value through performance campaigns. At Oglas, he leads performance marketing and data-driven growth.",
-  },
-  {
-    name: "Sarath",
-    photo: "/assets/people/team/sarath.webp",
-    role: "Head of Design",
-    bio: "Sarath is a creative leader with experience delivering design solutions for 60+ brands, including leading global names. Specializing in branding, advertising, AI, creative direction, and social media, he leads Oglas' design team and oversees creative excellence across digital and print.",
   },
   {
     name: "Ashwin",
