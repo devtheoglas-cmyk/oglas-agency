@@ -1,7 +1,7 @@
 import type { Testimonial } from "../components/ui/Carousel";
 
 export const heroManifesto =
-  "We are a collective of creative minds with an unlimited creative canvas and we use that creativity to build brand platforms that defy change and help businesses own an fair share of the future.";
+  "WE ARE A DUBAI-BASED BRANDING & CREATIVE AGENCY. WE BUILD DISTINCTIVE BRANDS THROUGH STRATEGY, DESIGN AND DIGITAL EXPERIENCES.";
 
 // Mosaic of work shots for the hero collage grid.
 export const heroCollage: string[] = [
@@ -32,13 +32,13 @@ export interface ServiceEntry {
 }
 
 export const whatWeDoIntro =
-  "We bring together the right human expertise with the best use of technology to help define, design and accelerate delivery of more valuable, personal interactions between people and brands across their full ecosystem.";
+  "Oglas Global is a Dubai-based branding and creative agency helping businesses build distinctive brands and meaningful digital experiences. From brand strategy and visual identity to web design, digital marketing, UX/UI design and web development, we bring creativity and strategic thinking together to help businesses connect with their audiences and grow.";
 
 export const whatWeDoItems: ServiceEntry[] = [
   {
-    title: "Brand Design",
+    title: "Branding & Brand Identity Design",
     description:
-      "We define your brand's position, shape a distinct voice, and design a visual identity that works everywhere your brand appears. From logo to brand guidelines and social assets, we deliver high-quality branding you can confidently launch and grow with.",
+      "We build distinctive brands through strategic positioning, creative direction and visual identity design. From logo design and brand guidelines to consistent brand assets, we create identities that help businesses stand out, communicate clearly and build lasting recognition.",
     clients: [
       { name: "Offbean", logo: "/assets/brands/brand-offbean.webp" },
       { name: "Fishwala", logo: "/assets/brands/brand-fishwala.webp" },
@@ -56,22 +56,22 @@ export const whatWeDoItems: ServiceEntry[] = [
   {
     title: "Web Design",
     description:
-      "We design responsive, conversion-focused websites that pair a distinctive visual identity with a clear content structure. From landing pages to full brand sites, our layouts are built to feel native on every device and to guide visitors toward the action that matters to your business.",
+      "We design responsive, user-friendly websites that combine distinctive visual design with clear content structure. From landing pages to complete business websites, our web design approach focuses on usability, performance and meaningful customer experiences across devices.",
   },
   {
     title: "Digital Marketing",
     description:
-      "We plan and run campaigns that turn attention into growth — combining strategy, creative, and measurement. Paid and organic social, search, and email work together as a system, so every touchpoint reinforces your brand while moving prospects along your funnel.",
+      "We plan and execute digital marketing strategies that connect brands with the right audiences. Through social media marketing, paid advertising, search and email campaigns, we create consistent brand experiences that support visibility, engagement and business growth.",
   },
   {
     title: "UX/UI Design",
     description:
-      "We design product experiences that feel obvious to use and considered in every detail. Research-led flows, accessible interfaces, and design systems that scale — so your product looks and behaves the way your brand promises, on the first release and the fiftieth.",
+      "We design intuitive digital experiences through research-led UX and thoughtful UI design. From user journeys and wireframes to accessible interfaces and scalable design systems, we create digital products that are functional, engaging and easy to use.",
   },
   {
     title: "Web Development",
     description:
-      "We build the sites and apps we design — fast, accessible, and durable. Modern stacks, clean semantic markup, and a delivery process that prioritizes real-world performance so your product loads quickly, ranks well, and stays easy to maintain as your team grows.",
+      "We develop responsive websites and digital experiences built for speed, accessibility and long-term performance. Combining clean development practices with thoughtful implementation, we build websites that work seamlessly across devices and support your business goals.",
   },
 ];
 

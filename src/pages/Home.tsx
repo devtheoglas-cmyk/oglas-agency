@@ -193,7 +193,7 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
 }
 
 function WhatWeDo() {
-  const [open, setOpen] = useState("Brand Design");
+  const [open, setOpen] = useState("Branding & Brand Identity Design");
   const baseId = useId();
 
   return (
@@ -417,8 +417,8 @@ function BuildBoldly() {
         >
           <p className="max-w-[240px] font-body text-lg font-medium">Built for better solutions.</p>
           <p className="max-w-[620px] font-body text-white/70">
-            Wherever problems live, we meet them with creativity. From brand strategy to digital experiences, we design
-            solutions that move brands forward.
+            Partner with Oglas Global, a Dubai-based branding and creative agency, to build distinctive brand identities,
+            meaningful digital experiences and marketing strategies that move your business forward.
           </p>
           <Link
             className="shrink-0 rounded-full bg-white px-8 py-3.5 font-body text-sm font-medium text-black transition-transform hover:scale-[1.03]"

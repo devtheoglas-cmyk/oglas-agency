@@ -8,7 +8,7 @@ import { SiteHeader } from "./SiteHeader";
 import { SkipLink } from "./SkipLink";
 
 const TITLES: Readonly<Record<string, string>> = {
-  "/": "The Oglas Agency",
+  "/": "Oglas Global | Branding & Creative Agency in Dubai",
   "/about": "About | The Oglas Agency",
   "/services": "Services | The Oglas Agency",
   "/works": "Works | The Oglas Agency",
