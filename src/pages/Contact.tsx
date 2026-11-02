@@ -113,7 +113,6 @@ export default function Contact() {
       <section className="bg-dark py-16 text-white lg:py-24">
         <div className={SHELL}>
           <OfficeBlock office={siteDetails.offices.dubai} />
-          <OfficeBlock office={siteDetails.offices.india} />
         </div>
       </section>
 

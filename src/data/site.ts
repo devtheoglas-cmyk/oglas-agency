@@ -29,16 +29,5 @@ export const siteDetails = {
       generalPhone: "+971 56 787 0153",
       coordinates: "25.22762° N, 55.28879° E",
     },
-    india: {
-      city: "India",
-      address: ["2703 ,7th Floor, Tower 2", "HiLITE Business Park", "India"],
-      email: "admn.theoglas@gmail.com",
-      recruitmentEmail: "career.theoglas@gmail.com",
-      newBusinessContact: "Faheem Razi",
-      newBusinessPhone: "+91 79949 40737",
-      newBusinessEmail: "rz.theoglas@gmail.com",
-      generalPhone: "+91 623 89 27770",
-      coordinates: "11.2481° N, 75.8348° E",
-    },
   } satisfies Record<string, OfficeDetails>,
 } as const;

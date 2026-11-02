@@ -273,10 +273,9 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
 /* ------------------------------------------------------------------ */
 
 function ClosingCta() {
-  const { dubai, india } = siteDetails.offices;
+  const { dubai } = siteDetails.offices;
   const studios = [
-    { name: "Dubai studio", email: dubai.email, phone: dubai.generalPhone },
-    { name: "India studio", email: india.email, phone: india.generalPhone },
+    { name: "Dubai, UAE studio", email: dubai.email, phone: dubai.generalPhone },
   ];
 
   return (
