@@ -85,7 +85,7 @@ function ArticleSection({ children, title }: { children: React.ReactNode; title:
 
 export default function BlogBrandConsistency() {
   return (
-    <article className="bg-off-white pt-[82px] text-black lg:pt-[96px]">
+    <article className="bg-off-white text-black">
       <header className="bg-dark text-white">
         <div className="mx-auto grid max-w-[1760px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20 lg:px-[4.15vw] lg:py-28">
           <div className="flex flex-col justify-end">
