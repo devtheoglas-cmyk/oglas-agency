@@ -276,7 +276,7 @@ function ClosingCta() {
   const { dubai, india } = siteDetails.offices;
   const studios = [
     { name: "Dubai studio", email: dubai.email, phone: dubai.generalPhone },
-    { name: "Calicut studio", email: india.email, phone: india.generalPhone },
+    { name: "India studio", email: india.email, phone: india.generalPhone },
   ];
 
   return (

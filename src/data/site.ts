@@ -31,7 +31,7 @@ export const siteDetails = {
     },
     india: {
       city: "India",
-      address: ["2703 ,7th Floor, Tower 2", "HiLITE Business Park", "Calicut, India"],
+      address: ["2703 ,7th Floor, Tower 2", "HiLITE Business Park", "India"],
       email: "admn.theoglas@gmail.com",
       recruitmentEmail: "career.theoglas@gmail.com",
       newBusinessContact: "Faheem Razi",

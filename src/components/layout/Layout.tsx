@@ -25,7 +25,7 @@ const TITLES: Readonly<Record<string, string>> = {
 
 const DESCRIPTIONS: Readonly<Record<string, string>> = {
   "/services":
-    "Explore brand design, web design, digital marketing, UX/UI design and web development from Oglas Global's studios in Dubai and Calicut.",
+    "Explore brand design, web design, digital marketing, UX/UI design and web development from Oglas Global's studios in Dubai and India.",
   "/blog/brand-consistency-matters-for-growing-businesses-in-dubai":
     "Dubai customers may encounter a business through search, social media, a website, an advert, a proposal or a face-to-face conversation. Each interaction shapes their impression.",
 };

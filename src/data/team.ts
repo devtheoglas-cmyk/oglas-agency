@@ -68,6 +68,6 @@ export const agency: TeamMember[] = [
     name: "Safwan",
     photo: "/assets/people/team/safwan.webp",
     role: "Designer",
-    bio: "Safwan is a multidisciplinary designer with experience across India, the UAE, Oman, and Europe. He has worked with brands including Al Masharef, Al Fithra, Bubble Lab, The 80s Club, Calicut Paradise, Teai-Fi, and Petzoo across FMCG, real estate, healthcare, and technology. At Oglas, he works across branding, advertising, AI, social media, and creative execution.",
+    bio: "Safwan is a multidisciplinary designer with experience across India, the UAE, Oman, and Europe. He has worked with brands including Al Masharef, Al Fithra, Bubble Lab, The 80s Club, Teai-Fi, and Petzoo across FMCG, real estate, healthcare, and technology. At Oglas, he works across branding, advertising, AI, social media, and creative execution.",
   },
 ];

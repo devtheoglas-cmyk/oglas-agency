@@ -40,7 +40,7 @@ export const servicesIntro =
 
 export const servicesSummary = [
   "Oglas Global brings together brand design, web design, digital marketing, UX/UI design and web development to help businesses build stronger brands and meaningful digital experiences.",
-  "Our teams work from Dubai and Calicut, delivering creative solutions for businesses across different markets.",
+  "Our teams work from Dubai and India, delivering creative solutions for businesses across different markets.",
 ];
 
 export const services: Service[] = [
@@ -406,7 +406,7 @@ export const faqs: Faq[] = [
   {
     question: "Do you work with clients outside the UAE?",
     answer:
-      "Yes. Our studios are located in Dubai and Calicut, India. Project discussions, reviews and approvals can also be managed through video calls.",
+      "Yes. Our studios are located in Dubai and India. Project discussions, reviews and approvals can also be managed through video calls.",
   },
   {
     question: "What happens after the project launches?",
