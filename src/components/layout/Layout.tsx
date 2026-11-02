@@ -19,11 +19,15 @@ const TITLES: Readonly<Record<string, string>> = {
   "/works/snaxx": "Snaxx | The Oglas Agency",
   "/contacts": "Contact | The Oglas Agency",
   "/privacy": "Privacy Policy | The Oglas Agency",
+  "/blog/brand-consistency-matters-for-growing-businesses-in-dubai":
+    "Why Brand Consistency Matters for Growing Businesses in Dubai | The Oglas",
 };
 
 const DESCRIPTIONS: Readonly<Record<string, string>> = {
   "/services":
     "Explore brand design, web design, digital marketing, UX/UI design and web development from Oglas Global's studios in Dubai and Calicut.",
+  "/blog/brand-consistency-matters-for-growing-businesses-in-dubai":
+    "Dubai customers may encounter a business through search, social media, a website, an advert, a proposal or a face-to-face conversation. Each interaction shapes their impression.",
 };
 
 function titleForPath(pathname: string): string {

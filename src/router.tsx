@@ -9,6 +9,7 @@ const Works = lazy(() => import("./pages/Works"));
 const WorkDetail = lazy(() => import("./pages/WorkDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Privacy = lazy(() => import("./pages/Privacy"));
+const BlogBrandConsistency = lazy(() => import("./pages/BlogBrandConsistency"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 export const router = createBrowserRouter([
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
       { path: "works/:slug", element: <WorkDetail /> },
       { path: "contacts", element: <Contact /> },
       { path: "privacy", element: <Privacy /> },
+      { path: "blog/brand-consistency-matters-for-growing-businesses-in-dubai", element: <BlogBrandConsistency /> },
       { path: "*", element: <NotFound /> },
     ],
   },
