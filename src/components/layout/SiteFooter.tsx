@@ -19,6 +19,9 @@ export function SiteFooter() {
               <Link className={footerLinkClass} to="/contacts">
                 Contact Us
               </Link>
+              <Link className={footerLinkClass} to="/blog/brand-consistency-matters-for-growing-businesses-in-dubai">
+                Blog
+              </Link>
               <a className={footerLinkClass} href={`mailto:${siteDetails.businessEmail}`}>
                 Send E-mail
               </a>
