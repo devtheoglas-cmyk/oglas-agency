@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useId, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { BgImage } from "../components/ui/BgImage";
 import { Carousel } from "../components/ui/Carousel";
@@ -8,6 +8,7 @@ import { brandWorks, featuredWorks, productWorks } from "../data/works";
 import type { Work } from "../data/works";
 import { cn } from "../lib/cn";
 import { useReveal } from "../lib/useReveal";
+import "../styles/home.css";
 
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 
@@ -18,18 +19,26 @@ function Hero() {
         <div className={`${SHELL} text-center`}>
           <h1
             className="mx-auto max-w-[1559px] break-words font-condensed text-[clamp(2.25rem,4.6vw,78px)] leading-[0.9] font-semibold tracking-[-0.03em] text-center text-white uppercase [text-wrap:balance] [leading-trim:none] lg:leading-[0.86]"
-            data-reveal
+            aria-label={heroManifesto}
           >
-            {heroManifesto}
+            {heroManifesto.split(" ").map((word, index) => (
+              <span aria-hidden="true" key={`${word}-${index}`}>
+                <span className="home-hero-word-mask">
+                  <span className="home-hero-word" style={{ "--word-delay": `${index * 30}ms` } as CSSProperties}>
+                    {word}
+                  </span>
+                </span>{" "}
+              </span>
+            ))}
           </h1>
-          <div className="mt-10 flex justify-center lg:mt-20" data-reveal>
+          <div className="home-hero-badge mt-10 flex justify-center lg:mt-20">
             <span className="rounded-full border border-white/35 px-6 py-2.5 font-body text-sm tracking-[0.12em] text-white uppercase">
               Since 2019
             </span>
           </div>
         </div>
       </div>
-      <div className="overflow-hidden" data-reveal>
+      <div className="home-hero-artwork overflow-hidden">
         <BgImage
           alt="A collage of Oglas brand and packaging work"
           className="hero-collage-motion w-full"

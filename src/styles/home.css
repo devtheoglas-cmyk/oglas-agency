@@ -1,0 +1,42 @@
+/* A single opening sequence; readable static content is the default. */
+.home-hero-word-mask {
+  display: inline-block;
+  overflow: clip;
+  vertical-align: bottom;
+  padding-block: 0.09em;
+  margin-block: -0.09em;
+}
+
+.home-hero-word {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero-word {
+    animation: home-word-arrive 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--word-delay, 0ms);
+  }
+
+  .home-hero-badge {
+    animation: home-detail-arrive 800ms cubic-bezier(0.16, 1, 0.3, 1) 500ms both;
+  }
+
+  .home-hero-artwork {
+    animation: home-artwork-arrive 1100ms cubic-bezier(0.16, 1, 0.3, 1) 650ms both;
+  }
+}
+
+@keyframes home-word-arrive {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes home-detail-arrive {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes home-artwork-arrive {
+  from { opacity: 0.3; transform: translateY(24px); clip-path: inset(8% 0 0); }
+  to { opacity: 1; transform: translateY(0); clip-path: inset(0); }
+}
