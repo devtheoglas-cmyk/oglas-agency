@@ -1,4 +1,7 @@
-import { useId, useState, type CSSProperties } from "react";
+import { useId, useRef, useState, type CSSProperties } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import { BgImage } from "../components/ui/BgImage";
 import { Carousel } from "../components/ui/Carousel";
@@ -12,11 +15,58 @@ import "../styles/home.css";
 
 const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
 
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
 function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const media = gsap.matchMedia();
+    media.add({
+      desktop: "(min-width: 768px)",
+      mobile: "(max-width: 767px)",
+      motion: "(prefers-reduced-motion: no-preference)",
+    }, (context) => {
+      if (!context.conditions?.motion) return;
+      const desktop = context.conditions.desktop;
+
+      gsap.to(".home-hero-copy", {
+        y: desktop ? 100 : 40,
+        opacity: 0.25,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "65% top",
+          scrub: 0.5,
+        },
+      });
+
+      gsap.fromTo(".home-hero-scroll-art", {
+        scale: desktop ? 0.86 : 0.94,
+        rotation: desktop ? -3 : -1.5,
+        borderRadius: 24,
+      }, {
+        scale: 1,
+        rotation: 0,
+        borderRadius: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".home-hero-artwork",
+          start: "top 85%",
+          end: "top 15%",
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      });
+    });
+    return () => media.revert();
+  }, { scope: heroRef });
+
   return (
-    <section className="relative flex min-h-screen flex-col overflow-hidden bg-dark text-white">
+    <section ref={heroRef} className="relative flex min-h-screen flex-col overflow-hidden bg-dark text-white">
       <div className="flex flex-1 flex-col justify-center px-4 pt-24 pb-12 sm:px-8 lg:pt-32 lg:pb-16">
-        <div className={`${SHELL} text-center`}>
+        <div className={`${SHELL} home-hero-copy text-center`}>
           <h1
             className="mx-auto max-w-[1559px] break-words font-condensed text-[clamp(2.25rem,4.6vw,78px)] leading-[0.9] font-semibold tracking-[-0.03em] text-center text-white uppercase [text-wrap:balance] [leading-trim:none] lg:leading-[0.86]"
             aria-label={heroManifesto}
@@ -41,7 +91,7 @@ function Hero() {
       <div className="home-hero-artwork overflow-hidden">
         <BgImage
           alt="A collage of Oglas brand and packaging work"
-          className="hero-collage-motion w-full"
+          className="home-hero-scroll-art w-full overflow-hidden"
           fit="contain"
           src="/assets/home/hero-collage.webp"
         />
