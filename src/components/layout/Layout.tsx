@@ -19,6 +19,7 @@ const TITLES: Readonly<Record<string, string>> = {
   "/works/snaxx": "Snaxx | The Oglas Agency",
   "/contacts": "Contact | The Oglas Agency",
   "/privacy": "Privacy Policy | The Oglas Agency",
+  "/insights": "Insights | The Oglas Agency",
   "/blog/brand-consistency-matters-for-growing-businesses-in-dubai":
     "Why Brand Consistency Matters for Growing Businesses in Dubai | The Oglas",
 };
