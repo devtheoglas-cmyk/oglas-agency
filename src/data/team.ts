@@ -11,7 +11,7 @@ export const leadership: TeamMember[] = [
     name: "Abi Roshan",
     photo: "/assets/people/team/abi-roshan.webp",
     role: "CMD — Chairman & Managing Director",
-    bio: "Business strategist and AI engineer with experience across the GCC, Europe, and Australia. Having worked with organizations including ERAM Holdings, Galaxy Realty, and Pacio International, he specializes in AI, business development, growth strategy, and digital transformation. As Chairman & Managing Director of Oglas, he leads the agency's vision, strategic growth, and innovation initiatives.",
+    bio: "Business strategist and AI engineer with experience across the GCC, Europe, and Australia. Having worked with organizations including Adnoc, ERAM Holdings, Warba Bank, Galaxy Realty, and Pacio International, he specializes in AI, business development, growth strategy, and digital transformation. As Chairman & Managing Director of Oglas Global Co (OGC), he leads the agency’s vision, strategic growth, and innovation initiatives.",
   },
   {
     name: "Faheem Razi",
