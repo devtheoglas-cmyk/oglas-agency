@@ -9,26 +9,48 @@ import { SkipLink } from "./SkipLink";
 
 const TITLES: Readonly<Record<string, string>> = {
   "/": "Oglas Global | Branding & Creative Agency in Dubai",
-  "/about": "About | The Oglas Agency",
-  "/services": "Creative Services in Dubai | Oglas Global",
-  "/works": "Works | The Oglas Agency",
-  "/works/fishwala": "Fishwala | The Oglas Agency",
-  "/works/velvet-properties": "Velvet Properties | The Oglas Agency",
-  "/works/gymkha": "Gymkha | The Oglas Agency",
-  "/works/aspirant-wave": "Aspirant Wave | The Oglas Agency",
-  "/works/snaxx": "Snaxx | The Oglas Agency",
-  "/contacts": "Contact | The Oglas Agency",
-  "/privacy": "Privacy Policy | The Oglas Agency",
-  "/insights": "Insights | The Oglas Agency",
+  "/about": "Oglas Global Founders & Team | Dubai Branding Agency",
+  "/services": "Branding & Creative Services in Dubai | Oglas Global",
+  "/works": "Branding & Creative Portfolio in Dubai | Oglas Global",
+  "/works/fishwala": "Fishwala Branding Case Study | Oglas Global",
+  "/works/velvet-properties": "Velvet Properties Website Design | Oglas Global",
+  "/works/gymkha": "Gymkha Sportswear Website Design | Oglas Global",
+  "/works/aspirant-wave": "Aspirant Wave Website Design | Oglas Global",
+  "/works/snaxx": "Snaxx Website Design Project | Oglas Global",
+  "/contacts": "Contact Oglas Global | Dubai Branding Agency",
+  "/privacy": "Privacy Policy | Oglas Global",
+  "/insights": "Branding & Creative Insights in Dubai | Oglas Global",
   "/blog/brand-consistency-matters-for-growing-businesses-in-dubai":
-    "Why Brand Consistency Matters for Growing Businesses in Dubai | The Oglas",
+    "Why Brand Consistency Matters in Dubai | Oglas Global",
 };
 
 const DESCRIPTIONS: Readonly<Record<string, string>> = {
+  "/":
+    "Oglas Global is a Dubai-based creative agency offering brand strategy, visual identity, digital marketing, web design and development. Explore our work and services.",
+  "/about":
+    "Meet the founders and team behind Oglas Global, a Dubai-based branding agency. Explore the people and leadership behind the company.",
   "/services":
-    "Explore brand design, web design, digital marketing, UX/UI design and web development from Oglas Global's studio in Dubai, UAE.",
+    "Oglas Global offers branding services in Dubai, including brand strategy, visual identity, web design, digital marketing, UX/UI and web development.",
+  "/works":
+    "Explore Oglas Global's creative portfolio in Dubai, showcasing branding, web design, apps and social media projects created for growing brands.",
+  "/works/fishwala":
+    "Explore Oglas Global's Fishwala branding project, featuring strategic brand design created to elevate the fresh food experience.",
+  "/works/velvet-properties":
+    "Explore Oglas Global's Velvet Properties project, a refined website design created to showcase a luxury real estate brand with clarity and elegance.",
+  "/works/gymkha":
+    "Explore Oglas Global's Gymkha project: an e-commerce experience for a modern sportswear brand focused on movement, comfort and everyday performance.",
+  "/works/aspirant-wave":
+    "Explore Oglas Global's Aspirant Wave website design project for a study abroad consultancy connecting students with global education opportunities.",
+  "/works/snaxx":
+    "See how Oglas Global designed the Snaxx website for a vending machine sales and service brand, with a clear, user-focused digital experience.",
+  "/contacts":
+    "Contact Oglas Global, a Dubai-based branding agency, to discuss brand strategy, visual identity, web design and digital marketing for your business.",
+  "/privacy":
+    "Read Oglas Global's privacy policy to learn what information we collect, how we use it, and how we protect your privacy.",
+  "/insights":
+    "Explore Oglas Global's insights on branding, brand consistency, creative design and digital experiences for businesses in Dubai and beyond.",
   "/blog/brand-consistency-matters-for-growing-businesses-in-dubai":
-    "Dubai customers may encounter a business through search, social media, a website, an advert, a proposal or a face-to-face conversation. Each interaction shapes their impression.",
+    "Learn why brand consistency matters for Dubai businesses and how aligned visuals, messaging and customer experiences build recognition and trust.",
 };
 
 function titleForPath(pathname: string): string {
