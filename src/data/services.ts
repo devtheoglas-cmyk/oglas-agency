@@ -39,7 +39,7 @@ export const servicesIntro =
   "BRANDING SERVICES, WEB DESIGN & DIGITAL MARKETING IN DUBAI";
 
 export const servicesSummary = [
-  "Oglas Global brings together brand design, web design, digital marketing, UX/UI design and web development to help businesses build stronger brands and meaningful digital experiences.",
+  "Oglas Global brings together branding services, web design, digital marketing, UX/UI design and web development to help businesses build stronger brands and meaningful digital experiences.",
   "Our team works from Dubai, UAE, delivering creative solutions for businesses across different markets.",
 ];
 
