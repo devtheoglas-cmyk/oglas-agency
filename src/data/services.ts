@@ -36,7 +36,7 @@ export interface Service {
 }
 
 export const servicesIntro =
-  "BRANDING WEB DESIGN & DIGITAL MARKETING SERVICES IN DUBAI";
+  "BRANDING SERVICES, WEB DESIGN & DIGITAL MARKETING IN DUBAI";
 
 export const servicesSummary = [
   "Oglas Global brings together brand design, web design, digital marketing, UX/UI design and web development to help businesses build stronger brands and meaningful digital experiences.",
@@ -51,7 +51,7 @@ export const services: Service[] = [
     highlights: ["Strategy & positioning", "Logo & identity", "Brand guidelines"],
     description: [
       "We create distinctive brand identities through strategic branding, thoughtful design and creative direction. From understanding your business positioning and audience to developing logos, visual identities and brand guidelines, we build consistent brand systems that communicate what your business stands for.",
-      "Our branding process considers how your identity appears across digital platforms, print, packaging and physical spaces, helping your brand maintain a recognizable presence as your business grows.",
+      "Our brand development process considers how your identity appears across digital platforms, print, packaging and physical spaces, helping your brand maintain a recognizable presence as your business grows.",
     ],
     capabilities: [
       {
@@ -381,7 +381,7 @@ export const faqs: Faq[] = [
   {
     question: "Do I need to take all five services?",
     answer:
-      "No. You can start with one service, such as a new brand identity or website, and add other services later. Our team can coordinate the work across all five service categories to maintain consistency.",
+      "No. You can start with one service, such as brand identity design or website design, and add other services later. Our team can coordinate the work across all five service categories to maintain consistency.",
   },
   {
     question: "How long does a project take?",

@@ -21,7 +21,7 @@ export const brandWorks: Work[] = [
   {
     slug: "fishwala",
     name: "Fishwala",
-    type: "Brand Identity & Visual Design for a Premium Fresh Fish Store",
+    type: "Fresh Fish Brand Identity",
     year: "2025",
     tagline: "A reminder of what honesty feels like,",
     tags: DEFAULT_TAGS,
@@ -31,8 +31,8 @@ export const brandWorks: Work[] = [
   },
   {
     slug: "yellow-and",
-    name: "Yellow And",
-    type: "Creative Campaign Design for Stay Marketplace",
+    name: "Yellow and",
+    type: "Stay Marketplace Campaign Design",
     year: "2025",
     tagline: "A reminder of what honesty feels like,",
     tags: DEFAULT_TAGS,
@@ -42,7 +42,7 @@ export const brandWorks: Work[] = [
   {
     slug: "hopinz",
     name: "Hopinz",
-    type: "Brand Identity Design for a Supermarket",
+    type: "Supermarket Brand Identity Design",
     year: "2025",
     tagline: "A reminder of what honesty feels like,",
     tags: DEFAULT_TAGS,

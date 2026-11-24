@@ -3,10 +3,7 @@ import { agency, leadership, type TeamMember } from "../data/team";
 import { useReveal } from "../lib/useReveal";
 
 const founderStatementLines = [
-  "Founded in 2019",
-  "by Abi Roshan and Faheem Razi,",
-  "THE Oglas is a borderless creative agency shaping culture through iconic, value-driven",
-  "brand PLATFORMS.",
+  "FOUNDED IN 2019 BY ABI ROSHAN AND FAHEEM RAZI, OGLAS GLOBAL IS A BORDERLESS CREATIVE AGENCY SHAPING CULTURE THROUGH ICONIC, VALUE-DRIVEN BRAND PLATFORMS.",
 ];
 
 function initials(name: string): string {

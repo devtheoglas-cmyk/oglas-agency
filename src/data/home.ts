@@ -1,7 +1,7 @@
 import type { Testimonial } from "../components/ui/Carousel";
 
 export const heroManifesto =
-  "WE ARE A DUBAI-BASED BRANDING & CREATIVE AGENCY. WE BUILD DISTINCTIVE BRANDS THROUGH STRATEGY, DESIGN AND DIGITAL EXPERIENCES.";
+  "WE ARE A DUBAI-BASED BRANDING AGENCY. WE BUILD DISTINCTIVE BRANDS THROUGH STRATEGY, DESIGN AND DIGITAL EXPERIENCES.";
 
 // Mosaic of work shots for the hero collage grid.
 export const heroCollage: string[] = [
@@ -32,13 +32,13 @@ export interface ServiceEntry {
 }
 
 export const whatWeDoIntro =
-  "Oglas Global is a Dubai-based branding and creative agency helping businesses build distinctive brands and meaningful digital experiences. From brand strategy and visual identity to web design, digital marketing, UX/UI design and web development, we bring creativity and strategic thinking together to help businesses connect with their audiences and grow.";
+  "Oglas Global is a Dubai-based branding company helping businesses build distinctive brands and meaningful digital experiences. From brand strategy and visual identity to web design, digital marketing, UX/UI design and web development, we bring creativity and strategic thinking together to help businesses connect with their audiences and grow.";
 
 export const whatWeDoItems: ServiceEntry[] = [
   {
     title: "Branding & Brand Identity Design",
     description:
-      "We build distinctive brands through strategic positioning, creative direction and visual identity design. From logo design and brand guidelines to consistent brand assets, we create identities that help businesses stand out, communicate clearly and build lasting recognition.",
+      "We build distinctive brands through brand strategy, creative direction and visual identity design. From logo design and brand guidelines to consistent brand assets, we create identities that help businesses stand out, communicate clearly and build lasting recognition.",
     clients: [
       { name: "Offbean", logo: "/assets/brands/brand-offbean.webp" },
       { name: "Fishwala", logo: "/assets/brands/brand-fishwala.webp" },

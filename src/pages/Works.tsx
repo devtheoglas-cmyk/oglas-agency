@@ -11,20 +11,19 @@ interface IndexWork extends Work {
   categories: Category[];
 }
 
-const TAGLINE = "A reminder of what honesty feels like,";
 const DEFAULT_TAGS = ["Branding", "Brand strategy", "Graphics", "Visual Identity"];
 const WEB_TAGS = ["Branding", "Web design", "Graphics", "Visual Identity"];
 
 const worksIndex: IndexWork[] = [
-  { slug: "fishwala", name: "Fishwala", type: "Premium Fresh Fish Store", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/fishwala-stickers.webp", hasCaseStudy: true, categories: ["Branding", "Social media"] },
-  { slug: "velvet-properties", name: "Velvet Properties", type: "Real Estate Broker", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/home/cards/velvet-properties.webp", hasCaseStudy: true, categories: ["Web", "Branding"] },
-  { slug: "hopinz", name: "Hopinz", type: "Supermarket", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/hopinz.webp", categories: ["Branding"] },
-  { slug: "offbean", name: "Offbean", type: "Coffee Cafe", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/offbean-drippers.webp", categories: ["Branding", "Social media"] },
+  { slug: "fishwala", name: "Fishwala", type: "Fresh Fish Brand Identity", year: "2025", tagline: "Fresh Fish Brand Identity", tags: DEFAULT_TAGS, image: "/assets/home/cards/fishwala-stickers.webp", hasCaseStudy: true, categories: ["Branding", "Social media"] },
+  { slug: "velvet-properties", name: "Velvet Properties", type: "Real Estate Branding & Website Design", year: "2025", tagline: "Real Estate Branding & Website Design", tags: WEB_TAGS, image: "/assets/home/cards/velvet-properties.webp", hasCaseStudy: true, categories: ["Web", "Branding"] },
+  { slug: "hopinz", name: "Hopinz", type: "Supermarket Brand Identity Design", year: "2025", tagline: "Supermarket Brand Identity Design", tags: DEFAULT_TAGS, image: "/assets/home/cards/hopinz.webp", categories: ["Branding"] },
+  { slug: "offbean", name: "Offbean", type: "Coffee Brand Identity & Packaging Design", year: "2025", tagline: "Coffee Brand Identity & Packaging Design", tags: DEFAULT_TAGS, image: "/assets/home/cards/offbean-drippers.webp", categories: ["Branding", "Social media"] },
   { slug: "snaxx", name: "Snaxx", type: "Vending Machine", year: "2025", tagline: "Quick, simple, accessible.", tags: WEB_TAGS, image: "/assets/home/cards/snaxx.webp", hasCaseStudy: true, categories: ["Web", "Apps"] },
   { slug: "gymkha", name: "Gymkha", type: "Gym wear", year: "2025", tagline: "Take the first step.", tags: WEB_TAGS, image: "/assets/home/cards/gymkha.webp", hasCaseStudy: true, categories: ["Web", "Branding"] },
   { slug: "aspirant-wave", name: "Aspirant Wave", type: "Study Abroad Consultancy", year: "2025", tagline: "A wave of possibilities.", tags: WEB_TAGS, image: "/assets/home/cards/aspirant-wave.webp", hasCaseStudy: true, categories: ["Web"] },
-  { slug: "velvet-leather", name: "Velvet Leather", type: "Leather Goods", year: "2025", tagline: TAGLINE, tags: DEFAULT_TAGS, image: "/assets/home/cards/velvet-leather.webp", categories: ["Branding"] },
-  { slug: "yellow-and", name: "Yellow And", type: "Stay Marketplace", year: "2025", tagline: TAGLINE, tags: WEB_TAGS, image: "/assets/home/cards/yellowand-summer.webp", categories: ["Web", "Apps"] },
+  { slug: "velvet-leather", name: "Velvet Leather", type: "Leather Branding & Visual Identity", year: "2025", tagline: "Leather Branding & Visual Identity", tags: DEFAULT_TAGS, image: "/assets/home/cards/velvet-leather.webp", categories: ["Branding"] },
+  { slug: "yellow-and", name: "Yellow and", type: "Stay Marketplace Campaign Design", year: "2025", tagline: "Stay Marketplace Campaign Design", tags: WEB_TAGS, image: "/assets/home/cards/yellowand-summer.webp", categories: ["Web", "Apps"] },
 ];
 
 const INITIAL_COUNT = 8;
@@ -52,7 +51,7 @@ export default function Works() {
           </h1>
           <p className="mx-auto mt-8 max-w-[620px] font-body text-base text-white/70 lg:text-lg" data-reveal>
             Since our inception in 2019, we've partnered with inspiring brands and people to shape ideas and bring them
-            to life. Here's a selection of our favorite work.
+            to life. Explore our branding portfolio and creative projects.
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-3" data-reveal>
             {FILTERS.map((filter) => (
