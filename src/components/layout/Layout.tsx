@@ -72,12 +72,24 @@ export function Layout() {
     document.querySelector<HTMLMetaElement>('meta[property="og:title"]')?.setAttribute("content", title);
     document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]')?.setAttribute("content", title);
 
-    const description = DESCRIPTIONS[location.pathname];
-    if (!description) return;
+    const canonicalUrl = `https://www.oglasglobal.com${
+      location.pathname === "/" ? "" : location.pathname.replace(/\/$/, "")
+    }`;
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = canonicalUrl;
+    document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
 
-    document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", description);
-    document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.setAttribute("content", description);
-    document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]')?.setAttribute("content", description);
+    const description = DESCRIPTIONS[location.pathname];
+    if (description) {
+      document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", description);
+      document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.setAttribute("content", description);
+      document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]')?.setAttribute("content", description);
+    }
   }, [location.pathname]);
 
   useEffect(() => {
