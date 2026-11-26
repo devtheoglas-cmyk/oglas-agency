@@ -563,6 +563,52 @@ html.lenis body {
   pointer-events: none;
 }
 
+/* Header Services mega-menu. The menu is stateful so hover and keyboard focus
+   share the same open state and the panel stays reachable while moving into it. */
+.site-services-menu-wrap {
+  position: relative;
+}
+
+.site-services-menu {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 50%;
+  z-index: 10;
+  width: min(92vw, 1080px);
+  padding: 1.5rem;
+  color: #fff;
+  background: rgb(12 12 12 / 98%);
+  border: 1px solid rgb(255 255 255 / 15%);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 24%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -8px);
+  visibility: hidden;
+  transition:
+    opacity 220ms ease,
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 220ms ease;
+}
+
+.site-services-menu-wrap[data-open="true"] .site-services-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  visibility: visible;
+}
+
+@media (max-width: 767px) {
+  .site-services-menu {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-services-menu {
+    transition: none;
+  }
+}
+
 /* Client-logo marquee: seamless loop, pauses on hover/focus, static under
    reduced motion. See src/components/ui/Marquee.tsx. */
 @keyframes marquee-scroll {
