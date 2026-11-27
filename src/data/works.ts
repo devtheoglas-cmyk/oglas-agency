@@ -141,5 +141,11 @@ export const productWorks: Work[] = [
   },
 ];
 
+// Homepage work selections only include projects with published case-study pages.
+// This keeps every project shown on the homepage actionable and prevents visitors
+// from encountering portfolio cards that cannot be opened yet.
+export const brandCaseStudyWorks: Work[] = brandWorks.filter((work) => work.hasCaseStudy);
+export const productCaseStudyWorks: Work[] = productWorks.filter((work) => work.hasCaseStudy);
+
 // Two featured cards under "VISUALS CREATED TO BE FELT".
-export const featuredWorks: Work[] = brandWorks.slice(0, 2);
+export const featuredWorks: Work[] = brandCaseStudyWorks.slice(0, 2);

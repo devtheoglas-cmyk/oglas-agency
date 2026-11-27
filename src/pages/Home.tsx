@@ -11,7 +11,13 @@ import type { Testimonial } from "../components/ui/Carousel";
 import { clients, heroManifesto, testimonials, whatWeDoIntro, whatWeDoItems } from "../data/home";
 import { featuredInsight } from "../data/insights";
 import { faqs, processStages } from "../data/services";
-import { brandWorks, featuredWorks, productWorks } from "../data/works";
+import {
+  brandCaseStudyWorks,
+  brandWorks,
+  featuredWorks,
+  productCaseStudyWorks,
+  productWorks,
+} from "../data/works";
 import type { Work } from "../data/works";
 import { cn } from "../lib/cn";
 import { useReveal } from "../lib/useReveal";
@@ -760,7 +766,7 @@ export default function Home() {
         lineOne="Creativity"
         lineTwo="Change"
         ghost="creates"
-        works={brandWorks}
+        works={brandCaseStudyWorks}
         band="Brand experience is more than a trend, It's an emotion."
         bandCta="branding approach"
         dark={false}
@@ -770,7 +776,7 @@ export default function Home() {
         lineOne="Reframe"
         lineTwo="Interaction"
         ghost="the user"
-        works={productWorks}
+        works={productCaseStudyWorks}
         band="Adapt with better tools, sharper thinking, and stronger intent"
         bandCta="user first approach"
       />
