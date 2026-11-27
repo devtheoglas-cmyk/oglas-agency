@@ -1,17 +1,15 @@
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Fragment, useEffect, useRef, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { ChapterDock } from "../components/services/ChapterDock";
-import { ArrowDown, ArrowUpRight } from "../components/services/icons";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { ArrowUpRight } from "../components/services/icons";
 import { ProcessTrack } from "../components/services/ProcessTrack";
 import { ServicesFaq } from "../components/services/ServicesFaq";
 import { WorkReel } from "../components/services/WorkReel";
 import { BgImage } from "../components/ui/BgImage";
-import { faqs, services, servicesIntro, servicesSummary, type Service } from "../data/services";
+import { faqs, services, type Service } from "../data/services";
 import { siteDetails } from "../data/site";
 import { brandWorks, productWorks, type Work } from "../data/works";
 import { cn } from "../lib/cn";
-import { scrollToSection } from "../lib/scrollToSection";
 import "../styles/services.css";
 
 /*
@@ -36,80 +34,6 @@ const allWorks: Work[] = [...brandWorks, ...productWorks];
 function findWork(slug: string): Work | undefined {
   return allWorks.find((work) => (work.caseStudySlug ?? work.slug) === slug && work.hasCaseStudy);
 }
-
-function jumpTo(event: MouseEvent<HTMLAnchorElement>, id: string): void {
-  event.preventDefault();
-  scrollToSection(id);
-}
-
-/* ------------------------------------------------------------------ */
-
-function Hero() {
-  const words = servicesIntro.split(" ");
-
-  return (
-    <section className="relative flex min-h-svh flex-col bg-dark text-white">
-      <div className={`${SHELL} flex flex-1 flex-col justify-center pt-32 pb-12 lg:pt-40 lg:pb-16`}>
-        <h1 className="max-w-[1500px] font-display text-[clamp(2.3rem,5.3vw,6rem)] leading-[0.94] font-extrabold tracking-[-0.04em] uppercase [text-wrap:balance]">
-          {words.map((word, i) => (
-            <Fragment key={`${word}-${i}`}>
-              <span className="svc-word">
-                <span style={{ "--i": i } as CSSProperties}>{word}</span>
-              </span>
-              {i < words.length - 1 && " "}
-            </Fragment>
-          ))}
-        </h1>
-
-        <div className="svc-hero-follow mt-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between lg:mt-14">
-          <div className="max-w-[560px] space-y-4 font-body text-[clamp(1.05rem,1.3vw,1.3rem)] leading-[1.55] text-white/70">
-            {servicesSummary.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-          <Link
-            className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-white px-7 py-4 font-body text-sm font-semibold tracking-[0.08em] text-black uppercase transition-colors duration-300 hover:bg-lime"
-            to="/contacts"
-          >
-            Start a project
-            <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </div>
-      </div>
-
-      <nav
-        aria-label="Our services"
-        className={`${SHELL} svc-hero-follow pb-10 lg:pb-14`}
-        style={{ "--delay": "0.95s" } as CSSProperties}
-      >
-        <ol className="grid border-t border-white/15 md:grid-cols-5">
-          {services.map((service) => (
-            <li className="border-b border-white/15 md:border-b-0 md:border-l md:first:border-l-0" key={service.id}>
-              <a
-                className="svc-index group relative flex h-full items-center justify-between gap-6 overflow-hidden py-5 transition-colors duration-300 hover:text-black focus-visible:text-black max-md:-mx-3 max-md:px-3 md:flex-col md:items-start md:justify-start md:px-5 md:py-7 lg:px-7 lg:py-8"
-                href={`#${service.id}`}
-                onClick={(event) => jumpTo(event, service.id)}
-              >
-                <span aria-hidden="true" className="svc-index-fill absolute inset-0 bg-lime" />
-                <span className="relative font-display text-[clamp(1.4rem,1.9vw,2.15rem)] leading-[0.95] font-bold tracking-[-0.03em] uppercase">
-                  {service.title}
-                </span>
-                <ul className="relative hidden flex-col gap-1.5 font-body text-sm text-white/55 transition-colors duration-300 group-hover:text-black/70 group-focus-visible:text-black/70 md:flex">
-                  {service.highlights.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <ArrowDown className="relative size-5 shrink-0 transition-transform duration-300 group-hover:translate-y-1 md:mt-auto" />
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 
 function Block({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -142,7 +66,7 @@ function WorkLink({ work }: { work: Work }) {
   );
 }
 
-function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }) {
+function Chapter({ service, tone, headingLevel = "h2" }: { service: Service; tone: "dark" | "light"; headingLevel?: "h1" | "h2" }) {
   const dark = tone === "dark";
   const muted = dark ? "text-white/70" : "text-black/70";
   const rule = dark ? "border-white/15" : "border-black/15";
@@ -150,6 +74,7 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
   const content = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const count = service.reel.length;
+  const Heading = headingLevel;
 
   // Step the image reel as the reader moves through the chapter's text.
   useEffect(() => {
@@ -173,14 +98,14 @@ function Chapter({ service, tone }: { service: Service; tone: "dark" | "light" }
     >
       <div className={`${SHELL} pt-24 pb-24 lg:pt-36 lg:pb-36`}>
         <header className={cn("border-b pb-10 lg:pb-14", rule)}>
-          <h2
+          <Heading
             className="svc-title font-display text-[clamp(2.6rem,8vw,9rem)] leading-[0.86] font-extrabold tracking-[-0.045em] uppercase outline-none [overflow-wrap:anywhere]"
             data-section-heading
             id={`${service.id}-title`}
             tabIndex={-1}
           >
             {service.title}
-          </h2>
+          </Heading>
         </header>
 
         <div className="mt-12 grid grid-cols-1 gap-14 lg:mt-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-[4.5vw]">
@@ -328,29 +253,14 @@ function ClosingCta() {
 /* ------------------------------------------------------------------ */
 
 export default function Services() {
-  const location = useLocation();
+  const { serviceId } = useParams<{ serviceId: string }>();
+  const service = services.find((item) => item.id === serviceId);
 
-  // Honour deep links such as /services#web-design once layout has settled.
-  useEffect(() => {
-    const id = location.hash.slice(1);
-    if (!id) return;
-    let frame = 0;
-    void document.fonts.ready.then(() => {
-      frame = window.requestAnimationFrame(() => {
-        frame = window.requestAnimationFrame(() => scrollToSection(id, { immediate: true }));
-      });
-    });
-    return () => window.cancelAnimationFrame(frame);
-    // Only on arrival; in-page jumps update the hash themselves.
-  }, []);
+  if (!service) return <Navigate replace to="/services/brand-design" />;
 
   return (
     <div>
-      <Hero />
-      {services.map((service, i) => (
-        <Chapter key={service.id} service={service} tone={i % 2 === 0 ? "light" : "dark"} />
-      ))}
-      <ChapterDock services={services} />
+      <Chapter headingLevel="h1" service={service} tone="dark" />
       <ProcessTrack />
       <section aria-labelledby="faq-title" className="bg-white text-black">
         <div className={`${SHELL} grid gap-12 py-24 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)] lg:gap-16 lg:py-36`}>

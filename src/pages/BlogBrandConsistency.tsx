@@ -89,7 +89,7 @@ export default function BlogBrandConsistency() {
       <header className="bg-dark text-white">
         <div className="mx-auto grid max-w-[1760px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20 lg:px-[4.15vw] lg:py-28">
           <div className="flex flex-col justify-end">
-            <Link className="mb-12 w-fit font-body text-sm font-semibold tracking-[0.1em] text-lime uppercase underline-offset-4 hover:underline" to="/services">
+            <Link className="mb-12 w-fit font-body text-sm font-semibold tracking-[0.1em] text-lime uppercase underline-offset-4 hover:underline" to="/services/brand-design">
               Brand Design
             </Link>
             <h1 className="max-w-[10ch] font-display text-[clamp(3rem,6.2vw,7rem)] leading-[0.86] font-extrabold tracking-[-0.05em] uppercase">

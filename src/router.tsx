@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -19,7 +19,8 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "about", element: <People /> },
-      { path: "services", element: <Services /> },
+      { path: "services", element: <Navigate replace to="/services/brand-design" /> },
+      { path: "services/:serviceId", element: <Services /> },
       { path: "works", element: <Works /> },
       { path: "works/:slug", element: <WorkDetail /> },
       { path: "contacts", element: <Contact /> },

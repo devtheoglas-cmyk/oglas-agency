@@ -3,6 +3,7 @@ import { Suspense, useEffect, useLayoutEffect, useRef } from "react";
 import { Outlet, useLocation, useNavigationType } from "react-router-dom";
 import { getSmoothScroll, initializeSmoothScroll } from "../../lib/smoothScroll";
 import { useReducedMotion } from "../../lib/useReducedMotion";
+import { services } from "../../data/services";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { SkipLink } from "./SkipLink";
@@ -54,7 +55,16 @@ const DESCRIPTIONS: Readonly<Record<string, string>> = {
 };
 
 function titleForPath(pathname: string): string {
+  const serviceId = pathname.match(/^\/services\/([^/]+)$/)?.[1];
+  const service = services.find((item) => item.id === serviceId);
+  if (service) return `${service.title} Services in Dubai | Oglas Global`;
   return TITLES[pathname] ?? "Page not found — The Oglas Agency";
+}
+
+function descriptionForPath(pathname: string): string | undefined {
+  const serviceId = pathname.match(/^\/services\/([^/]+)$/)?.[1];
+  const service = services.find((item) => item.id === serviceId);
+  return service?.description[0] ?? DESCRIPTIONS[pathname];
 }
 
 export function Layout() {
@@ -84,7 +94,7 @@ export function Layout() {
     canonical.href = canonicalUrl;
     document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
 
-    const description = DESCRIPTIONS[location.pathname];
+    const description = descriptionForPath(location.pathname);
     if (description) {
       document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", description);
       document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.setAttribute("content", description);

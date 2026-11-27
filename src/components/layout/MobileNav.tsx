@@ -1,6 +1,7 @@
 import { useEffect, useRef, type RefObject } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { primaryNavigation } from "../../data/nav";
+import { services } from "../../data/services";
 import { cn } from "../../lib/cn";
 import { startSmoothScroll, stopSmoothScroll } from "../../lib/smoothScroll";
 
@@ -95,7 +96,7 @@ export function MobileNav({ isOpen, onClose, triggerRef }: MobileNavProps) {
       ref={panelRef}
       role="dialog"
     >
-      <div className="flex h-full flex-col px-5 py-5 sm:px-8">
+      <div className="flex h-full flex-col overflow-y-auto px-5 py-5 sm:px-8">
         <div className="flex items-center justify-between">
           <span className="font-body text-xl font-extrabold tracking-[-0.06em]">THE OGLAS</span>
           <button
@@ -112,21 +113,46 @@ export function MobileNav({ isOpen, onClose, triggerRef }: MobileNavProps) {
           <ul className="space-y-1">
             {primaryNavigation.map((item, index) => (
               <li key={item.to}>
-                <NavLink
-                  className={({ isActive }) =>
-                    cn(
-                      "flex items-baseline justify-between border-b border-white/20 py-4 font-display text-[clamp(2.6rem,13vw,5rem)] leading-none uppercase",
-                      isActive && "text-lime",
-                    )
-                  }
-                  onClick={onClose}
-                  to={item.to}
-                >
-                  {item.label}
-                  <span aria-hidden="true" className="font-body text-xs font-medium">
-                    0{index + 1}
-                  </span>
-                </NavLink>
+                {item.label === "Services" ? (
+                  <div className="border-b border-white/20 py-4">
+                    <div className={cn(
+                      "flex items-baseline justify-between font-display text-[clamp(2.6rem,13vw,5rem)] leading-none uppercase",
+                      pathname.startsWith("/services/") && "text-lime",
+                    )}>
+                      Services
+                      <span aria-hidden="true" className="font-body text-xs font-medium">0{index + 1}</span>
+                    </div>
+                    <ul className="mt-4 grid grid-cols-2 gap-x-5 gap-y-2 font-body text-sm font-semibold uppercase sm:grid-cols-3">
+                      {services.map((service) => (
+                        <li key={service.id}>
+                          <NavLink
+                            className={({ isActive }) => cn("block py-1.5 text-white/65 transition-colors", isActive && "text-lime")}
+                            onClick={onClose}
+                            to={`/services/${service.id}`}
+                          >
+                            {service.title}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <NavLink
+                    className={({ isActive }) =>
+                      cn(
+                        "flex items-baseline justify-between border-b border-white/20 py-4 font-display text-[clamp(2.6rem,13vw,5rem)] leading-none uppercase",
+                        isActive && "text-lime",
+                      )
+                    }
+                    onClick={onClose}
+                    to={item.to}
+                  >
+                    {item.label}
+                    <span aria-hidden="true" className="font-body text-xs font-medium">
+                      0{index + 1}
+                    </span>
+                  </NavLink>
+                )}
               </li>
             ))}
           </ul>
