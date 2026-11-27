@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import { processIntro, processStages } from "../../data/services";
+import { cn } from "../../lib/cn";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -14,7 +15,7 @@ const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
  * Below lg, or with reduced motion, the same list reads as a vertical
  * timeline, so no content depends on the pinned version.
  */
-export function ProcessTrack() {
+export function ProcessTrack({ pinned = true }: { pinned?: boolean }) {
   const section = useRef<HTMLElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLOListElement>(null);
@@ -22,6 +23,8 @@ export function ProcessTrack() {
 
   useGSAP(
     () => {
+      if (!pinned) return;
+
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
@@ -72,13 +75,16 @@ export function ProcessTrack() {
         };
       });
     },
-    { scope: section },
+    { dependencies: [pinned], scope: section },
   );
 
   return (
     <section
       aria-labelledby="process-title"
-      className="relative overflow-hidden bg-off-white text-black lg:motion-safe:flex lg:motion-safe:h-svh lg:motion-safe:flex-col"
+      className={cn(
+        "relative overflow-hidden bg-off-white text-black",
+        pinned && "lg:motion-safe:flex lg:motion-safe:h-svh lg:motion-safe:flex-col",
+      )}
       id="process"
       ref={section}
     >
@@ -98,14 +104,22 @@ export function ProcessTrack() {
         </div>
       </div>
 
-      <div className="lg:motion-safe:flex-1 lg:motion-safe:overflow-hidden" ref={viewport}>
+      <div className={cn(pinned && "lg:motion-safe:flex-1 lg:motion-safe:overflow-hidden")} ref={viewport}>
         <ol
-          className={`${SHELL} flex flex-col pb-20 lg:motion-safe:pb-0 lg:motion-reduce:grid lg:motion-reduce:grid-cols-3 lg:motion-reduce:gap-x-12 lg:motion-safe:mx-0 lg:motion-safe:h-full lg:motion-safe:w-max lg:motion-safe:max-w-none lg:motion-safe:flex-row lg:motion-safe:items-stretch lg:motion-safe:pr-[30vw] lg:motion-safe:pl-[max(4.15vw,calc((100vw_-_1760px)/2_+_4.15vw))]`}
+          className={cn(
+            SHELL,
+            pinned
+              ? "flex flex-col pb-20 lg:motion-safe:mx-0 lg:motion-safe:h-full lg:motion-safe:w-max lg:motion-safe:max-w-none lg:motion-safe:flex-row lg:motion-safe:items-stretch lg:motion-safe:pb-0 lg:motion-safe:pr-[30vw] lg:motion-safe:pl-[max(4.15vw,calc((100vw_-_1760px)/2_+_4.15vw))] lg:motion-reduce:grid lg:motion-reduce:grid-cols-3 lg:motion-reduce:gap-x-12"
+              : "grid pb-20 md:grid-cols-2 md:gap-x-10 lg:grid-cols-3 lg:gap-x-12",
+          )}
           ref={track}
         >
           {processStages.map((stage, i) => (
             <li
-              className="svc-stage relative flex shrink-0 flex-col border-t border-black/15 py-8 lg:motion-safe:w-[clamp(320px,27vw,440px)] lg:motion-safe:border-t-0 lg:motion-safe:border-l lg:motion-safe:px-9 lg:motion-safe:py-2 lg:motion-safe:first:border-l-0 lg:motion-safe:first:pl-0"
+              className={cn(
+                "svc-stage relative flex shrink-0 flex-col border-t border-black/15 py-8",
+                pinned && "lg:motion-safe:w-[clamp(320px,27vw,440px)] lg:motion-safe:border-t-0 lg:motion-safe:border-l lg:motion-safe:px-9 lg:motion-safe:py-2 lg:motion-safe:first:border-l-0 lg:motion-safe:first:pl-0",
+              )}
               key={stage.title}
             >
               <div className="svc-stage-body flex h-full flex-col">
@@ -130,11 +144,13 @@ export function ProcessTrack() {
         </ol>
       </div>
 
-      <div className={`${SHELL} hidden pt-10 pb-12 lg:motion-safe:block`}>
-        <div aria-hidden="true" className="relative h-px bg-black/15">
-          <span className="absolute inset-0 origin-left scale-x-0 bg-black" ref={progress} />
+      {pinned && (
+        <div className={`${SHELL} hidden pt-10 pb-12 lg:motion-safe:block`}>
+          <div aria-hidden="true" className="relative h-px bg-black/15">
+            <span className="absolute inset-0 origin-left scale-x-0 bg-black" ref={progress} />
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

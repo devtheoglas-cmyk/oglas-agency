@@ -716,7 +716,7 @@ export default function Home() {
       <Hero />
       <AboutOglas />
       <WhatWeDo />
-      <ProcessTrack />
+      <ProcessTrack pinned={false} />
       <WhyOglas />
       <VisualsFelt />
       <WorkShowcase
