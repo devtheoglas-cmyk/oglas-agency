@@ -3,10 +3,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
+import { ProcessTrack } from "../components/services/ProcessTrack";
+import { ServicesFaq } from "../components/services/ServicesFaq";
 import { BgImage } from "../components/ui/BgImage";
 import { Carousel } from "../components/ui/Carousel";
 import { WorkCard } from "../components/ui/WorkCard";
 import { clients, heroManifesto, testimonials, whatWeDoIntro, whatWeDoItems } from "../data/home";
+import { featuredInsight } from "../data/insights";
+import { faqs, processStages } from "../data/services";
 import { brandWorks, featuredWorks, productWorks } from "../data/works";
 import type { Work } from "../data/works";
 import { cn } from "../lib/cn";
@@ -81,10 +85,16 @@ function Hero() {
               </span>
             ))}
           </h1>
-          <div className="home-hero-badge mt-10 flex justify-center lg:mt-20">
+          <div className="home-hero-badge mt-10 flex flex-wrap justify-center gap-3 lg:mt-20">
             <span className="rounded-full border border-white/35 px-6 py-2.5 font-body text-sm tracking-[0.12em] text-white uppercase">
               Since 2019
             </span>
+            <Link
+              className="rounded-full bg-white px-6 py-2.5 font-body text-sm font-semibold tracking-[0.08em] text-black uppercase transition-colors hover:bg-lime"
+              to="/contacts"
+            >
+              Start a project
+            </Link>
           </div>
         </div>
       </div>
@@ -100,14 +110,213 @@ function Hero() {
   );
 }
 
-function SectionLabel({ children }: { children: string }) {
+function SectionLabel({ children, onLight = false }: { children: string; onLight?: boolean }) {
   return (
-    <span className="flex items-center gap-2.5 font-body text-sm font-medium tracking-[0.08em] text-lime uppercase" data-reveal>
+    <span
+      className={cn(
+        "flex items-center gap-2.5 font-body text-sm font-medium tracking-[0.08em] uppercase",
+        onLight ? "text-black/60" : "text-lime",
+      )}
+      data-reveal
+    >
       <span aria-hidden="true" className="text-lg leading-none">
         •
       </span>
       {children}
     </span>
+  );
+}
+
+function AboutOglas() {
+  return (
+    <section className="bg-white py-20 text-black lg:py-36">
+      <div className={SHELL}>
+        <SectionLabel onLight>about Oglas Global</SectionLabel>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:items-end lg:gap-20">
+          <h2
+            className="font-display text-[clamp(2.4rem,5.3vw,6rem)] leading-[0.92] font-extrabold tracking-[-0.04em] uppercase"
+            data-reveal
+          >
+            Founded in 2019 by Abi Roshan and Faheem Razi, Oglas Global is a borderless creative agency shaping culture through iconic, value-driven brand platforms.
+          </h2>
+          <div data-reveal>
+            <p className="font-body text-lg leading-[1.7] text-black/70">{whatWeDoIntro}</p>
+            <Link
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-black/25 px-6 py-3 font-body text-sm font-semibold tracking-[0.08em] uppercase transition-colors hover:bg-black hover:text-white"
+              to="/about"
+            >
+              Meet the agency <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const whyOglasItems = [
+  { title: "Strategy", text: processStages[0]!.detail },
+  { title: "Creativity", text: processStages[2]!.detail },
+  { title: "Technology", text: processStages[3]!.detail },
+];
+
+function WhyOglas() {
+  return (
+    <section className="bg-dark py-20 text-white lg:py-36">
+      <div className={SHELL}>
+        <SectionLabel>why choose Oglas Global?</SectionLabel>
+        <h2
+          className="mt-8 max-w-[1200px] font-display text-[clamp(2.6rem,6vw,6.5rem)] leading-[0.9] font-extrabold tracking-[-0.04em] uppercase"
+          data-reveal
+        >
+          Strategy, creativity and technology working together.
+        </h2>
+        <div className="mt-14 grid border-t border-white/15 md:grid-cols-3 lg:mt-20" data-reveal>
+          {whyOglasItems.map((item) => (
+            <article className="border-b border-white/15 py-8 md:border-b-0 md:border-l md:px-8 md:first:border-l-0 md:first:pl-0" key={item.title}>
+              <h3 className="font-display text-3xl font-semibold tracking-[-0.02em] uppercase">{item.title}</h3>
+              <p className="mt-5 max-w-[38ch] font-body text-base leading-[1.65] text-white/65">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const industryWorks = [...brandWorks, ...productWorks].filter((work) =>
+  ["fishwala", "velvet-properties", "gymkha", "aspirant-wave", "snaxx"].includes(work.slug),
+);
+
+function IndustriesWeServe() {
+  return (
+    <section className="bg-white py-20 text-black lg:py-36">
+      <div className={SHELL}>
+        <SectionLabel onLight>industries we serve</SectionLabel>
+        <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <h2
+            className="max-w-[1050px] font-display text-[clamp(2.5rem,5.4vw,6rem)] leading-[0.9] font-extrabold tracking-[-0.04em] uppercase"
+            data-reveal
+          >
+            Relevant industries supported by actual experience.
+          </h2>
+          <Link className="w-fit shrink-0 font-body text-sm font-semibold tracking-[0.08em] uppercase underline underline-offset-4" to="/works">
+            Explore all work
+          </Link>
+        </div>
+        <ol className="mt-14 border-t border-black/15 lg:mt-20" data-reveal>
+          {industryWorks.map((work, index) => {
+            const content = (
+              <>
+                <span className="font-body text-sm tabular-nums text-black/45">{String(index + 1).padStart(2, "0")}</span>
+                <span className="font-display text-[clamp(1.65rem,3.2vw,3.6rem)] leading-none font-semibold tracking-[-0.025em] uppercase">{work.name}</span>
+                <span className="font-body text-sm leading-relaxed text-black/60 md:text-right">{work.type}</span>
+              </>
+            );
+
+            return (
+              <li className="border-b border-black/15" key={work.slug}>
+                {work.hasCaseStudy ? (
+                  <Link
+                    className="grid items-center gap-4 py-6 transition-colors hover:text-black/55 md:grid-cols-[3rem_minmax(0,1fr)_minmax(14rem,0.65fr)] lg:py-8"
+                    to={`/works/${work.caseStudySlug ?? work.slug}`}
+                  >
+                    {content}
+                  </Link>
+                ) : (
+                  <div className="grid items-center gap-4 py-6 md:grid-cols-[3rem_minmax(0,1fr)_minmax(14rem,0.65fr)] lg:py-8">{content}</div>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+function Expertise() {
+  return (
+    <section className="bg-off-white py-20 text-black lg:py-36">
+      <div className={SHELL}>
+        <SectionLabel onLight>our expertise / capabilities</SectionLabel>
+        <h2
+          className="mt-8 max-w-[1120px] font-display text-[clamp(2.5rem,5.4vw,6rem)] leading-[0.9] font-extrabold tracking-[-0.04em] uppercase"
+          data-reveal
+        >
+          The combination of strategy, creativity and technology.
+        </h2>
+        <div className="mt-14 grid gap-8 lg:mt-20 lg:grid-cols-3" data-reveal>
+          {whyOglasItems.map((item, index) => (
+            <article className="border-t border-black/20 pt-7" key={item.title}>
+              <span className="font-body text-sm tabular-nums text-black/45">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className="mt-4 font-display text-[clamp(2rem,3vw,3.5rem)] leading-none font-semibold tracking-[-0.03em] uppercase">{item.title}</h3>
+              <p className="mt-5 max-w-[42ch] font-body text-base leading-[1.65] text-black/65">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LatestInsights() {
+  return (
+    <section className="bg-off-white py-20 text-black lg:py-36">
+      <div className={SHELL}>
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6 lg:mb-14">
+          <div>
+            <SectionLabel onLight>insights / latest articles</SectionLabel>
+            <h2 className="mt-6 font-display text-[clamp(2.5rem,5vw,5.5rem)] leading-[0.9] font-extrabold tracking-[-0.04em] uppercase" data-reveal>
+              Latest thinking and knowledge.
+            </h2>
+          </div>
+          <Link className="font-body text-sm font-semibold tracking-[0.08em] uppercase underline underline-offset-4" to="/insights">
+            View all insights
+          </Link>
+        </div>
+        <Link
+          className="group grid gap-8 border-t border-black/15 pt-7 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-16"
+          data-reveal
+          to={featuredInsight.href}
+        >
+          <BgImage
+            alt="Brand Consistency Drives Growth campaign image featuring The Oglas branded materials, website screens and Dubai skyline"
+            aspectRatio="16 / 9"
+            className="w-full overflow-hidden transition-transform duration-500 ease-out group-hover:scale-[1.01]"
+            src={featuredInsight.image}
+          />
+          <div className="flex max-w-[38rem] flex-col items-start lg:py-3">
+            <p className="font-body text-sm font-semibold tracking-[0.1em] text-black/60 uppercase">{featuredInsight.category}</p>
+            <h3 className="mt-5 font-display text-[clamp(2.2rem,4vw,4.8rem)] leading-[0.9] font-extrabold tracking-[-0.04em] uppercase">{featuredInsight.title}</h3>
+            <p className="mt-6 font-body text-base leading-[1.7] text-black/70">{featuredInsight.excerpt}</p>
+            <span className="mt-8 font-body text-sm font-semibold tracking-[0.08em] uppercase underline underline-offset-4">Read article →</span>
+          </div>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function HomeFaq() {
+  return (
+    <section aria-labelledby="home-faq-title" className="bg-white py-20 text-black lg:py-36">
+      <div className={`${SHELL} grid gap-12 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)] lg:gap-16`}>
+        <div>
+          <SectionLabel onLight>frequently asked questions</SectionLabel>
+          <h2
+            className="mt-6 font-display text-[clamp(2.5rem,5vw,5.5rem)] leading-[0.9] font-extrabold tracking-[-0.04em] uppercase"
+            data-reveal
+            id="home-faq-title"
+          >
+            Genuine questions from potential clients.
+          </h2>
+        </div>
+        <div data-reveal>
+          <ServicesFaq faqs={faqs} />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -251,6 +460,8 @@ function WorkShowcase({ overline, lineOne, lineTwo, ghost, works, band, bandCta,
   );
 }
 
+const homeServiceIds = ["brand-design", "web-design", "digital-marketing", "ux-ui-design", "web-development"] as const;
+
 function WhatWeDo() {
   const [open, setOpen] = useState("Branding & Brand Identity Design");
   const baseId = useId();
@@ -271,7 +482,7 @@ function WhatWeDo() {
         </div>
 
         <div data-reveal>
-          {whatWeDoItems.map((item) => {
+          {whatWeDoItems.map((item, itemIndex) => {
             const expandable = Boolean(item.description);
             const isOpen = expandable && open === item.title;
             const panelId = `${baseId}-${item.title.replace(/\s+/g, "-")}`;
@@ -328,6 +539,12 @@ function WhatWeDo() {
                       <p className="max-w-[620px] font-body text-base leading-relaxed text-white/75">
                         {item.description}
                       </p>
+                      <Link
+                        className="mt-7 inline-flex items-center gap-2 font-body text-sm font-semibold tracking-[0.08em] text-lime uppercase underline decoration-1 underline-offset-4"
+                        to={`/services/${homeServiceIds[itemIndex]}`}
+                      >
+                        Explore {item.title} <span aria-hidden="true">↗</span>
+                      </Link>
                       {item.testimonial && (
                         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
                           <div className="max-w-[520px]">
@@ -497,6 +714,10 @@ export default function Home() {
   return (
     <div ref={pageRef}>
       <Hero />
+      <AboutOglas />
+      <WhatWeDo />
+      <ProcessTrack />
+      <WhyOglas />
       <VisualsFelt />
       <WorkShowcase
         overline="strategic opportunity"
@@ -517,9 +738,12 @@ export default function Home() {
         band="Adapt with better tools, sharper thinking, and stronger intent"
         bandCta="user first approach"
       />
-      <WhatWeDo />
+      <IndustriesWeServe />
+      <Expertise />
       <SharedSuccess />
       <Testimonials />
+      <LatestInsights />
+      <HomeFaq />
       <BuildBoldly />
     </div>
   );

@@ -18,8 +18,29 @@ export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const servicesCloseTimer = useRef<number | null>(null);
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
   const darkHero = hasDarkHero(pathname);
+
+  const cancelServicesClose = useCallback((): void => {
+    if (servicesCloseTimer.current !== null) {
+      window.clearTimeout(servicesCloseTimer.current);
+      servicesCloseTimer.current = null;
+    }
+  }, []);
+
+  const openServicesMenu = useCallback((): void => {
+    cancelServicesClose();
+    setIsServicesOpen(true);
+  }, [cancelServicesClose]);
+
+  const scheduleServicesClose = useCallback((): void => {
+    cancelServicesClose();
+    servicesCloseTimer.current = window.setTimeout(() => {
+      setIsServicesOpen(false);
+      servicesCloseTimer.current = null;
+    }, 350);
+  }, [cancelServicesClose]);
 
   const closeServicesMenuOnBlur = (event: FocusEvent<HTMLLIElement>): void => {
     if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
@@ -33,6 +54,8 @@ export function SiteHeader() {
     window.addEventListener("scroll", updateHeader, { passive: true });
     return () => window.removeEventListener("scroll", updateHeader);
   }, []);
+
+  useEffect(() => cancelServicesClose, [cancelServicesClose]);
 
   return (
     <>
@@ -64,9 +87,9 @@ export function SiteHeader() {
                   data-open={item.label === "Services" ? isServicesOpen : undefined}
                   key={item.to}
                   onBlur={item.label === "Services" ? closeServicesMenuOnBlur : undefined}
-                  onFocus={item.label === "Services" ? () => setIsServicesOpen(true) : undefined}
-                  onMouseEnter={item.label === "Services" ? () => setIsServicesOpen(true) : undefined}
-                  onMouseLeave={item.label === "Services" ? () => setIsServicesOpen(false) : undefined}
+                  onFocus={item.label === "Services" ? openServicesMenu : undefined}
+                  onMouseEnter={item.label === "Services" ? openServicesMenu : undefined}
+                  onMouseLeave={item.label === "Services" ? scheduleServicesClose : undefined}
                 >
                   {item.label === "Services" ? (
                     <button
@@ -77,7 +100,7 @@ export function SiteHeader() {
                         "after:absolute after:right-0 after:bottom-1 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform hover:after:scale-x-100",
                         pathname.startsWith("/services/") && "text-lime after:scale-x-100",
                       )}
-                      onClick={() => setIsServicesOpen(true)}
+                      onClick={openServicesMenu}
                       type="button"
                     >
                       <span className="inline-flex items-center gap-1.5">
@@ -100,7 +123,13 @@ export function SiteHeader() {
                     </NavLink>
                   )}
                   {item.label === "Services" && (
-                    <div aria-label="Services menu" className="site-services-menu" role="menu">
+                    <div
+                      aria-label="Services menu"
+                      className="site-services-menu"
+                      onMouseEnter={openServicesMenu}
+                      onMouseLeave={scheduleServicesClose}
+                      role="menu"
+                    >
                       <div className="border-b border-white/15 pb-3">
                         <p className="font-body text-xs font-semibold tracking-[0.14em] text-lime uppercase">What we do</p>
                         <p className="mt-1.5 max-w-md font-display text-2xl leading-none font-semibold tracking-[-0.03em] uppercase">
