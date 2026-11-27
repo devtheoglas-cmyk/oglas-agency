@@ -89,16 +89,16 @@ export function SiteHeader() {
                   </NavLink>
                   {item.label === "Services" && (
                     <div aria-label="Services menu" className="site-services-menu" role="menu">
-                      <div className="border-b border-white/15 pb-5">
+                      <div className="border-b border-white/15 pb-3">
                         <p className="font-body text-xs font-semibold tracking-[0.14em] text-lime uppercase">What we do</p>
-                        <p className="mt-2 max-w-md font-display text-2xl leading-none font-semibold tracking-[-0.03em] uppercase">
+                        <p className="mt-1.5 max-w-md font-display text-2xl leading-none font-semibold tracking-[-0.03em] uppercase">
                           Brand, digital and web experiences built around your business.
                         </p>
                       </div>
-                      <div className="grid gap-x-6 gap-y-1 pt-4 sm:grid-cols-2 lg:grid-cols-5">
+                      <div className="grid gap-x-6 gap-y-1 pt-2 sm:grid-cols-2 lg:grid-cols-5">
                         {services.map((service) => (
                           <Link
-                            className="group/menu-item border-b border-white/10 py-4 transition-colors hover:text-lime lg:border-b-0 lg:border-l lg:pl-5 lg:first:border-l-0 lg:first:pl-0"
+                            className="group/menu-item border-b border-white/10 py-3 transition-colors hover:text-lime lg:border-b-0 lg:border-l lg:pl-5 lg:first:border-l-0 lg:first:pl-0"
                             key={service.id}
                             role="menuitem"
                             to={`/services#${service.id}`}
@@ -107,7 +107,7 @@ export function SiteHeader() {
                               <span className="font-display text-lg leading-[0.95] font-bold tracking-[-0.025em] uppercase">{service.title}</span>
                               <ArrowDown className="mt-0.5 size-4 shrink-0 -rotate-90 opacity-50 transition-transform duration-300 group-hover/menu-item:translate-x-1 group-hover/menu-item:opacity-100" />
                             </span>
-                            <span className="mt-3 block space-y-1 font-body text-xs leading-[1.45] text-white/55 transition-colors group-hover/menu-item:text-white/75">
+                            <span className="mt-2 block space-y-1 font-body text-xs leading-[1.4] text-white/55 transition-colors group-hover/menu-item:text-white/75">
                               {service.highlights.map((highlight) => (
                                 <span className="block" key={highlight}>{highlight}</span>
                               ))}
