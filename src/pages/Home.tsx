@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { ProcessTrack } from "../components/services/ProcessTrack";
 import { ServicesFaq } from "../components/services/ServicesFaq";
 import { BgImage } from "../components/ui/BgImage";
-import { Carousel } from "../components/ui/Carousel";
 import { WorkCard } from "../components/ui/WorkCard";
+import type { Testimonial } from "../components/ui/Carousel";
 import { clients, heroManifesto, testimonials, whatWeDoIntro, whatWeDoItems } from "../data/home";
 import { featuredInsight } from "../data/insights";
 import { faqs, processStages } from "../data/services";
@@ -646,8 +646,28 @@ function SharedSuccess() {
 }
 
 function Testimonials() {
+  const railItems = Array.from({ length: 3 }, () => testimonials).flat();
+
+  const card = (testimonial: Testimonial, key: string) => (
+    <li
+      className="flex min-h-[320px] w-[min(82vw,410px)] shrink-0 flex-col rounded-2xl bg-off-white px-7 py-8 text-black sm:min-h-[360px] sm:w-[410px] sm:px-9 sm:py-10"
+      key={key}
+    >
+      <blockquote className="font-body text-base leading-[1.65] sm:text-lg">{testimonial.quote}</blockquote>
+      <footer className="mt-auto flex items-center gap-4 border-t border-black/12 pt-6">
+        {testimonial.avatar && (
+          <BgImage alt="" aspectRatio={1} className="size-11 rounded-full" src={testimonial.avatar} />
+        )}
+        <span>
+          <span className="block font-body text-sm font-semibold">{testimonial.name}</span>
+          <span className="mt-1 block font-body text-xs text-black/55">{testimonial.role}</span>
+        </span>
+      </footer>
+    </li>
+  );
+
   return (
-    <section className="bg-dark py-24 text-white lg:py-32">
+    <section className="overflow-hidden bg-dark py-24 text-white lg:py-32">
       <div className={SHELL}>
         <div className="mb-16 lg:mb-20">
           <h2
@@ -667,9 +687,25 @@ function Testimonials() {
             <span aria-hidden="true" className="hidden h-px flex-1 border-t border-white/15 sm:block" />
           </div>
         </div>
-        <div data-reveal>
-          <Carousel items={testimonials} />
+      </div>
+
+      <div className="testimonial-rail" data-reveal>
+        <div className="testimonial-rail__track flex w-max items-stretch">
+          <ul aria-hidden="true" className="testimonial-rail__group flex shrink-0 gap-5 pr-5">
+            {railItems.map((testimonial, index) => card(testimonial, `first-${testimonial.name}-${index}`))}
+          </ul>
+          <ul aria-hidden="true" className="testimonial-rail__group flex shrink-0 gap-5 pr-5">
+            {railItems.map((testimonial, index) => card(testimonial, `second-${testimonial.name}-${index}`))}
+          </ul>
         </div>
+        <ul className="sr-only">
+          {testimonials.map((testimonial) => (
+            <li key={testimonial.name}>
+              <blockquote>{testimonial.quote}</blockquote>
+              <p>{testimonial.name}, {testimonial.role}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
