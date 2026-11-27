@@ -15,12 +15,11 @@ export const siteDetails = {
   socials: {
     linkedin: "https://www.linkedin.com/company/ogc-it/",
     instagram: "https://www.instagram.com/oglas.global/",
-    behance: "https://www.behance.net",
   },
   offices: {
     dubai: {
       city: "Dubai",
-      address: ["Floor 26, Sheikh Rashid Tower", "World Trade Centre", "Dubai, UAE"],
+      address: ["Floor 21, Sheikh Rashid Tower", "World Trade Centre", "Dubai, UAE"],
       email: "bd@oglasglobal.com",
       recruitmentEmail: "career.theoglas@gmail.com",
       newBusinessContact: "Arshad",

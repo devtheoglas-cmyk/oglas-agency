@@ -48,14 +48,6 @@ export function SiteFooter() {
             >
               Instagram
             </a>
-            <a
-              className={footerLinkClass}
-              href={siteDetails.socials.behance}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Behance
-            </a>
           </div>
 
           <div className="sm:text-right">
