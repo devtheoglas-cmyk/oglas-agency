@@ -234,20 +234,22 @@ button:focus-visible {
 /* Run the scroll-linked reveal from tablet up only; on phones the grid
    is a single column, where the motion adds little, so cards render
    static. */
-@supports (animation-timeline: view()) and (min-width: 768px) {
-  .card-reveal {
-    animation: card-rise cubic-bezier(0.22, 0.61, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 42%;
-  }
-  @keyframes card-rise {
-    from {
-      transform: translate3d(0, 64px, 0) scale(0.965);
-      opacity: 0;
+@media (min-width: 768px) {
+  @supports (animation-timeline: view()) {
+    .card-reveal {
+      animation: card-rise cubic-bezier(0.22, 0.61, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 42%;
     }
-    to {
-      transform: translate3d(0, 0, 0) scale(1);
-      opacity: 1;
+    @keyframes card-rise {
+      from {
+        transform: translate3d(0, 64px, 0) scale(0.965);
+        opacity: 0;
+      }
+      to {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 1;
+      }
     }
   }
 }
@@ -303,50 +305,52 @@ button:focus-visible {
   will-change: transform, opacity;
 }
 
-@supports (animation-timeline: view()) and (min-width: 768px) {
-  .showcase-word-left {
-    animation: showcase-slide-left cubic-bezier(0.22, 0.61, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-  }
-  .showcase-word-right {
-    animation: showcase-slide-right cubic-bezier(0.22, 0.61, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-  }
-  .showcase-ghost {
-    animation: showcase-ghost cubic-bezier(0.22, 0.61, 0.36, 1) both;
-    animation-timeline: view();
-    animation-range: entry 15% cover 55%;
-  }
-  @keyframes showcase-slide-left {
-    from {
-      transform: translate3d(-35%, 0, 0);
-      opacity: 0;
+@media (min-width: 768px) {
+  @supports (animation-timeline: view()) {
+    .showcase-word-left {
+      animation: showcase-slide-left cubic-bezier(0.22, 0.61, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
     }
-    to {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
+    .showcase-word-right {
+      animation: showcase-slide-right cubic-bezier(0.22, 0.61, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
     }
-  }
-  @keyframes showcase-slide-right {
-    from {
-      transform: translate3d(35%, 0, 0);
-      opacity: 0;
+    .showcase-ghost {
+      animation: showcase-ghost cubic-bezier(0.22, 0.61, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 15% cover 55%;
     }
-    to {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
+    @keyframes showcase-slide-left {
+      from {
+        transform: translate3d(-35%, 0, 0);
+        opacity: 0;
+      }
+      to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
     }
-  }
-  @keyframes showcase-ghost {
-    from {
-      transform: scale(0.55);
-      opacity: 0;
+    @keyframes showcase-slide-right {
+      from {
+        transform: translate3d(35%, 0, 0);
+        opacity: 0;
+      }
+      to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
     }
-    to {
-      transform: scale(1);
-      opacity: 1;
+    @keyframes showcase-ghost {
+      from {
+        transform: scale(0.55);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   }
 }
@@ -384,7 +388,7 @@ button:focus-visible {
     animation-range: entry 0% cover 30%;
   }
   .band-pill {
-    animation: band-pill-in cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation: band-pill-in cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-timeline: view();
     animation-range: entry 5% cover 25%;
   }

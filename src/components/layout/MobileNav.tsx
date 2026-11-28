@@ -126,7 +126,7 @@ export function MobileNav({ isOpen, onClose, triggerRef }: MobileNavProps) {
                       {services.map((service) => (
                         <li key={service.id}>
                           <NavLink
-                            className={({ isActive }) => cn("block py-1.5 text-white/65 transition-colors", isActive && "text-lime")}
+                            className={({ isActive }) => cn("flex min-h-11 items-center py-2 text-white/65 transition-colors", isActive && "text-lime")}
                             onClick={onClose}
                             to={`/services/${service.id}`}
                           >

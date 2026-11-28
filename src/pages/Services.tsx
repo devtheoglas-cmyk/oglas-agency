@@ -116,7 +116,7 @@ function ServicePage({ service }: { service: Service }) {
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-[5vw]">
             <div>
               <h1
-                className="svc-title font-display text-[clamp(3.4rem,7.4vw,7.5rem)] leading-[0.84] font-extrabold tracking-[-0.04em] uppercase"
+                className="svc-title font-display text-[clamp(2.75rem,14vw,7.5rem)] leading-[0.84] font-extrabold tracking-[-0.04em] uppercase"
                 id="service-title"
               >
                 {service.title}

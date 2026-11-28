@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { siteDetails } from "../../data/site";
 import { BackToTop } from "./BackToTop";
 
-const footerLinkClass = "w-fit text-sm font-medium text-white transition-colors hover:text-lime";
+const footerLinkClass = "flex min-h-11 w-fit items-center text-sm font-medium text-white transition-colors hover:text-lime";
 
 export function SiteFooter() {
   return (
@@ -55,7 +55,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div aria-hidden="true" className="font-wordmark text-[clamp(5rem,17vw,20rem)] leading-[0.78] tracking-[-0.025em] whitespace-nowrap uppercase">
+        <div aria-hidden="true" className="font-wordmark text-[10.5vw] leading-[0.78] tracking-[-0.025em] whitespace-nowrap uppercase sm:text-[clamp(5rem,17vw,20rem)]">
           The Oglas Agency
         </div>
 

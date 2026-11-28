@@ -58,7 +58,7 @@ export default function Works() {
               <button
                 aria-pressed={category === filter}
                 className={cn(
-                  "rounded-full border px-6 py-2.5 font-body text-sm tracking-wide uppercase transition-colors",
+                  "min-h-11 rounded-full border px-6 py-2.5 font-body text-sm tracking-wide uppercase transition-colors",
                   category === filter
                     ? "border-lime bg-lime text-black"
                     : "border-white/25 text-white/80 hover:border-white/60",
@@ -97,7 +97,7 @@ export default function Works() {
           {filtered.length > INITIAL_COUNT && (
             <div className="mt-16 flex justify-center border-t border-hairline pt-10">
               <button
-                className="flex items-center gap-3 font-body text-base text-white/70 transition-colors hover:text-white"
+                className="flex min-h-11 items-center gap-3 font-body text-base text-white/70 transition-colors hover:text-white"
                 onClick={() => setShowAll((prev) => !prev)}
                 type="button"
               >
