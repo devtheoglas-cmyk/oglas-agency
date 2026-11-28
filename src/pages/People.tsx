@@ -231,7 +231,7 @@ export default function People() {
           <ul className="mt-14 grid border-t border-black/15 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4" data-reveal>
             {clients.map((client) => (
               <li className="flex min-h-40 items-center justify-center border-b border-black/15 p-8 sm:border-l sm:first:border-l-0 lg:min-h-52" key={client.name}>
-                <BgImage alt={client.name} className="h-16 w-full max-w-[180px]" fit="contain" src={client.logo} />
+                <BgImage alt={client.name} className="h-16 w-full max-w-[180px] brightness-0" fit="contain" src={client.logo} />
               </li>
             ))}
           </ul>
