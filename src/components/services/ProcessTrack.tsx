@@ -15,7 +15,7 @@ const SHELL = "mx-auto w-full max-w-[1760px] px-5 sm:px-8 lg:px-[4.15vw]";
  * Below lg, or with reduced motion, the same list reads as a vertical
  * timeline, so no content depends on the pinned version.
  */
-export function ProcessTrack({ pinned = true }: { pinned?: boolean }) {
+export function ProcessTrack({ pinned = true, title = "How we work" }: { pinned?: boolean; title?: string }) {
   const section = useRef<HTMLElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLOListElement>(null);
@@ -96,7 +96,7 @@ export function ProcessTrack({ pinned = true }: { pinned?: boolean }) {
             id="process-title"
             tabIndex={-1}
           >
-            How we work
+            {title}
           </h2>
           <p className="max-w-[560px] font-body text-[clamp(1.05rem,1.2vw,1.25rem)] leading-[1.6] text-black/70">
             {processIntro}

@@ -10,7 +10,7 @@ import { SkipLink } from "./SkipLink";
 
 const TITLES: Readonly<Record<string, string>> = {
   "/": "Branding Agency in Dubai | Oglas Global",
-  "/about": "Oglas Global Founders & Team | Dubai Branding Agency",
+  "/about": "About Oglas Global | Dubai Branding Agency",
   "/works": "Branding & Creative Portfolio in Dubai | Oglas Global",
   "/works/fishwala": "Fishwala Branding Case Study | Oglas Global",
   "/works/velvet-properties": "Velvet Properties Website Design | Oglas Global",
@@ -28,7 +28,7 @@ const DESCRIPTIONS: Readonly<Record<string, string>> = {
   "/":
     "Oglas Global is a branding agency in Dubai offering brand strategy, visual identity, digital marketing, web design and development.",
   "/about":
-    "Meet the founders and team behind Oglas Global, a Dubai-based branding agency. Explore the people and leadership behind the company.",
+    "Learn about Oglas Global, a Dubai-based branding agency, our story, services, process, selected work, clients, leadership and creative team.",
   "/works":
     "Explore Oglas Global's creative portfolio in Dubai, showcasing branding, web design, apps and social media projects created for growing brands.",
   "/works/fishwala":
